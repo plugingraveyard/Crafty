@@ -1,13 +1,18 @@
 package me.corecraft.crafty.commands.admin.other;
 
+import ch.jalu.configme.SettingsManager;
+import ch.jalu.configme.SettingsManagerBuilder;
 import dev.triumphteam.cmd.bukkit.annotation.Permission;
 import dev.triumphteam.cmd.core.annotations.Command;
 import me.corecraft.crafty.Crafty;
+import me.corecraft.crafty.api.configs.types.LocaleSettings;
 import me.corecraft.crafty.api.configs.types.PluginSettings;
+import me.corecraft.crafty.api.utils.MessageSender;
 import me.corecraft.crafty.commands.CommandManager;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionDefault;
+import us.crazycrew.crazycore.utils.FileUtils;
+import java.io.File;
 
 public class CommandReload extends CommandManager {
 
@@ -18,8 +23,20 @@ public class CommandReload extends CommandManager {
     public void execute(Player player) {
         plugin.getApiLoader().getPluginSettings().reload();
 
-        String prefix = plugin.getApiLoader().getPluginSettings().getProperty(PluginSettings.COMMAND_PREFIX_TOGGLE) ? plugin.getApiLoader().getPluginSettings().getProperty(PluginSettings.COMMAND_PREFIX) : "";
+        FileUtils.extract("/translations/", plugin.getDataFolder().toPath(), false);
 
-        player.sendMessage(MiniMessage.miniMessage().deserialize(prefix + "You have reloaded the plugin."));
+        File localeDirectory = new File(plugin.getDataFolder() + "/translations/");
+
+        File localeFile = new File(localeDirectory, plugin.getApiLoader().getPluginSettings().getProperty(PluginSettings.LOCALE_FILE));
+
+        SettingsManager localeSettings = SettingsManagerBuilder
+                .withYamlFile(localeFile)
+                .useDefaultMigrationService()
+                .configurationData(LocaleSettings.class)
+                .create();
+
+        plugin.getApiLoader().setLocaleSettings(localeSettings);
+
+        MessageSender.send(player, plugin.getApiLoader().getLocaleSettings().getProperty(LocaleSettings.COMMAND_RELOAD));
     }
 }

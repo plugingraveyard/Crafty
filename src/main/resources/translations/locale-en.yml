@@ -1,0 +1,26 @@
+# Github: https://github.com/corecraftmc
+#
+# Issues: https://github.com/corecraftmc/Crafty/issues
+# Features: https://github.com/corecraftmc/Crafty/issues
+# Translations: https://github.com/corecraftmc/Crafty/issues
+
+misc:
+  unknown-command: '<red>This command is not known.</red>'
+  feature-disabled: '<red>This feature is disabled. We have no ETA on when this will function.</red>'
+  correct-usage: '<red>The correct usage for this command is</red> <yellow>%usage%</yellow>'
+
+errors:
+  internal-error: '<red>An internal error has occurred. Please check the console for the full error.</red>'
+
+player:
+  requirements:
+    too-many-args: '<red>You put more arguments then I can handle.</red>'
+    not-enough-args: '<red>You did not supply enough arguments.</red>'
+    must-be-player: '<red>You must be a player to use this command.</red>'
+    must-be-console-sender: '<red>You must be using console to use this command.</red>'
+    must-be-looking-at-block: '<red>You must be looking at a block.</red>'
+
+command:
+  reload:
+    confirm-reload: '<yellow>Are you sure you want to reload the plugin?</yellow>'
+    reload-completed: '<red>You have reloaded the plugin.</red>'

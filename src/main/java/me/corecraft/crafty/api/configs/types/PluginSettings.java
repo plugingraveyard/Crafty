@@ -40,13 +40,14 @@ public class PluginSettings implements SettingsHolder {
             "Choose the language you prefer to use on your server!",
             "",
             "Currently Available:",
-            " > en-US ( English )",
+            " > locale-en.yml ( English )",
+            " > locale-de.yml ( German )",
             "",
-            "If you do not see your language above, You can contribute by modifying the current en-US.yml",
-            "https://github.com/corecraftmc/Crafty/blob/main/platforms/src/main/resources/locale/en-US.yml",
+            "If you do not see your language above, You can contribute by modifying the current locale-en.yml",
+            "https://github.com/corecraftmc/Crafty/tree/main/src/main/resources/translations/locale-en.yml",
             ""
     })
-    public static final Property<String> LOCALE_FILE = newProperty("settings.locale-file", "en-US");
+    public static final Property<String> LOCALE_FILE = newProperty("settings.locale-file", "locale-en.yml");
 
     @Comment("Whether you want to have verbose logging enabled or not.")
     public static final Property<Boolean> VERBOSE_LOGGING = newProperty("settings.verbose-logging", true);

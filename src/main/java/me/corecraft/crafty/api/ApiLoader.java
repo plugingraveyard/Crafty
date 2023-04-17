@@ -3,6 +3,9 @@ package me.corecraft.crafty.api;
 import ch.jalu.configme.SettingsManager;
 import ch.jalu.configme.SettingsManagerBuilder;
 import me.corecraft.crafty.api.configs.CraftyConfigurationBuilder;
+import me.corecraft.crafty.api.configs.types.LocaleSettings;
+import me.corecraft.crafty.api.configs.types.PluginSettings;
+import us.crazycrew.crazycore.utils.FileUtils;
 import java.io.File;
 import java.nio.file.Path;
 
@@ -15,6 +18,7 @@ public class ApiLoader {
     }
 
     private SettingsManager pluginSettings;
+    private SettingsManager localeSettings;
 
     public void load() {
         File pluginSettings = new File(path.toFile(), "plugin-settings.yml");
@@ -24,9 +28,29 @@ public class ApiLoader {
                 .useDefaultMigrationService()
                 .configurationData(CraftyConfigurationBuilder.buildConfigurationData())
                 .create();
+
+        FileUtils.extract("/translations/", path, false);
+
+        File localeDirectory = new File(path + "/translations/");
+
+        File localeFile = new File(localeDirectory, getPluginSettings().getProperty(PluginSettings.LOCALE_FILE));
+
+        this.localeSettings = SettingsManagerBuilder
+                .withYamlFile(localeFile)
+                .useDefaultMigrationService()
+                .configurationData(LocaleSettings.class)
+                .create();
     }
 
     public SettingsManager getPluginSettings() {
-        return pluginSettings;
+        return this.pluginSettings;
+    }
+
+    public SettingsManager getLocaleSettings() {
+        return this.localeSettings;
+    }
+
+    public void setLocaleSettings(SettingsManager localeSettings) {
+        this.localeSettings = localeSettings;
     }
 }
