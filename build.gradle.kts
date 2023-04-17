@@ -25,7 +25,7 @@ repositories {
 dependencies {
     implementation("dev.triumphteam:triumph-cmd-bukkit:2.0.0-ALPHA-7")
 
-    implementation("us.crazycrew.crazycore:crazycore-paper:0.0.0.2")
+    implementation("us.crazycrew.crazycore:crazycore-paper:0.0.0.3")
 
     implementation("dev.triumphteam:triumph-gui:3.1.2")
 
