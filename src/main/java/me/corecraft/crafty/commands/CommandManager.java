@@ -2,7 +2,7 @@ package me.corecraft.crafty.commands;
 
 import dev.triumphteam.cmd.bukkit.BukkitCommandManager;
 import me.corecraft.crafty.Crafty;
-import me.corecraft.crafty.commands.admin.CommandSettings;
+import me.corecraft.crafty.commands.admin.other.CommandReload;
 import org.bukkit.command.CommandSender;
 
 public class CommandManager {
@@ -12,6 +12,6 @@ public class CommandManager {
     private final BukkitCommandManager<CommandSender> commandManager = BukkitCommandManager.create(plugin);
 
     public void setup() {
-        commandManager.registerCommand(new CommandSettings());
+        commandManager.registerCommand(new CommandReload());
     }
 }
