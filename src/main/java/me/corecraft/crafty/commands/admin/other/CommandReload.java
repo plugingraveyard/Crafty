@@ -4,17 +4,17 @@ import dev.triumphteam.cmd.bukkit.annotation.Permission;
 import dev.triumphteam.cmd.core.annotations.Command;
 import me.corecraft.crafty.Crafty;
 import me.corecraft.crafty.api.configs.types.PluginSettings;
+import me.corecraft.crafty.commands.CommandManager;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionDefault;
 
-@Command("crafty")
-@Permission(value = "crafty.admin.reload", def = PermissionDefault.OP)
-public class CommandReload {
+public class CommandReload extends CommandManager {
 
     private final Crafty plugin = Crafty.getPlugin();
 
     @Command("reload")
+    @Permission(value = "crafty.admin.reload", def = PermissionDefault.OP)
     public void execute(Player player) {
         plugin.getApiLoader().getPluginSettings().reload();
 
