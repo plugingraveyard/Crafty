@@ -1,26 +1,23 @@
 package me.corecraft.crafty.commands;
 
-import dev.triumphteam.cmd.bukkit.BukkitCommandManager;
-import dev.triumphteam.cmd.core.annotations.Command;
 import me.corecraft.crafty.Crafty;
-import me.corecraft.crafty.commands.admin.other.CommandReload;
-import org.bukkit.command.CommandSender;
 
-@Command("crafty")
+//@Command("crafty")
+//@Permission(value = "crafty.base", def = PermissionDefault.FALSE)
 public class CommandManager {
 
     private final Crafty plugin = Crafty.getPlugin();
 
-    private final BukkitCommandManager<CommandSender> commandManager = BukkitCommandManager.create(plugin);
+    //private final BukkitCommandManager<CommandSender> commandManager = BukkitCommandManager.create(plugin);
 
-    @Command
-    public void execute(CommandSender sender) {
-        sender.sendMessage("This is a default command.");
-    }
+    //@Command
+    //@Permission(value = "crafty.help", def = PermissionDefault.FALSE)
+    //public void execute(CommandSender sender) {
+
+    //}
 
     public void setup() {
-        commandManager.registerCommand(new CommandManager());
-
-        commandManager.registerCommand(new CommandReload());
+        //commandManager.registerCommand(new CommandManager());
+        //commandManager.registerCommand(new CommandReload());
     }
 }

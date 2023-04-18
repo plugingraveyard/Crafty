@@ -29,9 +29,9 @@ public class ApiLoader {
                 .configurationData(CraftyConfigurationBuilder.buildConfigurationData())
                 .create();
 
-        FileUtils.extract("/translations/", path, false);
+        FileUtils.extract("/locale/", path, false);
 
-        File localeDirectory = new File(path + "/translations/");
+        File localeDirectory = new File(path + "/locale/");
 
         File localeFile = new File(localeDirectory, getPluginSettings().getProperty(PluginSettings.LOCALE_FILE));
 

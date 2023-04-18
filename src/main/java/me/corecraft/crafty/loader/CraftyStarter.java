@@ -5,10 +5,10 @@ import io.papermc.paper.plugin.bootstrap.PluginProviderContext;
 import me.corecraft.crafty.Crafty;
 import me.corecraft.crafty.api.ApiLoader;
 import me.corecraft.crafty.api.configs.types.PluginSettings;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import us.crazycrew.crazycore.CrazyLogger;
-import us.crazycrew.crazycore.paper.PaperConsole;
 import us.crazycrew.crazycore.paper.PaperCore;
 import java.util.logging.LogManager;
 
@@ -28,7 +28,7 @@ public class CraftyStarter implements PluginBootstrap {
 
     @Override
     public @NotNull JavaPlugin createPlugin(@NotNull PluginProviderContext context) {
-        this.paperCore.setConsole(new PaperConsole());
+        this.paperCore.setConsole(Bukkit.getConsoleSender());
 
         this.paperCore.setPrefix(this.apiLoader.getPluginSettings().getProperty(PluginSettings.CONSOLE_PREFIX));
 

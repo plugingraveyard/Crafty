@@ -20,12 +20,19 @@ repositories {
     maven("https://jitpack.io/")
 
     mavenCentral()
+    //mavenLocal()
 }
 
 dependencies {
-    implementation("dev.triumphteam:triumph-cmd-bukkit:2.0.0-ALPHA-7")
+    implementation("cloud.commandframework", "cloud-core", "1.8.3")
+    implementation("cloud.commandframework", "cloud-brigadier", "1.8.3")
+    implementation("cloud.commandframework", "cloud-minecraft-extras", "1.8.3") {
+        exclude("net.kyori")
+    }
 
-    implementation("us.crazycrew.crazycore:crazycore-paper:0.0.0.3")
+    //implementation("dev.triumphteam:triumph-cmd-bukkit:2.0.0-ALPHA-7")
+
+    implementation("us.crazycrew.crazycore:crazycore-paper:1.0.0.3")
 
     implementation("dev.triumphteam:triumph-gui:3.1.2")
 

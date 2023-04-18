@@ -1,6 +1,7 @@
 package me.corecraft.crafty;
 
 import me.corecraft.crafty.api.ApiLoader;
+import me.corecraft.crafty.api.enums.Permissions;
 import me.corecraft.crafty.commands.CommandManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -29,6 +30,8 @@ public class Crafty extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
+
+        Permissions.setup(getServer().getPluginManager());
 
         CommandManager commandManager = new CommandManager();
 

@@ -4,6 +4,9 @@
 # Features: https://github.com/corecraftmc/Crafty/issues
 # Translations: https://github.com/corecraftmc/Crafty/issues
 
+admin-help: |-
+  <red>/crafty reload</red> -> <yellow>Dadurch wird das Plugin neu geladen.</red>
+
 misc:
   unknown-command: '<red>Dieser Befehl ist nicht bekannt.</red>'
   feature-disabled: '<red>Diese Funktion ist deaktiviert. Wir haben keine ETA, wann dies funktionieren wird.</red>'

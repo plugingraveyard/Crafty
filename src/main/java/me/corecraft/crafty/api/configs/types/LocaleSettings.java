@@ -8,7 +8,7 @@ import static ch.jalu.configme.properties.PropertyInitializer.newProperty;
 /**
  * @author RyderBelserion
  *
- * Description: The locale-en.yml options.
+ * Description: The lang-en.yml options.
  */
 public class LocaleSettings implements SettingsHolder {
 
@@ -27,6 +27,11 @@ public class LocaleSettings implements SettingsHolder {
 
         conf.setComment("misc", header);
     }
+
+    public static final Property<String> ADMIN_HELP = newProperty("admin-help", """
+            <red>/crafty reload</red> -> <yellow>This reloads the plugin.</red>
+            """
+    );
 
     public static final Property<String> UNKNOWN_COMMAND = newProperty("misc.unknown-command", "<red>This command is not known.</red>");
 

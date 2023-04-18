@@ -2,15 +2,12 @@ package me.corecraft.crafty.commands.admin.other;
 
 import ch.jalu.configme.SettingsManager;
 import ch.jalu.configme.SettingsManagerBuilder;
-import dev.triumphteam.cmd.bukkit.annotation.Permission;
-import dev.triumphteam.cmd.core.annotations.Command;
 import me.corecraft.crafty.Crafty;
 import me.corecraft.crafty.api.configs.types.LocaleSettings;
 import me.corecraft.crafty.api.configs.types.PluginSettings;
 import me.corecraft.crafty.api.utils.MessageSender;
 import me.corecraft.crafty.commands.CommandManager;
 import org.bukkit.entity.Player;
-import org.bukkit.permissions.PermissionDefault;
 import us.crazycrew.crazycore.utils.FileUtils;
 import java.io.File;
 
@@ -18,14 +15,14 @@ public class CommandReload extends CommandManager {
 
     private final Crafty plugin = Crafty.getPlugin();
 
-    @Command("reload")
-    @Permission(value = "crafty.admin.reload", def = PermissionDefault.OP)
+    //@Command("reload")
+    //@Permission(value = "crafty.admin.reload", def = PermissionDefault.OP)
     public void execute(Player player) {
         plugin.getApiLoader().getPluginSettings().reload();
 
-        FileUtils.extract("/translations/", plugin.getDataFolder().toPath(), false);
+        FileUtils.extract("/locale/", plugin.getDataFolder().toPath(), false);
 
-        File localeDirectory = new File(plugin.getDataFolder() + "/translations/");
+        File localeDirectory = new File(plugin.getDataFolder() + "/locale/");
 
         File localeFile = new File(localeDirectory, plugin.getApiLoader().getPluginSettings().getProperty(PluginSettings.LOCALE_FILE));
 
