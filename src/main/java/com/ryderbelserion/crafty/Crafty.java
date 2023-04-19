@@ -1,8 +1,8 @@
-package me.corecraft.crafty;
+package com.ryderbelserion.crafty;
 
-import me.corecraft.crafty.api.ApiLoader;
-import me.corecraft.crafty.api.enums.Permissions;
-import me.corecraft.crafty.commands.CommandManager;
+import com.ryderbelserion.crafty.api.ApiLoader;
+import com.ryderbelserion.crafty.api.enums.Permissions;
+import com.ryderbelserion.crafty.commands.CommandManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import us.crazycrew.crazycore.CrazyLogger;

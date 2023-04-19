@@ -1,12 +1,12 @@
-package me.corecraft.crafty.commands.admin.other;
+package com.ryderbelserion.crafty.commands.admin.other;
 
 import ch.jalu.configme.SettingsManager;
 import ch.jalu.configme.SettingsManagerBuilder;
-import me.corecraft.crafty.Crafty;
-import me.corecraft.crafty.api.configs.types.LocaleSettings;
-import me.corecraft.crafty.api.configs.types.PluginSettings;
-import me.corecraft.crafty.api.utils.MessageSender;
-import me.corecraft.crafty.commands.CommandManager;
+import com.ryderbelserion.crafty.Crafty;
+import com.ryderbelserion.crafty.api.configs.types.LocaleSettings;
+import com.ryderbelserion.crafty.api.configs.types.PluginSettings;
+import com.ryderbelserion.crafty.api.utils.MessageSender;
+import com.ryderbelserion.crafty.commands.CommandManager;
 import org.bukkit.entity.Player;
 import us.crazycrew.crazycore.utils.FileUtils;
 import java.io.File;

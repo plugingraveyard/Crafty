@@ -1,10 +1,10 @@
-package me.corecraft.crafty.api;
+package com.ryderbelserion.crafty.api;
 
 import ch.jalu.configme.SettingsManager;
 import ch.jalu.configme.SettingsManagerBuilder;
-import me.corecraft.crafty.api.configs.CraftyConfigurationBuilder;
-import me.corecraft.crafty.api.configs.types.LocaleSettings;
-import me.corecraft.crafty.api.configs.types.PluginSettings;
+import com.ryderbelserion.crafty.api.configs.CraftyConfigurationBuilder;
+import com.ryderbelserion.crafty.api.configs.types.LocaleSettings;
+import com.ryderbelserion.crafty.api.configs.types.PluginSettings;
 import us.crazycrew.crazycore.utils.FileUtils;
 import java.io.File;
 import java.nio.file.Path;

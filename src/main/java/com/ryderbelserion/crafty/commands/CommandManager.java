@@ -1,6 +1,6 @@
-package me.corecraft.crafty.commands;
+package com.ryderbelserion.crafty.commands;
 
-import me.corecraft.crafty.Crafty;
+import com.ryderbelserion.crafty.Crafty;
 
 //@Command("crafty")
 //@Permission(value = "crafty.base", def = PermissionDefault.FALSE)

@@ -1,8 +1,8 @@
-package me.corecraft.crafty.api.configs;
+package com.ryderbelserion.crafty.api.configs;
 
 import ch.jalu.configme.configurationdata.ConfigurationData;
 import ch.jalu.configme.configurationdata.ConfigurationDataBuilder;
-import me.corecraft.crafty.api.configs.types.PluginSettings;
+import com.ryderbelserion.crafty.api.configs.types.PluginSettings;
 
 public class CraftyConfigurationBuilder {
 

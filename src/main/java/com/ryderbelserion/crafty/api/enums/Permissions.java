@@ -1,4 +1,4 @@
-package me.corecraft.crafty.api.enums;
+package com.ryderbelserion.crafty.api.enums;
 
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;

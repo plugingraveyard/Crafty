@@ -1,10 +1,10 @@
-package me.corecraft.crafty.loader;
+package com.ryderbelserion.crafty.loader;
 
 import io.papermc.paper.plugin.bootstrap.PluginBootstrap;
 import io.papermc.paper.plugin.bootstrap.PluginProviderContext;
-import me.corecraft.crafty.Crafty;
-import me.corecraft.crafty.api.ApiLoader;
-import me.corecraft.crafty.api.configs.types.PluginSettings;
+import com.ryderbelserion.crafty.Crafty;
+import com.ryderbelserion.crafty.api.ApiLoader;
+import com.ryderbelserion.crafty.api.configs.types.PluginSettings;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;

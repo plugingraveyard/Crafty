@@ -4,6 +4,8 @@ plugins {
     id("io.papermc.paperweight.userdev") version "1.5.4"
 
     id("com.github.johnrengelman.shadow") version "8.1.1"
+
+    id("xyz.jpenilla.run-paper") version "2.0.1"
 }
 
 java {
@@ -13,6 +15,8 @@ java {
 repositories {
     maven("https://repo.papermc.io/repository/maven-public/")
 
+    maven("https://repo.aikar.co/content/groups/aikar/")
+
     maven("https://repo.triumphteam.dev/snapshots/")
 
     maven("https://repo.crazycrew.us/api/")
@@ -20,36 +24,23 @@ repositories {
     maven("https://jitpack.io/")
 
     mavenCentral()
-    //mavenLocal()
 }
 
 dependencies {
-    implementation("cloud.commandframework", "cloud-core", "1.8.3")
-    implementation("cloud.commandframework", "cloud-brigadier", "1.8.3")
-    implementation("cloud.commandframework", "cloud-minecraft-extras", "1.8.3") {
-        exclude("net.kyori")
-    }
+    compileOnly("co.aikar:acf-paper:0.5.1-SNAPSHOT")
 
-    //implementation("dev.triumphteam:triumph-cmd-bukkit:2.0.0-ALPHA-7")
+    //compileOnly("dev.triumphteam:triumph-cmd-bukkit:2.0.0-ALPHA-7")
 
     implementation("us.crazycrew.crazycore:crazycore-paper:1.0.0.3")
 
-    implementation("dev.triumphteam:triumph-gui:3.1.2")
+    compileOnly("dev.triumphteam:triumph-gui:3.1.2")
 
-    implementation("ch.jalu:configme:1.3.0")
+    compileOnly("ch.jalu:configme:1.3.0")
 
     paperweight.paperDevBundle("1.19.4-R0.1-SNAPSHOT")
 }
 
 tasks {
-    shadowJar {
-        listOf(
-            "us.crazycrew.crazycore",
-            "dev.triumphteam",
-            "ch.jalu"
-        ).forEach { pack -> relocate(pack, "${rootProject.group}.$pack") }
-    }
-
     assemble {
         dependsOn(reobfJar)
     }
@@ -82,5 +73,9 @@ tasks {
                 "description" to rootProject.description
             )
         }
+    }
+
+    runServer {
+        minecraftVersion("1.19.4")
     }
 }

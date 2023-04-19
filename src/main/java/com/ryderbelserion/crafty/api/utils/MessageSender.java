@@ -1,7 +1,7 @@
-package me.corecraft.crafty.api.utils;
+package com.ryderbelserion.crafty.api.utils;
 
-import me.corecraft.crafty.Crafty;
-import me.corecraft.crafty.api.configs.types.PluginSettings;
+import com.ryderbelserion.crafty.Crafty;
+import com.ryderbelserion.crafty.api.configs.types.PluginSettings;
 import net.kyori.adventure.audience.Audience;
 import us.crazycrew.crazycore.CrazyLogger;
 import us.crazycrew.crazycore.utils.AdventureUtils;
