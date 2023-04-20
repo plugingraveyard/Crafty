@@ -18,7 +18,7 @@ public class CraftyLoader implements PluginLoader {
         resolver.addDependency(new Dependency(new DefaultArtifact("co.aikar:acf-paper:0.5.1-SNAPSHOT"), null));
 
         // CrazyCrew
-        resolver.addDependency(new Dependency(new DefaultArtifact("us.crazycrew.crazycore:crazycore-paper:1.0.0.3"), null));
+        //resolver.addDependency(new Dependency(new DefaultArtifact("us.crazycrew.crazycore:crazycore-paper:1.0.0.3"), null));
 
         // Matt
         resolver.addDependency(new Dependency(new DefaultArtifact("dev.triumphteam:triumph-gui:3.1.2"),  null));
