@@ -1,2 +1,2 @@
 # Crafty
-A simplistic essentialsx alternative.
+me
