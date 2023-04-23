@@ -1,5 +1,6 @@
 package com.ryderbelserion.crafty.api.enums;
 
+import com.ryderbelserion.crafty.api.utils.Constants;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.plugin.PluginManager;
@@ -7,8 +8,10 @@ import java.util.HashMap;
 
 public enum Permissions {
 
-    PLAYER_HELP("crafty.player.help", "Shows player only commands.", null, PermissionDefault.FALSE),
-    ADMIN_HELP("crafty.admin.help", "Shows admin only commands with player only commands.", null, PermissionDefault.FALSE);
+    CRAFTY_HELP("help", "Allows access to the /crafty help command.", null, PermissionDefault.FALSE),
+    CRAFTY_BASE("base", "Allows access to the base /crafty command.", null, PermissionDefault.FALSE),
+    CRAFTY_RELOAD("reload", "Allows access to the /crafty reload command.", null, PermissionDefault.FALSE),
+    CRAFTY_MESSAGE("message", "Gives the ability to send messages to others.", null, PermissionDefault.FALSE);
 
     private final String node;
     private final String desc;
@@ -42,7 +45,7 @@ public enum Permissions {
 
     @Override
     public String toString() {
-        return "crafty." + this.node;
+        return Constants.BASE_PERM + this.node;
     }
 
     public static void setup(PluginManager pluginManager) {

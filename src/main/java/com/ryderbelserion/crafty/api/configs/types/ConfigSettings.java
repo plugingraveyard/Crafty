@@ -11,10 +11,10 @@ import static ch.jalu.configme.properties.PropertyInitializer.newProperty;
  *
  * Description: The lang-en.yml options.
  */
-public class LocaleSettings implements SettingsHolder {
+public class ConfigSettings implements SettingsHolder {
 
     // Empty constructor required by SettingsHolder
-    public LocaleSettings() {}
+    public ConfigSettings() {}
 
     @Override
     public void registerComments(CommentsConfiguration conf) {
@@ -33,21 +33,21 @@ public class LocaleSettings implements SettingsHolder {
 
     public static final Property<String> OUT_OF_ORDER = newProperty("misc.out-of-order", "<red>This is currently out of order until further notice.</red>");
 
-    public static final Property<String> SUCCESSFUL_CONVERSION = newProperty("misc.file-conversion.success", "<blue>Successfully converted any possible files while doing <aqua>%action%.</aqua></blue>");
+    public static final Property<String> SUCCESSFUL_CONVERSION = newProperty("misc.file-conversion.success", "<green>Successfully converted any possible files while doing %action%.</green>");
 
-    public static final Property<String> FAILED_CONVERSION = newProperty("misc.file-conversion.failed", "<red>Failed to convert the files because: <aqua>%reason%</aqua></red>");
+    public static final Property<String> FAILED_CONVERSION = newProperty("misc.file-conversion.failed", "<red>Failed to convert the files because: <gold>%reason%</gold></red>");
 
     public static final Property<String> FEATURE_DISABLED = newProperty("misc.feature-disabled", "<red>This feature is disabled.</red>");
 
-    public static final Property<String> CORRECT_USAGE = newProperty("misc.correct-usage", "<red>The correct usage for this command is</red> <aqua>%usage%</aqua>");
+    public static final Property<String> CORRECT_USAGE = newProperty("misc.correct-usage", "<red>The correct usage for this command is</red> <yellow>%usage%</yellow>");
 
-    public static final Property<String> INVALID_PAGE = newProperty("help.invalid-page", "<red>The page</red> <aqua>%page%</aqua> <red>does not exist.</red>");
+    public static final Property<String> INVALID_PAGE = newProperty("help.invalid-page", "<red>The page</red> <yellow>%page%</yellow> <red>does not exist.</red>");
 
-    public static final Property<String> PAGE_FORMAT = newProperty("help.page-format", "<aqua>%command% %args%</aqua> <gray>»</gray> <reset>%description%");
+    public static final Property<String> PAGE_FORMAT = newProperty("help.page-format", "<gold>%command% %args%</gold> <gray>»</gray> <reset>%description%");
 
-    public static final Property<String> HELP_HEADER = newProperty("help.header", "<gray>────────</gray> <blue>Crafty Help <aqua>%page%</aqua></blue> <gray>────────</gray>");
+    public static final Property<String> HELP_HEADER = newProperty("help.header", "<gray>────────</gray> <gold>Crafty Help %page%</gold> <gray>────────</gray>");
 
-    public static final Property<String> HELP_FOOTER = newProperty("help.footer", "<gray>────────</gray> <blue>Crafty Help <aqua>%page%</aqua></blue> %button%");
+    public static final Property<String> HELP_FOOTER = newProperty("help.footer", "<gray>────────</gray> <gold>Crafty Help %page%</gold> %button%");
 
     @Comment({
             "The only options that work here are run_command, suggest_command, copy_to_clipboard",
@@ -58,13 +58,13 @@ public class LocaleSettings implements SettingsHolder {
     })
     public static final Property<String> HOVER_ACTION = newProperty("help.hover.action", "copy_to_clipboard");
 
-    public static final Property<String> HOVER_FORMAT = newProperty("help.hover.format", "<blue>Click me to run the command.</blue> <aqua>%command%</aqua>");
+    public static final Property<String> HOVER_FORMAT = newProperty("help.hover.format", "<gray>Click me to run the command.</gray> <gold>%command%</gold>");
 
     public static final Property<String> PAGE_NEXT = newProperty("help.page-next", " <green>»»»</green>");
 
     public static final Property<String> PAGE_BACK = newProperty("help.page-back", " <red>«««</red>");
 
-    public static final Property<String> GO_TO_PAGE = newProperty("help.go-to-page", "<blue>Go to page</blue> <aqua>%page%</aqua>");
+    public static final Property<String> GO_TO_PAGE = newProperty("help.go-to-page", "<gray>Go to page</gray> <gold>%page%</gold>");
 
     public static final Property<String> INTERNAL_ERROR = newProperty("errors.internal-error", "<red>An internal error has occurred. Please check the console for the full error.</red>");
 
@@ -80,5 +80,5 @@ public class LocaleSettings implements SettingsHolder {
 
     public static final Property<String> COMMAND_CONFIRM_RELOAD = newProperty("command.reload.confirm-reload", "<yellow>Are you sure you want to reload the plugin?</yellow>");
 
-    public static final Property<String> COMMAND_RELOAD = newProperty("command.reload.reload-completed", "<blue>You have reloaded the plugin.</blue>");
+    public static final Property<String> COMMAND_RELOAD = newProperty("command.reload.reload-completed", "<red>You have reloaded the plugin.</red>");
 }

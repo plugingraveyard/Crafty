@@ -2,21 +2,28 @@ package com.ryderbelserion.crafty.commands.admin.other;
 
 import ch.jalu.configme.SettingsManager;
 import ch.jalu.configme.SettingsManagerBuilder;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.CommandPermission;
+import co.aikar.commands.annotation.Description;
+import co.aikar.commands.annotation.Subcommand;
 import com.ryderbelserion.crafty.Crafty;
 import com.ryderbelserion.crafty.api.configs.types.LocaleSettings;
 import com.ryderbelserion.crafty.api.configs.types.PluginSettings;
-import com.ryderbelserion.crafty.api.utils.MessageSender;
-import com.ryderbelserion.crafty.commands.CommandManager;
+import com.ryderbelserion.crafty.api.utils.Constants;
+import com.ryderbelserion.crafty.api.utils.MessageUtils;
+import com.ryderbelserion.crafty.commands.CraftyBaseCommand;
 import org.bukkit.entity.Player;
-import us.crazycrew.crazycore.utils.FileUtils;
+import us.crazycrew.crazycore.paper.utils.FileUtils;
 import java.io.File;
 
-public class CommandReload extends CommandManager {
+@CommandAlias("crazycrates")
+public class CommandReload extends CraftyBaseCommand {
 
     private final Crafty plugin = Crafty.getPlugin();
 
-    //@Command("reload")
-    //@Permission(value = "crafty.admin.reload", def = PermissionDefault.OP)
+    @Subcommand("reload")
+    @Description("Reloads the configuration files for the plugin.")
+    @CommandPermission(Constants.BASE_PERM + "reload")
     public void execute(Player player) {
         plugin.getApiLoader().getPluginSettings().reload();
 
@@ -34,6 +41,6 @@ public class CommandReload extends CommandManager {
 
         plugin.getApiLoader().setLocaleSettings(localeSettings);
 
-        MessageSender.send(player, plugin.getApiLoader().getLocaleSettings().getProperty(LocaleSettings.COMMAND_RELOAD));
+        MessageUtils.send(player, plugin.getApiLoader().getLocaleSettings().getProperty(LocaleSettings.COMMAND_RELOAD));
     }
 }

@@ -2,14 +2,14 @@ package com.ryderbelserion.crafty.api.configs;
 
 import ch.jalu.configme.configurationdata.ConfigurationData;
 import ch.jalu.configme.configurationdata.ConfigurationDataBuilder;
-import com.ryderbelserion.crafty.api.configs.types.PluginSettings;
+import com.ryderbelserion.crafty.api.configs.types.ConfigSettings;
 
-public class CraftyConfigurationBuilder {
+public class CraftyConfigBuilder {
 
     /**
      * Private constructor to prevent instantiation
      */
-    private CraftyConfigurationBuilder() {}
+    private CraftyConfigBuilder() {}
 
     /**
      * Builds the core configuration data.
@@ -18,7 +18,7 @@ public class CraftyConfigurationBuilder {
      */
     public static ConfigurationData buildConfigurationData() {
         return ConfigurationDataBuilder.createConfiguration(
-                PluginSettings.class
+                ConfigSettings.class
         );
     }
 }

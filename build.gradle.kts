@@ -29,9 +29,7 @@ repositories {
 dependencies {
     compileOnly("co.aikar:acf-paper:0.5.1-SNAPSHOT")
 
-    //compileOnly("dev.triumphteam:triumph-cmd-bukkit:2.0.0-ALPHA-7")
-
-    implementation("us.crazycrew.crazycore:crazycore-paper:1.0.0.3")
+    implementation("us.crazycrew.crazycore:crazycore-api:2.0.0.4")
 
     compileOnly("dev.triumphteam:triumph-gui:3.1.2")
 

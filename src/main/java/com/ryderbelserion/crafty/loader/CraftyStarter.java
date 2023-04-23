@@ -5,21 +5,20 @@ import io.papermc.paper.plugin.bootstrap.PluginProviderContext;
 import com.ryderbelserion.crafty.Crafty;
 import com.ryderbelserion.crafty.api.ApiLoader;
 import com.ryderbelserion.crafty.api.configs.types.PluginSettings;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-import us.crazycrew.crazycore.CrazyLogger;
-import us.crazycrew.crazycore.paper.PaperCore;
+import us.crazycrew.crazycore.paper.CrazyCore;
+import us.crazycrew.crazycore.paper.CrazyLogger;
 import java.util.logging.LogManager;
 
 public class CraftyStarter implements PluginBootstrap {
 
-    private PaperCore paperCore;
+    private CrazyCore crazyCore;
     private ApiLoader apiLoader;
 
     @Override
     public void bootstrap(@NotNull PluginProviderContext context) {
-        this.paperCore = new PaperCore(context.getConfiguration().getName(), context.getDataDirectory());
+        this.crazyCore = new CrazyCore(context.getDataDirectory(), context.getConfiguration().getName());
 
         this.apiLoader = new ApiLoader(context.getDataDirectory());
 
@@ -28,14 +27,12 @@ public class CraftyStarter implements PluginBootstrap {
 
     @Override
     public @NotNull JavaPlugin createPlugin(@NotNull PluginProviderContext context) {
-        this.paperCore.setConsole(Bukkit.getConsoleSender());
+        this.crazyCore.setPrefix(this.apiLoader.getPluginSettings().getProperty(PluginSettings.CONSOLE_PREFIX));
 
-        this.paperCore.setPrefix(this.apiLoader.getPluginSettings().getProperty(PluginSettings.CONSOLE_PREFIX));
-
-        CrazyLogger.setName(this.paperCore.getProjectName());
+        CrazyLogger.setName(CrazyCore.getProjectPrefix());
 
         LogManager.getLogManager().addLogger(CrazyLogger.getLogger());
 
-        return new Crafty(this.paperCore, this.apiLoader);
+        return new Crafty(this.crazyCore, this.apiLoader);
     }
 }
