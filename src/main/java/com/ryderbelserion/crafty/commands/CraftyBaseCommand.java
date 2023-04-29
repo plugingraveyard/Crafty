@@ -5,11 +5,13 @@ import co.aikar.commands.CommandHelp;
 import co.aikar.commands.HelpEntry;
 import co.aikar.commands.PaperCommandManager;
 import co.aikar.commands.annotation.*;
+import com.google.common.collect.ImmutableList;
 import com.ryderbelserion.crafty.Crafty;
 import com.ryderbelserion.crafty.api.configs.types.LocaleSettings;
 import com.ryderbelserion.crafty.api.configs.types.PluginSettings;
 import com.ryderbelserion.crafty.api.utils.Constants;
 import com.ryderbelserion.crafty.api.utils.MessageUtils;
+import com.ryderbelserion.crafty.commands.admin.CommandGamemode;
 import com.ryderbelserion.crafty.commands.admin.other.CommandReload;
 import net.kyori.adventure.text.event.ClickEvent;
 import org.bukkit.command.CommandSender;
@@ -40,10 +42,12 @@ public class CraftyBaseCommand extends BaseCommand {
         manager.registerCommand(new CraftyBaseCommand());
 
         manager.registerCommand(new CommandReload());
+
+        manager.registerCommand(new CommandGamemode());
     }
 
     private static void registerCompletions(PaperCommandManager manager) {
-
+        manager.getCommandCompletions().registerCompletion("gm-options", options -> ImmutableList.of("creative", "survival", "adventure", "spectator"));
     }
 
     private void generateHelp(int maxPage, int page, List<HelpEntry> entries, CommandSender sender) {

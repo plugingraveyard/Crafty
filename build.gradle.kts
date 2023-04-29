@@ -15,6 +15,8 @@ java {
 repositories {
     maven("https://repo.papermc.io/repository/maven-public/")
 
+    maven("https://repo.codemc.org/repository/maven-public/")
+
     maven("https://repo.aikar.co/content/groups/aikar/")
 
     maven("https://repo.triumphteam.dev/snapshots/")
@@ -41,6 +43,10 @@ dependencies {
 tasks {
     assemble {
         dependsOn(reobfJar)
+    }
+
+    shadowJar {
+        relocate("dev.jorel.commandapi", "com.ryderbelserion.libs.commandapi")
     }
 
     reobfJar {

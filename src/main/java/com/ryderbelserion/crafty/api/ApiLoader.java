@@ -2,6 +2,7 @@ package com.ryderbelserion.crafty.api;
 
 import ch.jalu.configme.SettingsManager;
 import ch.jalu.configme.SettingsManagerBuilder;
+import com.ryderbelserion.crafty.api.configs.types.AliasSettings;
 import com.ryderbelserion.crafty.api.configs.types.ConfigSettings;
 import com.ryderbelserion.crafty.api.configs.types.LocaleSettings;
 import com.ryderbelserion.crafty.api.configs.types.PluginSettings;
@@ -18,6 +19,7 @@ public class ApiLoader {
     }
 
     private SettingsManager pluginSettings;
+    private SettingsManager aliasSettings;
     private SettingsManager configSettings;
     private SettingsManager localeSettings;
 
@@ -28,6 +30,14 @@ public class ApiLoader {
                 .withYamlFile(pluginSettings)
                 .useDefaultMigrationService()
                 .configurationData(PluginSettings.class)
+                .create();
+
+        File aliasSettings = new File(path.toFile(), "aliases.yml");
+
+        this.aliasSettings = SettingsManagerBuilder
+                .withYamlFile(aliasSettings)
+                .useDefaultMigrationService()
+                .configurationData(AliasSettings.class)
                 .create();
 
         File configSettings = new File(path.toFile(), "config.yml");
@@ -53,6 +63,10 @@ public class ApiLoader {
 
     public SettingsManager getPluginSettings() {
         return this.pluginSettings;
+    }
+
+    public SettingsManager getAliasSettings() {
+        return this.aliasSettings;
     }
 
     public SettingsManager getConfigSettings() {

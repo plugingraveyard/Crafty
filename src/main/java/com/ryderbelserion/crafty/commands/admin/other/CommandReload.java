@@ -16,7 +16,7 @@ import org.bukkit.entity.Player;
 import us.crazycrew.crazycore.paper.utils.FileUtils;
 import java.io.File;
 
-@CommandAlias("crazycrates")
+@CommandAlias("crafty")
 public class CommandReload extends CraftyBaseCommand {
 
     private final Crafty plugin = Crafty.getPlugin();
