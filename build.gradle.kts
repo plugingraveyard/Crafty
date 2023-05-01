@@ -45,10 +45,6 @@ tasks {
         dependsOn(reobfJar)
     }
 
-    shadowJar {
-        relocate("dev.jorel.commandapi", "com.ryderbelserion.libs.commandapi")
-    }
-
     reobfJar {
         val file = File("$rootDir/jars")
 

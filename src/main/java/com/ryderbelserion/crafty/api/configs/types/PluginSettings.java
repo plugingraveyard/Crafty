@@ -4,7 +4,11 @@ import ch.jalu.configme.Comment;
 import ch.jalu.configme.SettingsHolder;
 import ch.jalu.configme.configurationdata.CommentsConfiguration;
 import ch.jalu.configme.properties.Property;
-import static ch.jalu.configme.properties.PropertyInitializer.newProperty;
+import com.ryderbelserion.crafty.api.configs.types.elements.GroupElement;
+
+import java.util.HashMap;
+
+import static ch.jalu.configme.properties.PropertyInitializer.*;
 
 /**
  * @author RyderBelserion
@@ -63,4 +67,20 @@ public class PluginSettings implements SettingsHolder {
 
     @Comment("Whether you want statistics sent to https://bstats.org or not.")
     public static final Property<Boolean> TOGGLE_METRICS = newProperty("settings.toggle-metrics", true);
+
+    //@Comment({
+    //        "Chat Formats are set depending on what group the player is in.",
+    //        "If the player is in a group named Default, they will have the default chat format."
+    //})
+    //public static final Property<GroupElement> CHAT_GROUP_FORMATS = mapProperty(initDefaultFormats());
+
+
+    private static HashMap<String, String> initDefaultFormats() {
+        GroupElement element = new GroupElement();
+
+        element.addGroup("default", "&8[&7Default&8] &7{player} &9> &7{message}");
+        element.addGroup("vip", "&8[&5VIP&8] &7%player_displayname% &9> &7{message}");
+
+        return element.getGroups();
+    }
 }
