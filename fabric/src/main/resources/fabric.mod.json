@@ -1,0 +1,32 @@
+{
+	"schemaVersion": 1,
+	"id": "crafty",
+	"version": "0.1.0",
+	"name": "Crafty",
+	"description": "A multiplatform version of EssentialsX.",
+	"authors": [
+		"Ryder Belserion"
+	],
+	"contact": {
+		"homepage": "https://corecraft.me/",
+		"sources": "https://github.com/corecraftmc/Crafty"
+	},
+	"license": "MIT",
+	"icon": "assets/crafty/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"me.corecraft.crafty.Crafty"
+		]
+	},
+	"mixins": [],
+	"depends": {
+		"fabricloader": ">=0.14.21",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

@@ -1,2 +1,2 @@
 # Crafty
-me
+A multiplatform version of EssentialsX.

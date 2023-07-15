@@ -1,9 +1,0 @@
-name: Crafty
-main: com.ryderbelserion.crafty.Crafty
-
-version: ${version}
-api-version: '1.19'
-description: ${description}
-
-bootstrapper: com.ryderbelserion.crafty.loader.CraftyStarter
-loader: com.ryderbelserion.crafty.loader.CraftyLoader

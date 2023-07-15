@@ -1,9 +1,13 @@
 .gradle
 .idea
 
+buildSrc/.gradle
+buildSrc/build
+
+fabric/build
+fabric/.gradle
+
+paper/build
+paper/.gradle
+
 build
-
-run
-!run/eula.txt
-
-jars
