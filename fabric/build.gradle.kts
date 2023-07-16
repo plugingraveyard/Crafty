@@ -6,13 +6,15 @@ plugins {
 
 tasks {
     shadowJar {
-        archiveBaseName.set("${rootProject.name}-Fabric")
+        val file = File("$rootDir/jars/prebuilt")
+
+        doFirst {
+            if (!file.exists()) file.mkdirs()
+        }
+
+        archiveFileName.set("$file/${rootProject.name.lowercase()}-fabric.jar")
 
         archiveClassifier.set("")
-
-        doLast {
-
-        }
     }
 }
 

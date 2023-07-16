@@ -8,4 +8,9 @@ public class Crafty extends JavaPlugin {
     public void onEnable() {
         getLogger().info("Guten Tag!");
     }
+
+    @Override
+    public void onDisable() {
+        getLogger().info("Good Bye!");
+    }
 }

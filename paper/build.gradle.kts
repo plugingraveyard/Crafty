@@ -4,11 +4,11 @@ plugins {
 
 tasks {
     reobfJar {
-        val file = File("$rootDir/jars")
+        val file = File("$rootDir/jars/prebuilt")
 
         if (!file.exists()) file.mkdirs()
 
-        outputJar.set(layout.buildDirectory.file("$file/${rootProject.name}-${rootProject.version}-Paper.jar"))
+        outputJar.set(layout.buildDirectory.file("$file/${rootProject.name.lowercase()}-paper.jar"))
     }
 
     shadowJar {

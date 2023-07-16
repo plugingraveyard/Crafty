@@ -2,7 +2,6 @@ import org.gradle.kotlin.dsl.maven
 
 plugins {
     `java-library`
-    `maven-publish`
 
     id("com.github.johnrengelman.shadow")
 }
