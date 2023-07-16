@@ -1,14 +1,9 @@
 plugins {
-    `java-library`
-
     id("fabric-loom") version "1.3-SNAPSHOT"
 }
 
 group = "${rootProject.group}.fabric"
-
-repositories {
-    maven("https://maven.fabricmc.net/")
-}
+version = rootProject.version
 
 dependencies {
     minecraft("com.mojang", "minecraft", "1.20.1")
@@ -19,13 +14,25 @@ dependencies {
     modImplementation("net.fabricmc.fabric-api", "fabric-api", "0.85.0+1.20.1")
 }
 
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of("17"))
+base {
+    archivesName.set("${rootProject.name}-${project.name}")
 }
 
 tasks {
-    compileJava {
-        options.encoding = Charsets.UTF_8.name()
-        options.release.set(17)
+    processResources {
+        filesMatching("fabric.mod.json") {
+            expand(
+                "name" to rootProject.name,
+                "group" to project.group,
+                "version" to project.version,
+                "description" to project.properties["description"],
+                "fabricApiVersion" to project.properties["fabricApiVersion"],
+                "fabricLoaderVersion" to project.properties["fabricLoaderVersion"],
+                "minecraftVersion" to project.properties["minecraftVersion"],
+                "website" to project.properties["website"],
+                "sources" to project.properties["sources"],
+                "issues" to project.properties["issues"]
+            )
+        }
     }
 }

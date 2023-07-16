@@ -1,32 +1,35 @@
 {
 	"schemaVersion": 1,
 	"id": "crafty",
-	"version": "0.1.0",
-	"name": "Crafty",
-	"description": "Lightweight plugin containing server essentials.",
+	"version": "${version}",
+	"name": "${name}",
+	"description": "${description}",
 	"authors": [
 		"Ryder Belserion"
 	],
 	"contact": {
-		"homepage": "https://modrinth.com/plugins/crafty",
-		"sources": "https://github.com/ryderbelserion/Crafty"
+		"homepage": "${website}",
+		"sources": "${sources}",
+		"issues": "${issues}"
 	},
 	"license": "MIT",
 	"icon": "assets/crafty/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
-			"me.corecraft.crafty.fabric.Crafty"
+		"server": [
+			"${group}.server.Crafty"
 		]
 	},
-	"mixins": [],
+	"mixins": [
+		{
+			"config": "crafty.server.mixins.json",
+			"environment": "server"
+		}
+	],
 	"depends": {
-		"fabricloader": ">=0.14.21",
-		"minecraft": "~1.20.1",
+		"fabricloader": ">=${fabricLoaderVersion}",
+		"minecraft": "~${minecraftVersion}",
 		"java": ">=17",
-		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
+		"fabric-api": ">=${fabricApiVersion}"
 	}
 }

@@ -1,7 +1,3 @@
-rootProject.name = "Crafty"
-
-include("fabric")
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -10,3 +6,8 @@ pluginManagement {
         maven("https://maven.fabricmc.net")
     }
 }
+
+rootProject.name = "Crafty"
+
+include("fabric")
+include("paper")
