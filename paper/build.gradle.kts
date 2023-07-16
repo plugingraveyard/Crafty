@@ -1,4 +1,4 @@
-plugins {
+/*plugins {
     id("paper-plugin")
 }
 
@@ -28,3 +28,4 @@ tasks {
         }
     }
 }
+ */

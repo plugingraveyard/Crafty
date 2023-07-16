@@ -1,5 +1,5 @@
 plugins {
-    id("root-plugin")
+    `java-library`
 }
 
 rootProject.group = "me.corecraft.crafty"
