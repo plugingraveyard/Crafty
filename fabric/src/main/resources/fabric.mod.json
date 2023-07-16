@@ -3,20 +3,20 @@
 	"id": "crafty",
 	"version": "0.1.0",
 	"name": "Crafty",
-	"description": "A multiplatform version of EssentialsX.",
+	"description": "Lightweight plugin containing server essentials.",
 	"authors": [
 		"Ryder Belserion"
 	],
 	"contact": {
-		"homepage": "https://corecraft.me/",
-		"sources": "https://github.com/corecraftmc/Crafty"
+		"homepage": "https://modrinth.com/plugins/crafty",
+		"sources": "https://github.com/ryderbelserion/Crafty"
 	},
 	"license": "MIT",
 	"icon": "assets/crafty/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"me.corecraft.crafty.Crafty"
+			"me.corecraft.crafty.fabric.Crafty"
 		]
 	},
 	"mixins": [],
