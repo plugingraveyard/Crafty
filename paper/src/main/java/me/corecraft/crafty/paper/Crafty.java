@@ -1,4 +1,4 @@
-package me.corecraft.crafty;
+package me.corecraft.crafty.paper;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

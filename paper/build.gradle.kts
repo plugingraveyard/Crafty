@@ -2,13 +2,15 @@ plugins {
     id("paper-plugin")
 }
 
+group = "${rootProject.group}.paper"
+
+dependencies {
+
+}
+
 tasks {
     reobfJar {
-        val file = File("$rootDir/jars/prebuilt")
-
-        if (!file.exists()) file.mkdirs()
-
-        outputJar.set(layout.buildDirectory.file("$file/${rootProject.name.lowercase()}-paper.jar"))
+        outputJar.set(file("$buildDir/libs/${rootProject.name}-${project.name}-${project.version}.jar"))
     }
 
     shadowJar {
@@ -19,9 +21,9 @@ tasks {
         filesMatching("paper-plugin.yml") {
             expand(
                 "name" to rootProject.name,
-                "group" to rootProject.group,
-                "version" to rootProject.version,
-                "description" to rootProject.description,
+                "group" to project.group,
+                "version" to project.version,
+                "description" to rootProject.description
             )
         }
     }
