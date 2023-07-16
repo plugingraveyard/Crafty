@@ -1,5 +1,11 @@
 package me.corecraft.crafty.fabric.server;
 
-public class Crafty {
+import net.fabricmc.api.DedicatedServerModInitializer;
 
+public class Crafty implements DedicatedServerModInitializer {
+
+    @Override
+    public void onInitializeServer() {
+        System.out.println("Guten Tag!");
+    }
 }

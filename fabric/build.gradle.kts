@@ -8,7 +8,7 @@ version = rootProject.version
 dependencies {
     minecraft("com.mojang", "minecraft", "1.20.1")
 
-    mappings("net.fabricmc:yarn:1.20.1+build.9:v2")
+    mappings(loom.officialMojangMappings())
 
     modImplementation("net.fabricmc", "fabric-loader", "0.14.21")
     modImplementation("net.fabricmc.fabric-api", "fabric-api", "0.85.0+1.20.1")
@@ -34,5 +34,11 @@ tasks {
                 "issues" to project.properties["issues"]
             )
         }
+    }
+}
+
+loom {
+    mixin {
+        defaultRefmapName = "crafty.refmap.json"
     }
 }
