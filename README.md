@@ -1,2 +1,2 @@
 # Crafty
-bean post.
+Lightweight plugin/mod containing essentials.

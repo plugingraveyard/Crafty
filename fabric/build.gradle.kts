@@ -1,4 +1,6 @@
 plugins {
+    id("root-plugin")
+
     id("fabric-loom") version "1.3-SNAPSHOT"
 }
 
@@ -20,25 +22,21 @@ base {
 
 tasks {
     processResources {
-        filesMatching("fabric.mod.json") {
-            expand(
-                "name" to rootProject.name,
-                "group" to project.group,
-                "version" to project.version,
-                "description" to project.properties["description"],
-                "fabricApiVersion" to project.properties["fabricApiVersion"],
-                "fabricLoaderVersion" to project.properties["fabricLoaderVersion"],
-                "minecraftVersion" to project.properties["minecraftVersion"],
-                "website" to project.properties["website"],
-                "sources" to project.properties["sources"],
-                "issues" to project.properties["issues"]
-            )
-        }
-    }
-}
+        val props = mapOf(
+            "name" to rootProject.name,
+            "group" to project.group,
+            "version" to project.version,
+            "description" to project.properties["description"],
+            "fabricApiVersion" to project.properties["fabricApiVersion"],
+            "fabricLoaderVersion" to project.properties["fabricLoaderVersion"],
+            "minecraftVersion" to project.properties["minecraftVersion"],
+            "website" to project.properties["website"],
+            "sources" to project.properties["sources"],
+            "issues" to project.properties["issues"]
+        )
 
-loom {
-    mixin {
-        defaultRefmapName = "crafty.refmap.json"
+        filesMatching("fabric.mod.json") {
+            expand(props)
+        }
     }
 }

@@ -1,10 +1,12 @@
 plugins {
-    `java-library`
+    id("root-plugin")
 }
 
-rootProject.group = "me.corecraft.crafty"
+defaultTasks("build")
+
+rootProject.group = "com.ryderbelserion.crafty"
 rootProject.description = "Lightweight plugin containing server essentials."
-rootProject.version = "0.0.1"
+rootProject.version = "1.0.0"
 
 val combine = tasks.register<Jar>("combine") {
     mustRunAfter("build")
@@ -19,32 +21,37 @@ val combine = tasks.register<Jar>("combine") {
 }
 
 allprojects {
-    apply(plugin = "java")
+    listOf(
+        ":fabric",
+        ":paper"
+    ).forEach {
+        project(it) {
+            apply(plugin = "java")
 
-    java {
-        toolchain.languageVersion.set(JavaLanguageVersion.of("17"))
-    }
 
-    project(":paper") {
-        repositories {
-            maven("https://repo.papermc.io/repository/maven-public/")
-        }
-    }
+            if (this.name == "paper") {
+                repositories {
+                    maven("https://repo.papermc.io/repository/maven-public/")
+                }
 
-    project(":fabric") {
-        repositories {
-            maven("https://maven.fabricmc.net")
-        }
-    }
+                dependencies {
 
-    repositories {
-        mavenCentral()
-    }
+                }
+            }
 
-    tasks {
-        compileJava {
-            options.encoding = Charsets.UTF_8.name()
-            options.release.set(17)
+            if (this.name == "fabric") {
+                repositories {
+                    maven("https://maven.fabricmc.net")
+                }
+            }
+
+            dependencies {
+                implementation("ch.jalu", "configme", "1.3.1")
+
+                implementation("com.github.Carleslc.Simple-YAML", "Simple-Yaml", "1.8.4") {
+                    exclude("org.yaml", "snakeyaml")
+                }
+            }
         }
     }
 }

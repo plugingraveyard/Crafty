@@ -1,4 +1,4 @@
-package me.corecraft.crafty.fabric.server;
+package com.ryderbelserion.crafty.fabric.server;
 
 import net.fabricmc.api.DedicatedServerModInitializer;
 
