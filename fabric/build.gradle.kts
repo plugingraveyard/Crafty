@@ -35,8 +35,13 @@ tasks {
             "issues" to project.properties["issues"]
         )
 
-        filesMatching("fabric.mod.json") {
-            expand(props)
+        listOf(
+            "fabric.mod.json",
+            "crafty.server.mixins.json"
+        ).forEach {
+            filesMatching(it) {
+                expand(props)
+            }
         }
     }
 }

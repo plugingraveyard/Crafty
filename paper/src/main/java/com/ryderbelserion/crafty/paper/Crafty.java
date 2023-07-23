@@ -11,6 +11,6 @@ public class Crafty extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getLogger().info("Good Bye!");
+        getLogger().info("Gute Nacht!");
     }
 }

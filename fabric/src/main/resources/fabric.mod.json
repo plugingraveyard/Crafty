@@ -20,12 +20,7 @@
 			"${group}.server.Crafty"
 		]
 	},
-	"mixins": [
-		{
-			"config": "crafty.server.mixins.json",
-			"environment": "server"
-		}
-	],
+	"mixins": [],
 	"depends": {
 		"fabricloader": ">=${fabricLoaderVersion}",
 		"minecraft": "~${minecraftVersion}",
