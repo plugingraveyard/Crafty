@@ -23,6 +23,7 @@ tasks {
         mergeServiceFiles()
 
         listOf(
+            "net.kyori",
             "org.bstats",
             "org.simpleyaml",
             "org.yaml.snakeyaml"

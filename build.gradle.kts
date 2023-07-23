@@ -23,19 +23,25 @@ val combine = tasks.register<Jar>("combine") {
 allprojects {
     listOf(
         ":fabric",
-        ":paper"
+        ":paper",
+        ":core"
     ).forEach {
         project(it) {
             apply(plugin = "java")
 
+            repositories {
+                mavenCentral()
+            }
+
+            if (this.name == "core") {
+                dependencies {
+                    compileOnly("com.google.code.gson", "gson", "2.10")
+                }
+            }
 
             if (this.name == "paper") {
                 repositories {
                     maven("https://repo.papermc.io/repository/maven-public/")
-                }
-
-                dependencies {
-
                 }
             }
 
@@ -51,6 +57,10 @@ allprojects {
                 implementation("com.github.Carleslc.Simple-YAML", "Simple-Yaml", "1.8.4") {
                     exclude("org.yaml", "snakeyaml")
                 }
+
+                implementation("net.kyori", "adventure-api", "4.14.0")
+
+                implementation("net.kyori", "adventure-text-minimessage", "4.14.0")
             }
         }
     }
