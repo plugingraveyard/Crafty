@@ -43,34 +43,4 @@ public abstract class CraftyCore {
     public abstract FileHandler getFileHandler();
 
     public abstract Audience adventure();
-
-    public abstract String commandTooFewArgs();
-
-    public abstract String commandTooManyArgs();
-
-    public abstract String commandOptionalMsg();
-
-    public abstract String commandRequiredMsg();
-
-    public abstract String commandRequirementNotPlayer();
-
-    public abstract String commandRequirementNoPermission();
-
-    public abstract String commandHelpHeader();
-
-    public abstract String commandHelpFooter();
-
-    public abstract String commandInvalidPage();
-
-    public abstract String commandPageFormat();
-
-    public abstract String commandHoverFormat();
-
-    public abstract String commandHoverAction();
-
-    public abstract String commandNavigationText();
-
-    public abstract String commandNavigationNextButton();
-
-    public abstract String commandNavigationBackButton();
 }

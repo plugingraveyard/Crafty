@@ -8,6 +8,8 @@ group = "${rootProject.group}.fabric"
 version = rootProject.version
 
 dependencies {
+    compileOnly(project(":core"))
+
     minecraft("com.mojang", "minecraft", "1.20.1")
 
     mappings(loom.officialMojangMappings())

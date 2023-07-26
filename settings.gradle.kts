@@ -14,6 +14,4 @@ pluginManagement {
 
 rootProject.name = "Crafty"
 
-include("fabric")
-include("paper")
-include("core")
+include("fabric", "paper", "core")

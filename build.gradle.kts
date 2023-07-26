@@ -6,7 +6,7 @@ defaultTasks("build")
 
 rootProject.group = "com.ryderbelserion.crafty"
 rootProject.description = "Lightweight plugin containing server essentials."
-rootProject.version = "1.0.0"
+rootProject.version = "1.0.0-rc1"
 
 val combine = tasks.register<Jar>("combine") {
     mustRunAfter("build")
