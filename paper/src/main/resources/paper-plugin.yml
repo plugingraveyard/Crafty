@@ -1,8 +1,6 @@
 name: '${name}'
-main: '${group}.Crafty'
+main: '${group}.${name}'
 
 version: '${version}'
 api-version: '${apiVersion}'
 description: '${description}'
-
-bootstrapper: '${group}.CraftyStarter'
