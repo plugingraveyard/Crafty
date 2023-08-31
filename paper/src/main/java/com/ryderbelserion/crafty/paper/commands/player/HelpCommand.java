@@ -21,7 +21,7 @@ public class HelpCommand extends PaperCommandEngine {
         addRequiredArgument(this, new Argument("page", 0, new IntArgument(3)));
 
         this.paperRequirements = new PaperRequirementsBuilder()
-                .isPlayer(false)
+                .isPlayer(true)
                 .withPermission(new Permission("crafty.help", PermissionDefault.TRUE)).build();
     }
 

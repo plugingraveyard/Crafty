@@ -15,3 +15,7 @@ jars
 
 paper/.gradle
 paper/build
+
+run
+!run/eula.txt
+!run/server.properties

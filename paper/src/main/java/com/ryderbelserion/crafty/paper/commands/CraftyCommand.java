@@ -4,26 +4,35 @@ import com.ryderbelserion.crafty.paper.commands.admin.ReloadCommand;
 import com.ryderbelserion.crafty.paper.commands.player.HelpCommand;
 import com.ryderbelserion.ruby.paper.plugin.commands.PaperCommandContext;
 import com.ryderbelserion.ruby.paper.plugin.commands.PaperCommandEngine;
+import com.ryderbelserion.ruby.paper.plugin.commands.PaperCommandHelpEntry;
+import com.ryderbelserion.ruby.paper.plugin.commands.reqs.PaperRequirementsBuilder;
 import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.permissions.Permission;
+import org.bukkit.permissions.PermissionDefault;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collections;
 import java.util.List;
 
 public class CraftyCommand extends PaperCommandEngine {
 
-    private final com.ryderbelserion.crafty.paper.Crafty plugin = JavaPlugin.getPlugin(com.ryderbelserion.crafty.paper.Crafty.class);
-
     public CraftyCommand() {
         super("crafty", "The base command for crafty", "crafty", Collections.emptyList());
 
         addCommand(new ReloadCommand(), false);
         addCommand(new HelpCommand(), false);
+
+        this.paperRequirements = new PaperRequirementsBuilder()
+                .isPlayer(true)
+                .withPermission(new Permission("crafty.base", PermissionDefault.TRUE)).build();
     }
 
     @Override
     public void perform(PaperCommandContext context, String[] args) {
-        this.plugin.getServer().dispatchCommand(context.getSender(), "crafty help 1");
+        PaperCommandHelpEntry helpEntry = new PaperCommandHelpEntry();
+
+        helpEntry.setPage(1);
+
+        helpEntry.showHelp(context);
     }
 
     @Override

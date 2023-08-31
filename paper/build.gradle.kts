@@ -1,4 +1,6 @@
 plugins {
+    id("xyz.jpenilla.run-paper") version "2.1.0"
+
     id("paper-plugin")
 }
 
@@ -18,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.ryderbelserion.ruby", "ruby-paper", "1.2-snapshot")
+    implementation("com.ryderbelserion.ruby", "ruby-paper", "1.3-snapshot")
 
     implementation("org.bstats", "bstats-bukkit", "3.0.2")
 
@@ -40,6 +42,12 @@ tasks {
                 from(component)
             }
         }
+    }
+
+    runServer {
+        minecraftVersion("1.20.1")
+
+        jvmArgs("-Dnet.kyori.ansi.colorLevel=truecolor")
     }
 
     shadowJar {
