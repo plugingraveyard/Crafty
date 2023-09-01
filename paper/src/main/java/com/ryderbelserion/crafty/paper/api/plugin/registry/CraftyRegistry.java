@@ -1,15 +1,11 @@
 package com.ryderbelserion.crafty.paper.api.plugin.registry;
 
-import com.ryderbelserion.crafty.paper.Crafty;
+import com.ryderbelserion.cluster.bukkit.api.adventure.FancyLogger;
 import com.ryderbelserion.crafty.paper.api.plugin.CraftyPlugin;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.ApiStatus;
-
 import java.lang.reflect.Method;
 
 public class CraftyRegistry {
-
-    private static final Crafty plugin = JavaPlugin.getPlugin(Crafty.class);
 
     private static final Method start;
     private static final Method stop;
@@ -31,8 +27,8 @@ public class CraftyRegistry {
         try {
             start.invoke(null, craftyPlugin);
         } catch (Exception exception) {
-            plugin.getLogger().severe("Failed to enable the crfty plugin.");
-            plugin.getLogger().severe("Reason: " + exception.getMessage());
+            FancyLogger.warn("Failed to enable the crafty plugin.");
+            FancyLogger.debug("Reason: " + exception.getMessage());
         }
     }
 
@@ -41,8 +37,8 @@ public class CraftyRegistry {
         try {
             stop.invoke(null);
         } catch (Exception exception) {
-            plugin.getLogger().severe("Failed to disable crafty plugin.");
-            plugin.getLogger().severe("Reason: " + exception.getMessage());
+            FancyLogger.warn("Failed to disable crafty plugin.");
+            FancyLogger.debug("Reason: " + exception.getMessage());
         }
     }
 }

@@ -1,17 +1,18 @@
 package com.ryderbelserion.crafty.paper.api.plugin;
 
+import com.ryderbelserion.cluster.bukkit.BukkitPlugin;
+import com.ryderbelserion.cluster.bukkit.api.config.FileManager;
+import com.ryderbelserion.crafty.paper.Crafty;
 import com.ryderbelserion.crafty.paper.api.CrazyManager;
 import com.ryderbelserion.crafty.paper.api.config.ConfigManager;
-import com.ryderbelserion.ruby.minecraft.plugin.FancyLogger;
-import com.ryderbelserion.ruby.other.config.FileManager;
-import com.ryderbelserion.ruby.paper.PaperPlugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 public class CraftyLoader extends CraftyPlugin {
 
-    private final com.ryderbelserion.crafty.paper.Crafty plugin = JavaPlugin.getPlugin(com.ryderbelserion.crafty.paper.Crafty.class);
+    private @NotNull final Crafty plugin = JavaPlugin.getPlugin(Crafty.class);
 
-    private PaperPlugin paperPlugin;
+    private BukkitPlugin bukkitPlugin;
     private ConfigManager configManager;
     private FileManager fileManager;
     private CrazyManager crazyManager;
@@ -20,44 +21,50 @@ public class CraftyLoader extends CraftyPlugin {
     public void enable() {
         super.enable();
 
-        this.paperPlugin = new PaperPlugin(this.plugin);
-        this.paperPlugin.enable(false);
+        // This must go first.
+        this.bukkitPlugin = new BukkitPlugin(this.plugin);
+        this.bukkitPlugin.enable();
 
+        // Loads the configurations.
         this.configManager = new ConfigManager();
         this.configManager.load();
 
+        // Creates the file manager.
         this.fileManager = new FileManager();
 
+        // Runs other plugin related code.
         this.crazyManager = new CrazyManager();
+        this.crazyManager.load(true);
     }
 
     @Override
     public void disable() {
         super.disable();
+
+        // Stops the server.
+        this.crazyManager.reload(true);
+
+        // This must go last.
+        this.bukkitPlugin.disable();
     }
 
     @Override
-    public FileManager getFileManager() {
+    public @NotNull FileManager getFileManager() {
         return this.fileManager;
     }
 
     @Override
-    public ConfigManager getConfigManager() {
+    public @NotNull BukkitPlugin getBukkitPlugin() {
+        return this.bukkitPlugin;
+    }
+
+    @Override
+    public @NotNull ConfigManager getConfigManager() {
         return this.configManager;
     }
 
     @Override
-    public CrazyManager getCrazyManager() {
+    public @NotNull CrazyManager getCrazyManager() {
         return this.crazyManager;
-    }
-
-    @Override
-    public FancyLogger getFancyLogger() {
-        return this.paperPlugin.getFancyLogger();
-    }
-
-    @Override
-    public PaperPlugin getPaperPlugin() {
-        return this.paperPlugin;
     }
 }

@@ -11,8 +11,6 @@ repositories {
 
     maven("https://repo.codemc.io/repository/maven-public/")
 
-    //maven("https://repo.crazycrew.us/snapshots/")
-
     maven("https://jitpack.io/")
 
     mavenCentral()
@@ -20,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.ryderbelserion.ruby", "ruby-paper", "1.3-snapshot")
+    implementation("com.ryderbelserion.cluster", "cluster-api", "0.1")
 
     implementation("org.bstats", "bstats-bukkit", "3.0.2")
 
@@ -52,7 +50,7 @@ tasks {
 
     shadowJar {
         listOf(
-            "com.ryderbelserion.ruby",
+            "com.ryderbelserion.cluster.bukkit",
             "org.bstats",
             "ch.jalu"
         ).forEach {

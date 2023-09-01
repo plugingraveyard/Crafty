@@ -1,23 +1,21 @@
 package com.ryderbelserion.crafty.paper.api.plugin;
 
+import com.ryderbelserion.cluster.bukkit.BukkitPlugin;
+import com.ryderbelserion.cluster.bukkit.api.config.FileManager;
 import com.ryderbelserion.crafty.paper.api.CrazyManager;
 import com.ryderbelserion.crafty.paper.api.config.ConfigManager;
 import com.ryderbelserion.crafty.paper.api.plugin.registry.CraftyRegistry;
-import com.ryderbelserion.ruby.minecraft.plugin.FancyLogger;
-import com.ryderbelserion.ruby.other.config.FileManager;
-import com.ryderbelserion.ruby.paper.PaperPlugin;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class CraftyPlugin {
 
-    public abstract FileManager getFileManager();
+    public abstract @NotNull FileManager getFileManager();
 
-    public abstract FancyLogger getFancyLogger();
+    public abstract @NotNull BukkitPlugin getBukkitPlugin();
 
-    public abstract PaperPlugin getPaperPlugin();
+    public abstract @NotNull ConfigManager getConfigManager();
 
-    public abstract ConfigManager getConfigManager();
-
-    public abstract CrazyManager getCrazyManager();
+    public abstract @NotNull CrazyManager getCrazyManager();
 
     public void enable() {
         CraftyRegistry.start(this);
