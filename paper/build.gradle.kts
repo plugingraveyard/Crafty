@@ -10,11 +10,6 @@ repositories {
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
 
     maven("https://repo.codemc.io/repository/maven-public/")
-
-    maven("https://jitpack.io/")
-
-    mavenCentral()
-    mavenLocal()
 }
 
 dependencies {
@@ -50,7 +45,7 @@ tasks {
 
     shadowJar {
         listOf(
-            "com.ryderbelserion.cluster.bukkit",
+            "com.ryderbelserion.cluster",
             "org.bstats",
             "ch.jalu"
         ).forEach {

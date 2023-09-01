@@ -13,6 +13,7 @@ repositories {
     maven("https://jitpack.io")
 
     mavenCentral()
+    mavenLocal()
 }
 
 java {
@@ -26,7 +27,6 @@ tasks {
     }
 
     shadowJar {
-        //archiveClassifier.set("")
         mergeServiceFiles()
     }
 }
