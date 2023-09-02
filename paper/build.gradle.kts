@@ -10,10 +10,14 @@ repositories {
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
 
     maven("https://repo.codemc.io/repository/maven-public/")
+
+    maven("https://repo.triumphteam.dev/snapshots/")
 }
 
 dependencies {
-    implementation("com.ryderbelserion.cluster", "cluster-api", "0.1")
+    implementation("dev.triumphteam", "triumph-cmd-bukkit", "2.0.0-ALPHA-8")
+
+    implementation("com.ryderbelserion.cluster", "cluster-api", "0.1.1")
 
     implementation("org.bstats", "bstats-bukkit", "3.0.2")
 
@@ -46,6 +50,7 @@ tasks {
     shadowJar {
         listOf(
             "com.ryderbelserion.cluster",
+            "dev.triumphteam",
             "org.bstats",
             "ch.jalu"
         ).forEach {
