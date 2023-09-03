@@ -59,17 +59,15 @@ tasks {
     }
 
     processResources {
-        filesMatching("paper-plugin.yml") {
-            val props = mapOf(
-                "name" to rootProject.name,
-                "group" to project.group.toString(),
-                "version" to rootProject.version,
-                "description" to rootProject.description,
-                "authors" to rootProject.properties["authors"],
-                "apiVersion" to "1.20",
-                "website" to "https://modrinth.com/plugin/${rootProject.name.lowercase()}"
-            )
+        val props = mapOf(
+            "name" to rootProject.name,
+            "group" to project.group,
+            "version" to rootProject.version,
+            "description" to rootProject.description,
+            "apiVersion" to "1.20"
+        )
 
+        filesMatching("paper-plugin.yml") {
             expand(props)
         }
     }

@@ -1,24 +1,10 @@
 package com.ryderbelserion.crafty.paper.commands.gamerule.gui;
 
-import com.ryderbelserion.cluster.bukkit.api.adventure.FancyLogger;
-import com.ryderbelserion.cluster.bukkit.api.utils.ColorUtils;
-import com.ryderbelserion.cluster.bukkit.items.ItemBuilder;
-import com.ryderbelserion.cluster.bukkit.items.NbtBuilder;
-import com.ryderbelserion.cluster.bukkit.items.ParentBuilder;
 import com.ryderbelserion.crafty.paper.Crafty;
-import org.bukkit.GameRule;
-import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.lang.reflect.Type;
-import java.util.Arrays;
 
 public class GameRuleListener implements Listener {
 
@@ -26,7 +12,7 @@ public class GameRuleListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        Inventory clickedInventory = event.getClickedInventory();
+        /*Inventory clickedInventory = event.getClickedInventory();
 
         if (clickedInventory == null || !(clickedInventory.getHolder() instanceof GameRuleInventory inventory)) return;
 
@@ -81,5 +67,6 @@ public class GameRuleListener implements Listener {
             // Open new one.
             player.openInventory(newInventory);
         }
+         */
     }
 }
