@@ -41,7 +41,7 @@ public class PluginConfig implements SettingsHolder {
     })
     public static final Property<String> locale_file = PropertyInitializer.newProperty("language", "en-US");
 
-    @Comment("Whether you want CrazyEnvoys to shut up or not, This option is ignored by errors.")
+    @Comment("Whether you want Crafty to shut up or not, This option is ignored by errors.")
     public static final Property<Boolean> verbose_logging = PropertyInitializer.newProperty("verbose_logging", true);
 
     @Comment({
