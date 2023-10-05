@@ -8,6 +8,8 @@ import java.util.UUID;
 public class BukkitWarpManager extends WarpManager {
 
     private Location location;
+    private UUID creator;
+    private UUID editor;
 
     @Override
     public int x() {
@@ -40,18 +42,18 @@ public class BukkitWarpManager extends WarpManager {
     }
 
     @Override
-    public UUID setCreator(UUID uuid) {
-        return null;
+    public void setCreator(UUID uuid) {
+        if (this.creator == null) this.creator = uuid;
     }
 
     @Override
     public UUID getCreator() {
-        return null;
+        return this.creator;
     }
 
     @Override
-    public UUID setEditor(UUID uuid) {
-        return null;
+    public void setEditor(UUID uuid) {
+        if (this.editor == null) this.editor = uuid;
     }
 
     @Override
