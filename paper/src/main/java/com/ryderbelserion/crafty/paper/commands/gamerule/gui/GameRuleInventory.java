@@ -27,7 +27,7 @@ public class GameRuleInventory extends GuiBuilder {
         List<String> worlds = this.plugin.getServer().getWorlds().stream().map(World::getName).toList();
 
         worlds.forEach(world -> {
-            ItemStack nbt = new NbtBuilder().setString(new ItemStack(Material.GRASS_BLOCK), "world-type", world);
+            ItemStack nbt = new NbtBuilder(this.plugin, new ItemStack(Material.GRASS_BLOCK)).setString("world-type", world);
 
             ItemBuilder item = ParentBuilder.of(nbt)
                     .setDisplayName("<green>" + world + "</green>")
@@ -36,7 +36,7 @@ public class GameRuleInventory extends GuiBuilder {
                     ));
 
             getInventory().setItem(this.amount, item.build());
-            amount++;
+            this.amount++;
         });
 
         return this;

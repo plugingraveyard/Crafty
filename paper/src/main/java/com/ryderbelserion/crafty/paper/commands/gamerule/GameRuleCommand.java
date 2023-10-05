@@ -5,10 +5,12 @@ import com.ryderbelserion.crafty.paper.commands.gamerule.gui.GameRuleInventory;
 import dev.triumphteam.cmd.core.annotations.Command;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 @Command("gamerule")
 public class GameRuleCommand {
 
+    @NotNull
     private final Crafty plugin = JavaPlugin.getPlugin(Crafty.class);
 
     @Command

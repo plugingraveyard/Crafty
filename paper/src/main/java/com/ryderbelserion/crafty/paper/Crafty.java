@@ -1,32 +1,25 @@
 package com.ryderbelserion.crafty.paper;
 
-import com.ryderbelserion.crafty.paper.api.plugin.CraftyLoader;
-import com.ryderbelserion.crafty.paper.commands.gamerule.GameRuleCommand;
-import com.ryderbelserion.crafty.paper.commands.gamerule.gui.GameRuleListener;
-import dev.triumphteam.cmd.bukkit.BukkitCommandManager;
-import org.bukkit.command.CommandSender;
+import com.ryderbelserion.crafty.common.config.types.PluginConfig;
+import com.ryderbelserion.crafty.paper.api.plugin.CraftyHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Crafty extends JavaPlugin {
 
-    private final BukkitCommandManager<CommandSender> commandManager = BukkitCommandManager.create(this);
-
-    private CraftyLoader craftyLoader;
+    private CraftyHandler craftyHandler;
 
     @Override
     public void onEnable() {
-        // This must go first!
-        this.craftyLoader = new CraftyLoader();
-        this.craftyLoader.enable();
-
-        this.commandManager.registerCommand(new GameRuleCommand());
-
-        getServer().getPluginManager().registerEvents(new GameRuleListener(), this);
+        this.craftyHandler = new CraftyHandler(getDataFolder());
+        this.craftyHandler.install();
     }
 
     @Override
     public void onDisable() {
-        // This must go last!
-        this.craftyLoader.disable();
+        this.craftyHandler.uninstall();
+    }
+
+    public boolean isLogging() {
+        return this.craftyHandler.getConfigManager().getPluginConfig().getProperty(PluginConfig.verbose_logging);
     }
 }

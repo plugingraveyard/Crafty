@@ -1,10 +1,9 @@
 plugins {
-    id("xyz.jpenilla.run-paper") version "2.1.0"
-
     id("paper-plugin")
 }
 
 project.group = "${rootProject.group}.paper"
+project.version = "${rootProject.version}"
 
 repositories {
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
@@ -15,13 +14,15 @@ repositories {
 }
 
 dependencies {
-    implementation("dev.triumphteam", "triumph-cmd-bukkit", "2.0.0-ALPHA-8")
+    implementation(project(":common"))
 
-    implementation("com.ryderbelserion.cluster", "cluster-api", "0.1.1")
+    implementation("dev.triumphteam", "triumph-cmd-bukkit", "2.0.0-ALPHA-8")
 
     implementation("org.bstats", "bstats-bukkit", "3.0.2")
 
-    implementation("ch.jalu", "configme", "1.3.1")
+    implementation(libs.cluster.bukkit.api) {
+        exclude("com.ryderbelserion.cluster", "cluster-api")
+    }
 
     compileOnly("me.clip", "placeholderapi", "2.11.3")
 }
@@ -41,12 +42,6 @@ tasks {
         }
     }
 
-    runServer {
-        minecraftVersion("1.20.1")
-
-        jvmArgs("-Dnet.kyori.ansi.colorLevel=truecolor")
-    }
-
     shadowJar {
         listOf(
             "com.ryderbelserion.cluster",
@@ -64,7 +59,8 @@ tasks {
             "group" to project.group,
             "version" to rootProject.version,
             "description" to rootProject.description,
-            "apiVersion" to "1.20"
+            "apiVersion" to "1.20",
+            "website" to "https://modrinth.com/plugin/${rootProject.name.lowercase()}"
         )
 
         filesMatching("paper-plugin.yml") {

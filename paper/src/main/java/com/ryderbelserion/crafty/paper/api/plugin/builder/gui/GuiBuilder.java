@@ -1,6 +1,6 @@
 package com.ryderbelserion.crafty.paper.api.plugin.builder.gui;
 
-import com.ryderbelserion.cluster.bukkit.api.utils.ColorUtils;
+import com.ryderbelserion.cluster.api.utils.ColorUtils;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
@@ -38,7 +38,8 @@ public abstract class GuiBuilder implements InventoryHolder {
     }
 
     @Override
-    public @NotNull Inventory getInventory() {
+    @NotNull
+    public Inventory getInventory() {
         return this.inventory;
     }
 }
