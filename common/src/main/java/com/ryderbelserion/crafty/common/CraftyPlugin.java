@@ -26,8 +26,6 @@ public abstract class CraftyPlugin extends AbstractPlugin {
 
         RootPlugin.setConsole(audience);
         FancyLogger.setName(this.configManager.getPluginConfig().getProperty(PluginConfig.console_prefix));
-
-        super.apiWasLoadedByOurPlugin();
     }
 
     public void disable() {

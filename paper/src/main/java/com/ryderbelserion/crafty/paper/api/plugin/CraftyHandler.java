@@ -2,14 +2,13 @@ package com.ryderbelserion.crafty.paper.api.plugin;
 
 import com.ryderbelserion.cluster.bukkit.BukkitPlugin;
 import com.ryderbelserion.crafty.api.platforms.Platform;
+import com.ryderbelserion.crafty.api.warps.SpawnManager;
 import com.ryderbelserion.crafty.common.CraftyPlugin;
 import com.ryderbelserion.crafty.common.config.ConfigManager;
 import com.ryderbelserion.crafty.common.config.types.PluginConfig;
 import com.ryderbelserion.crafty.paper.Crafty;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import java.io.File;
 
 public class CraftyHandler extends CraftyPlugin {
@@ -24,12 +23,12 @@ public class CraftyHandler extends CraftyPlugin {
     }
 
     public void install() {
-        // Enable cluster bukkit api.
-        this.bukkitPlugin = new BukkitPlugin(this.plugin);
-        this.bukkitPlugin.enable();
-
         // Enable our api.
         super.enable(this.plugin.getServer());
+
+        // Enable cluster bukkit api.
+        this.bukkitPlugin = new BukkitPlugin(this.plugin, getConfigManager().getPluginConfig().getProperty(PluginConfig.use_minimessage));
+        this.bukkitPlugin.enable();
 
         // Enable metrics.
         boolean metrics = getConfigManager().getPluginConfig().getProperty(PluginConfig.toggle_metrics);
@@ -46,18 +45,6 @@ public class CraftyHandler extends CraftyPlugin {
         this.bukkitPlugin.disable();
     }
 
-    @Override
-    @Nullable
-    public String identifyClassLoader(ClassLoader classLoader) throws Exception {
-        Class<?> classLoaderClass = Class.forName("org.bukkit.plugin.java.PluginClassLoader");
-
-        if (classLoaderClass.isInstance(classLoader)) {
-            return this.plugin.getName();
-        }
-
-        return null;
-    }
-
     /**
      * Inherited methods.
      */
@@ -65,5 +52,10 @@ public class CraftyHandler extends CraftyPlugin {
     @NotNull
     public ConfigManager getConfigManager() {
         return super.getConfigManager();
+    }
+
+    @Override
+    public @NotNull SpawnManager getSpawnManager() {
+        return null;
     }
 }

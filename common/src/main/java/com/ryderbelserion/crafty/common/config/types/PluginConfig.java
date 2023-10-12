@@ -44,6 +44,9 @@ public class PluginConfig implements SettingsHolder {
     @Comment("Whether you want Crafty to shut up or not, This option is ignored by errors.")
     public static final Property<Boolean> verbose_logging = PropertyInitializer.newProperty("verbose_logging", true);
 
+    @Comment("Should we use legacy color codes or minimessage?")
+    public static final Property<Boolean> use_minimessage = PropertyInitializer.newProperty("minimessage_support", true);
+
     @Comment({
             "Sends anonymous statistics about how the plugin is used to bstats.org.",
             "bstats is a service for plugin developers to find out how the plugin being used,",
@@ -53,9 +56,9 @@ public class PluginConfig implements SettingsHolder {
 
     // black, dark_blue, dark_green, dark_aqua, dark_red, dark_purple, gold, gray, dark_gray, blue, green, aqua, red, light_purple, yellow, or white
     @Comment("The command prefix you want shown in front of commands!")
-    public static final Property<String> command_prefix = PropertyInitializer.newProperty("command_prefix", "<dark_gray>[</dark_gray><light_purple>Crafty</light_purple><dark_gray>]</dark_gray> ");
+    public static final Property<String> command_prefix = PropertyInitializer.newProperty("command_prefix", "&8[&cCrafty&8]&r ");
 
     @Comment("The console prefix you want shown when the logging messages show up!")
-    public static final Property<String> console_prefix = PropertyInitializer.newProperty("console_prefix" ,"<dark_gray>[</dark_gray><green>Crafty</green><dark_gray>]</dark_gray> ");
+    public static final Property<String> console_prefix = PropertyInitializer.newProperty("console_prefix" ,"&8[&2Crafty&8]&r ");
 
 }
