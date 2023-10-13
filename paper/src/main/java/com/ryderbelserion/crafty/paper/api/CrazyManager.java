@@ -1,10 +1,14 @@
 package com.ryderbelserion.crafty.paper.api;
 
-import org.jetbrains.annotations.NotNull;
+import com.ryderbelserion.crafty.paper.Crafty;
 
 public class CrazyManager {
 
-    //private final @NotNull CraftyPlugin craftyPlugin = CraftyProvider.get();
+    private final Crafty plugin;
+
+    public CrazyManager(Crafty plugin) {
+        this.plugin = plugin;
+    }
 
     public void load(boolean serverStart) {
         if (serverStart) {

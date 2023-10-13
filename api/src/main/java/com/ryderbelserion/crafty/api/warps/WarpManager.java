@@ -1,6 +1,7 @@
 package com.ryderbelserion.crafty.api.warps;
 
-import com.ryderbelserion.crafty.api.warps.records.Location;
+import com.ryderbelserion.crafty.api.warps.records.CustomLocation;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -64,17 +65,17 @@ public abstract class WarpManager {
      * Add warp to the world.
      *
      * @param warp - The warp to add.
-     * @param location - The location data.
+     * @param customLocation - The location data.
      */
-    public abstract void addWarp(String warp, Location location);
+    public abstract void addWarp(String warp, CustomLocation customLocation);
 
     /**
      * Update the current warp if found otherwise add warp.
      *
      * @param warp - The warp to update.
-     * @param location - The location data.
+     * @param customLocation - The location data.
      */
-    public abstract void updateWarp(String warp, Location location);
+    public abstract void updateWarp(String warp, CustomLocation customLocation);
 
     /**
      * Remove the current warp if it exists.
@@ -86,6 +87,6 @@ public abstract class WarpManager {
     /**
      * @return the built location.
      */
-    public abstract Location getLocation();
+    public abstract CustomLocation getLocation();
 
 }

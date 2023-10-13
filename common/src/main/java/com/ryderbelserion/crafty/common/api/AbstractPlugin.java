@@ -1,13 +1,13 @@
 package com.ryderbelserion.crafty.common.api;
 
-import com.ryderbelserion.crafty.api.Crafty;
+import com.ryderbelserion.crafty.api.ICrafty;
 import com.ryderbelserion.crafty.api.CraftyService;
 import com.ryderbelserion.crafty.api.platforms.Platform;
 import com.ryderbelserion.crafty.common.config.ConfigManager;
 import org.jetbrains.annotations.NotNull;
 import java.io.File;
 
-public abstract class AbstractPlugin implements Crafty {
+public abstract class AbstractPlugin implements ICrafty {
 
     @NotNull
     public abstract ConfigManager getConfigManager();

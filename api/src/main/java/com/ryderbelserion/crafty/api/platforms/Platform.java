@@ -7,7 +7,6 @@ public interface Platform {
     @NotNull type getPlatform();
 
     enum type {
-
         paper("paper"),
         fabric("fabric"),
         folia("folia");

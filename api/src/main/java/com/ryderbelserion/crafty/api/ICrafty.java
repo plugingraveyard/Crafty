@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import com.ryderbelserion.crafty.api.platforms.Platform;
 import java.io.File;
 
-public interface Crafty {
+public interface ICrafty {
 
     @NotNull
     SpawnManager getSpawnManager();

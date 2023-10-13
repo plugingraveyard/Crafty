@@ -1,6 +1,7 @@
 package com.ryderbelserion.crafty.api.warps;
 
-import com.ryderbelserion.crafty.api.warps.records.Location;
+import com.ryderbelserion.crafty.api.warps.records.CustomLocation;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -64,17 +65,17 @@ public abstract class SpawnManager {
      * Add spawn to the world.
      *
      * @param world - The world where the spawn is.
-     * @param location - The location data.
+     * @param customLocation - The location data.
      */
-    public abstract void addSpawn(String world, Location location);
+    public abstract void addSpawn(String world, CustomLocation customLocation);
 
     /**
      * Update the current spawn if found otherwise add spawn.
      *
      * @param world - The world where the spawn is.
-     * @param location - The location data.
+     * @param customLocation - The location data.
      */
-    public abstract void updateSpawn(String world, Location location);
+    public abstract void updateSpawn(String world, CustomLocation customLocation);
 
     /**
      * Remove the current spawn if it exists.
@@ -86,6 +87,6 @@ public abstract class SpawnManager {
     /**
      * @return the built location.
      */
-    public abstract Location getLocation();
+    public abstract CustomLocation getLocation();
 
 }

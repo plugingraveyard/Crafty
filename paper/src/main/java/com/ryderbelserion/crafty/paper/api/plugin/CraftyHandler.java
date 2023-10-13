@@ -27,7 +27,7 @@ public class CraftyHandler extends CraftyPlugin {
         super.enable(this.plugin.getServer());
 
         // Enable cluster bukkit api.
-        this.bukkitPlugin = new BukkitPlugin(this.plugin, getConfigManager().getPluginConfig().getProperty(PluginConfig.use_minimessage));
+        this.bukkitPlugin = new BukkitPlugin(this.plugin);
         this.bukkitPlugin.enable();
 
         // Enable metrics.
