@@ -53,9 +53,9 @@ public class PluginConfig implements SettingsHolder {
 
     // black, dark_blue, dark_green, dark_aqua, dark_red, dark_purple, gold, gray, dark_gray, blue, green, aqua, red, light_purple, yellow, or white
     @Comment("The command prefix you want shown in front of commands!")
-    public static final Property<String> command_prefix = PropertyInitializer.newProperty("command_prefix", "<dark_gray>[<red>Crafty<dark_gray>] <reset> ");
+    public static final Property<String> command_prefix = PropertyInitializer.newProperty("command_prefix", "<dark_gray>[<red>Crafty<dark_gray>] <reset>");
 
     @Comment("The console prefix you want shown when the logging messages show up!")
-    public static final Property<String> console_prefix = PropertyInitializer.newProperty("console_prefix" ,"<dark_gray>[<dark_green>Crafty<dark_gray>] <reset> ");
+    public static final Property<String> console_prefix = PropertyInitializer.newProperty("console_prefix" ,"<dark_gray>[<dark_green>Crafty<dark_gray>] <reset>");
 
 }
