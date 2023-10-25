@@ -1,40 +1,36 @@
 package com.ryderbelserion.crafty.common;
 
-import com.ryderbelserion.cluster.api.RootPlugin;
-import com.ryderbelserion.cluster.api.adventure.FancyLogger;
-import com.ryderbelserion.crafty.api.platforms.Platform;
-import com.ryderbelserion.crafty.common.api.AbstractPlugin;
-import com.ryderbelserion.crafty.common.config.ConfigManager;
-import com.ryderbelserion.crafty.common.config.types.PluginConfig;
-import net.kyori.adventure.audience.Audience;
+import com.ryderbelserion.crafty.api.CraftyService;
+import com.ryderbelserion.crafty.api.ICrafty;
+import com.ryderbelserion.crafty.common.managers.ConfigManager;
 import org.jetbrains.annotations.NotNull;
 import java.io.File;
 
-public abstract class CraftyPlugin extends AbstractPlugin {
+public abstract class CraftyPlugin implements ICrafty {
+
+    private final File dataFolder;
+
+    public CraftyPlugin(File dataFolder) {
+        this.dataFolder = dataFolder;
+    }
 
     private ConfigManager configManager;
 
-    public CraftyPlugin(File dataFolder, Platform.type platform) {
-        super(dataFolder, platform);
-    }
+    @Override
+    public void enable() {
+        CraftyService.setService(this);
 
-    public void enable(Audience audience) {
-        super.enablePlugin();
-
-        this.configManager = new ConfigManager(getDataFolder());
+        this.configManager = new ConfigManager(this.dataFolder);
         this.configManager.load();
-
-        RootPlugin.setConsole(audience);
-        FancyLogger.setName(this.configManager.getPluginConfig().getProperty(PluginConfig.console_prefix));
-    }
-
-    public void disable() {
-        super.disablePlugin();
-
-        this.configManager.reload();
     }
 
     @Override
+    public void disable() {
+        CraftyService.stopService();
+
+        this.configManager.save();
+    }
+
     @NotNull
     public ConfigManager getConfigManager() {
         return this.configManager;

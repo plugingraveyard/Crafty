@@ -18,7 +18,7 @@ dependencies {
 
     implementation(libs.triumphcmds)
 
-    implementation(libs.metrics)
+    //implementation(libs.metrics)
 
     implementation(libs.cluster.paper) {
         exclude("com.ryderbelserion.cluster", "cluster-api")
