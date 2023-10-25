@@ -16,15 +16,15 @@ repositories {
 dependencies {
     implementation(project(":common"))
 
-    implementation("dev.triumphteam", "triumph-cmd-bukkit", "2.0.0-ALPHA-8")
+    implementation(libs.triumphcmds)
 
-    implementation("org.bstats", "bstats-bukkit", "3.0.2")
+    implementation(libs.metrics)
 
-    implementation(libs.cluster.bukkit.api) {
+    implementation(libs.cluster.paper) {
         exclude("com.ryderbelserion.cluster", "cluster-api")
     }
 
-    compileOnly("me.clip", "placeholderapi", "2.11.3")
+    compileOnly(libs.placeholderapi)
 }
 
 tasks {

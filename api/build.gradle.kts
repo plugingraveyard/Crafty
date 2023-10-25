@@ -3,11 +3,12 @@ plugins {
 }
 
 project.group = "${rootProject.group}"
-project.version = "${rootProject.version}"
+project.version = rootProject.version
 
 dependencies {
-    compileOnly(libs.adventure.api)
-    compileOnly(libs.adventure.mm)
+    //compileOnlyApi(libs.minimessage)
+
+    compileOnlyApi(libs.adventure)
 
     compileOnly(libs.annotations)
 }

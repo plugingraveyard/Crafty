@@ -8,14 +8,9 @@ project.version = "${rootProject.version}"
 dependencies {
     api(project(":api"))
 
-    api(libs.cluster.api)
-
-    api(libs.config.me) {
+    api(libs.configme) {
         exclude("org.yaml", "snakeyaml")
     }
 
     compileOnly(libs.annotations)
-
-    compileOnly(libs.adventure.mm)
-    compileOnly(libs.adventure.api)
 }
