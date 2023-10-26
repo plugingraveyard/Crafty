@@ -1,7 +1,9 @@
 package com.ryderbelserion.crafty.paper.commands;
 
+import com.ryderbelserion.crafty.common.config.persist.Settings;
 import com.ryderbelserion.crafty.paper.Crafty;
 import com.ryderbelserion.crafty.paper.api.enums.Translation;
+import com.ryderbelserion.crafty.paper.api.managers.CombatManager;
 import dev.triumphteam.cmd.bukkit.annotation.Permission;
 import dev.triumphteam.cmd.core.BaseCommand;
 import dev.triumphteam.cmd.core.annotation.Command;
@@ -31,5 +33,7 @@ public class CraftyCommand extends BaseCommand {
         this.plugin.getConfigManager().reload();
 
         sender.sendMessage(Translation.config_reload.toComponent());
+
+        this.plugin.getServer().getOnlinePlayers().forEach(CombatManager::adjustAttackSpeed);
     }
 }

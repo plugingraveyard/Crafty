@@ -1,6 +1,7 @@
 package com.ryderbelserion.crafty.paper.api.managers;
 
 import com.ryderbelserion.crafty.paper.Crafty;
+import com.ryderbelserion.crafty.paper.commands.CraftyCommand;
 import com.ryderbelserion.crafty.paper.commands.handlers.ArgumentRelations;
 import com.ryderbelserion.crafty.paper.commands.handlers.MiscRelations;
 import dev.triumphteam.cmd.bukkit.BukkitCommandManager;
@@ -17,7 +18,7 @@ public class CommandManager {
     private final BukkitCommandManager<CommandSender> bukkitCommandManager = BukkitCommandManager.create(this.plugin);
 
     public void load() {
-        //this.bukkitCommandManager.registerCommand(new StaffCommand());
+        this.bukkitCommandManager.registerCommand(new CraftyCommand());
 
         new MiscRelations().build();
         new ArgumentRelations().build();
