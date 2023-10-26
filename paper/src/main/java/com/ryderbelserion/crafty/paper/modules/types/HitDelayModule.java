@@ -64,7 +64,7 @@ public class HitDelayModule extends ModuleHandler {
         adjustAttackSpeed(player);
     }
 
-    public void adjustAttackSpeed(Player player) {
+    private void adjustAttackSpeed(Player player) {
         if (!Settings.hit_delay_module) {
             setAttackSpeed(player, 4.0);
             return;
@@ -77,7 +77,7 @@ public class HitDelayModule extends ModuleHandler {
         setAttackSpeed(player, speed);
     }
 
-    public void setAttackSpeed(Player player, double speed) {
+    private void setAttackSpeed(Player player, double speed) {
         AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
 
         if (attribute == null) return;
