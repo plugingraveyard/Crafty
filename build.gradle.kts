@@ -4,10 +4,6 @@ plugins {
 
 defaultTasks("build")
 
-rootProject.group = "com.ryderbelserion.crafty"
-rootProject.description = "Lightweight plugin containing server essentials."
-rootProject.version = "1.0"
-
 tasks {
     assemble {
         val jarsDir = File("$rootDir/jars")

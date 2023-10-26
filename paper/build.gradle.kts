@@ -16,24 +16,14 @@ repositories {
 dependencies {
     implementation(project(":common"))
 
-    implementation(libs.cluster.paper)
-
-    implementation(libs.triumphcmds)
-
     compileOnly(libs.placeholderapi)
+
+    compileOnly(libs.cluster.paper)
+
+    compileOnly(libs.triumphcmds)
 }
 
 tasks {
-    shadowJar {
-        listOf(
-            "com.ryderbelserion.cluster",
-            "dev.triumphteam",
-            "ch.jalu"
-        ).forEach {
-            relocate(it, "libs.$it")
-        }
-    }
-
     processResources {
         val props = mapOf(
             "name" to rootProject.name,
