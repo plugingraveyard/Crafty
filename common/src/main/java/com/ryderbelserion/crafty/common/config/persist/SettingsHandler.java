@@ -3,6 +3,8 @@ package com.ryderbelserion.crafty.common.config.persist;
 import com.ryderbelserion.cluster.api.config.StorageManager;
 import org.jetbrains.annotations.NotNull;
 import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 
 public non-sealed class SettingsHandler extends Settings {
 
@@ -18,6 +20,18 @@ public non-sealed class SettingsHandler extends Settings {
         this.path = path;
 
         this.storageManager = storageManager;
+    }
+
+    public boolean isHitDelayEnabled() {
+        return hit_delay_module;
+    }
+
+    public double getHitDelay() {
+        return hit_delay;
+    }
+
+    public List<String> getWorldList() {
+        return Collections.unmodifiableList(worlds);
     }
 
     public void load() {
