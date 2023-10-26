@@ -8,7 +8,7 @@ import java.util.List;
 
 public sealed class Settings extends FileData permits SettingsHandler {
 
-    public Settings(Path path) {
+    protected Settings(Path path) {
         super(FileType.json, "settings.json", path.toString(), false);
     }
 
