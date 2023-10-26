@@ -1,5 +1,6 @@
 package com.ryderbelserion.crafty.common;
 
+import com.ryderbelserion.cluster.api.config.StorageManager;
 import com.ryderbelserion.crafty.api.CraftyService;
 import com.ryderbelserion.crafty.api.ICrafty;
 import com.ryderbelserion.crafty.common.managers.ConfigManager;
@@ -8,9 +9,12 @@ import java.io.File;
 
 public abstract class CraftyPlugin implements ICrafty {
 
+    private final StorageManager storageManager;
     private final File dataFolder;
 
-    public CraftyPlugin(File dataFolder) {
+    public CraftyPlugin(StorageManager storageManager, File dataFolder) {
+        this.storageManager = storageManager;
+
         this.dataFolder = dataFolder;
     }
 
@@ -20,7 +24,7 @@ public abstract class CraftyPlugin implements ICrafty {
     public void enable() {
         CraftyService.setService(this);
 
-        this.configManager = new ConfigManager(this.dataFolder);
+        this.configManager = new ConfigManager(this.storageManager, this.dataFolder);
         this.configManager.load();
     }
 

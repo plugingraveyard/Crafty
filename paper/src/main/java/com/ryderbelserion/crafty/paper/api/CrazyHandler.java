@@ -1,5 +1,6 @@
 package com.ryderbelserion.crafty.paper.api;
 
+import com.ryderbelserion.cluster.api.config.StorageManager;
 import com.ryderbelserion.crafty.common.CraftyPlugin;
 import com.ryderbelserion.crafty.paper.api.managers.CommandManager;
 import org.jetbrains.annotations.NotNull;
@@ -9,8 +10,8 @@ public class CrazyHandler extends CraftyPlugin {
 
     private CommandManager commandManager;
 
-    public CrazyHandler(File dataFolder) {
-        super(dataFolder);
+    public CrazyHandler(StorageManager storageManager, File dataFolder) {
+        super(storageManager, dataFolder);
     }
 
     public void enable() {

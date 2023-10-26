@@ -12,5 +12,9 @@ dependencies {
         exclude("org.yaml", "snakeyaml")
     }
 
+    compileOnly(libs.cluster.api)
+
     compileOnly(libs.annotations)
+
+    compileOnly(libs.gson)
 }

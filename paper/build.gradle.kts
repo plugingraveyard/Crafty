@@ -16,13 +16,9 @@ repositories {
 dependencies {
     implementation(project(":common"))
 
+    implementation(libs.cluster.paper)
+
     implementation(libs.triumphcmds)
-
-    //implementation(libs.metrics)
-
-    implementation(libs.cluster.paper) {
-        exclude("com.ryderbelserion.cluster", "cluster-api")
-    }
 
     compileOnly(libs.placeholderapi)
 }
@@ -32,7 +28,6 @@ tasks {
         listOf(
             "com.ryderbelserion.cluster",
             "dev.triumphteam",
-            "org.bstats",
             "ch.jalu"
         ).forEach {
             relocate(it, "libs.$it")

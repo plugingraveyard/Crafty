@@ -4,6 +4,7 @@ import com.ryderbelserion.cluster.paper.PaperPlugin;
 import com.ryderbelserion.crafty.common.config.PluginConfig;
 import com.ryderbelserion.crafty.common.managers.ConfigManager;
 import com.ryderbelserion.crafty.paper.api.CrazyHandler;
+import com.ryderbelserion.crafty.paper.listeners.GenericAttackSpeedListener;
 import dev.triumphteam.cmd.bukkit.BukkitCommandManager;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,8 +21,10 @@ public class Crafty extends JavaPlugin {
         this.paperPlugin = new PaperPlugin(this, true);
         this.paperPlugin.enable();
 
-        this.crazyHandler = new CrazyHandler(getDataFolder());
+        this.crazyHandler = new CrazyHandler(this.paperPlugin.getStorageManager(), getDataFolder());
         this.crazyHandler.enable();
+
+        getServer().getPluginManager().registerEvents(new GenericAttackSpeedListener(), this);
     }
 
     @Override
