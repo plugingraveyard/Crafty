@@ -31,8 +31,7 @@ public class CraftyCommand extends BaseCommand {
     public void reload(CommandSender sender) {
         this.plugin.getConfigManager().reload();
 
-        this.plugin.getModuleLoader().toggle();
-
+        this.plugin.getModuleLoader().load();
         this.plugin.getModuleLoader().getModules().forEach(ModuleHandler::reload);
 
         // Send the sender that the reload is complete.

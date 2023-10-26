@@ -23,9 +23,7 @@ public class CrazyHandler extends CraftyPlugin {
         this.commandManager.load();
 
         this.moduleLoader = new ModuleLoader();
-        this.moduleLoader.init();
-
-        this.moduleLoader.toggle();
+        this.moduleLoader.load();
     }
 
     public void disable() {

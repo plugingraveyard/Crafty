@@ -12,11 +12,9 @@ public class ModuleLoader {
 
     private EventRegistry registry;
 
-    public void init() {
-        this.registry = new EventRegistry();
-    }
+    public void load() {
+        if (this.registry != null) this.registry = new EventRegistry();
 
-    public void toggle() {
         this.modules.forEach(module -> {
             if (module.isEnabled()) {
                 this.registry.addListener(module);
