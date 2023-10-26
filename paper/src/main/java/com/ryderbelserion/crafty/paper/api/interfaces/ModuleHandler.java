@@ -4,7 +4,7 @@ import org.bukkit.event.Listener;
 
 public abstract class ModuleHandler implements Listener {
 
-    public ModuleHandler() {}
+    public abstract String getModuleName();
 
     public abstract boolean isEnabled();
 

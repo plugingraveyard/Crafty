@@ -5,7 +5,7 @@ import com.ryderbelserion.crafty.common.config.PluginConfig;
 import com.ryderbelserion.crafty.common.managers.ConfigManager;
 import com.ryderbelserion.crafty.paper.api.CrazyHandler;
 import com.ryderbelserion.crafty.paper.modules.ModuleLoader;
-import com.ryderbelserion.crafty.paper.modules.types.AttackSpeedModule;
+import com.ryderbelserion.crafty.paper.modules.types.HitDelayModule;
 import dev.triumphteam.cmd.bukkit.BukkitCommandManager;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -26,7 +26,7 @@ public class Crafty extends JavaPlugin {
         this.crazyHandler.enable();
 
         // Enable modules.
-        this.crazyHandler.getModuleLoader().addModule(new AttackSpeedModule());
+        this.crazyHandler.getModuleLoader().addModule(new HitDelayModule());
     }
 
     @Override

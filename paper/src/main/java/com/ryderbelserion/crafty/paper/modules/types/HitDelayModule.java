@@ -16,12 +16,15 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
-public class AttackSpeedModule extends ModuleHandler {
+public class HitDelayModule extends ModuleHandler {
 
     @NotNull
     private final Crafty plugin = JavaPlugin.getPlugin(Crafty.class);
 
-    public AttackSpeedModule() {}
+    @Override
+    public String getModuleName() {
+        return "Hit Delay Module";
+    }
 
     @Override
     public boolean isEnabled() {
