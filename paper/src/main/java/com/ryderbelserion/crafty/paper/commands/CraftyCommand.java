@@ -1,9 +1,8 @@
 package com.ryderbelserion.crafty.paper.commands;
 
-import com.ryderbelserion.crafty.common.config.persist.Settings;
 import com.ryderbelserion.crafty.paper.Crafty;
 import com.ryderbelserion.crafty.paper.api.enums.Translation;
-import com.ryderbelserion.crafty.paper.api.managers.CombatManager;
+import com.ryderbelserion.crafty.paper.api.interfaces.ModuleHandler;
 import dev.triumphteam.cmd.bukkit.annotation.Permission;
 import dev.triumphteam.cmd.core.BaseCommand;
 import dev.triumphteam.cmd.core.annotation.Command;
@@ -32,8 +31,11 @@ public class CraftyCommand extends BaseCommand {
     public void reload(CommandSender sender) {
         this.plugin.getConfigManager().reload();
 
-        sender.sendMessage(Translation.config_reload.toComponent());
+        this.plugin.getModuleLoader().toggle();
 
-        this.plugin.getServer().getOnlinePlayers().forEach(CombatManager::adjustAttackSpeed);
+        this.plugin.getModuleLoader().getModules().forEach(ModuleHandler::reload);
+
+        // Send the sender that the reload is complete.
+        sender.sendMessage(Translation.config_reload.toComponent());
     }
 }
