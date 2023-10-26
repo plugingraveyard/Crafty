@@ -7,6 +7,7 @@ import com.ryderbelserion.cluster.api.config.StorageManager;
 import com.ryderbelserion.crafty.common.config.Messages;
 import com.ryderbelserion.crafty.common.config.PluginConfig;
 import com.ryderbelserion.crafty.common.config.persist.SettingsHandler;
+import com.ryderbelserion.crafty.common.config.persist.data.ServerHandler;
 import org.jetbrains.annotations.NotNull;
 import java.io.File;
 
@@ -25,6 +26,8 @@ public class ConfigManager {
     private SettingsHandler settingsHandler;
 
     private SettingsManager pluginConfig;
+
+    private ServerHandler serverHandler;
 
     private SettingsManager messages;
 
@@ -45,6 +48,9 @@ public class ConfigManager {
 
         this.settingsHandler = new SettingsHandler(this.storageManager, this.dataFolder.toPath());
         this.settingsHandler.load();
+
+        this.serverHandler = new ServerHandler(this.storageManager, this.dataFolder.toPath());
+        this.serverHandler.load();
     }
 
     public void reload() {
@@ -53,6 +59,7 @@ public class ConfigManager {
         this.messages.reload();
 
         this.settingsHandler.save();
+        this.serverHandler.save();
     }
 
     public void save() {
@@ -64,6 +71,11 @@ public class ConfigManager {
     @NotNull
     public SettingsHandler getSettingsHandler() {
         return this.settingsHandler;
+    }
+
+    @NotNull
+    public ServerHandler getServerHandler() {
+        return this.serverHandler;
     }
 
     @NotNull
