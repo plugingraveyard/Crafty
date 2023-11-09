@@ -20,7 +20,8 @@ public enum Translation {
     unknown_command(Messages.unknown_command),
     invalid_arguments(Messages.invalid_arguments),
     internal_error(Messages.internal_error),
-    cleared_ground_items(Messages.cleared_ground_items);
+    cleared_ground_items(Messages.cleared_ground_items),
+    no_ground_items(Messages.no_ground_items);
 
     private final Property<String> property;
 
@@ -81,6 +82,6 @@ public enum Translation {
 
     @NotNull
     public Component toComponent() {
-        return this.plugin.getPaperPlugin().parse(getMessage().toMessage());
+        return this.plugin.getPaperPlugin().parse(toMessage());
     }
 }
