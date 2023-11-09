@@ -12,7 +12,6 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class CommandManager {
 
@@ -26,8 +25,6 @@ public class CommandManager {
         new MiscRelations().build();
         new ArgumentRelations().build();
 
-        this.bukkitCommandManager.registerCommand(new CraftyCommand());
-
         this.bukkitCommandManager.registerSuggestion(SuggestionKey.of("online-players"), (sender, context) -> this.plugin.getServer().getOnlinePlayers().stream().map(Player::getName).toList());
 
         this.bukkitCommandManager.registerSuggestion(SuggestionKey.of("worlds"), (sender, context) -> this.plugin.getServer().getWorlds().stream().map(World::getName).toList());
@@ -39,6 +36,8 @@ public class CommandManager {
 
             return numbers;
         });
+
+        this.bukkitCommandManager.registerCommand(new CraftyCommand());
     }
 
     @NotNull
