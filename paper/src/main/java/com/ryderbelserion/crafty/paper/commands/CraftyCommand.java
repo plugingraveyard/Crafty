@@ -34,7 +34,7 @@ public class CraftyCommand extends BaseCommand {
     }
 
     @SubCommand("clear")
-    @Permission(value = "crafty.clear", def = PermissionDefault.FALSE)
+    @Permission(value = "crafty.clear", def = PermissionDefault.OP)
     public void clear(CommandSender sender, @Suggestion("worlds") String world) {
         // Get world from args.
         World thyWorld = this.plugin.getServer().getWorld(world);
@@ -63,7 +63,7 @@ public class CraftyCommand extends BaseCommand {
     }
 
     @SubCommand("reload")
-    @Permission(value = "crafty.reload", def = PermissionDefault.FALSE)
+    @Permission(value = "crafty.reload", def = PermissionDefault.OP)
     public void reload(CommandSender sender) {
         this.plugin.getConfigManager().reload();
 
