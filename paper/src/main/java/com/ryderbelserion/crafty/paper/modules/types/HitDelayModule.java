@@ -13,13 +13,12 @@ import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 public class HitDelayModule extends ModuleHandler {
 
     @NotNull
-    private final Crafty plugin = JavaPlugin.getPlugin(Crafty.class);
+    private final Crafty plugin = Crafty.get();
 
     @NotNull
     private final SettingsHandler settingsHandler = this.plugin.getConfigManager().getSettingsHandler();

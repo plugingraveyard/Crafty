@@ -5,13 +5,12 @@ import com.ryderbelserion.crafty.paper.Crafty;
 import dev.triumphteam.cmd.bukkit.BukkitCommandManager;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class MessageHandler {
 
     @NotNull
-    private final Crafty plugin = JavaPlugin.getPlugin(Crafty.class);
+    private final Crafty plugin = Crafty.get();
 
     @NotNull
     private final BukkitCommandManager<CommandSender> bukkitCommandManager = this.plugin.getCommandManager();

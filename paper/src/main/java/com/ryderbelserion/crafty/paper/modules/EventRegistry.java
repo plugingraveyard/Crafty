@@ -3,7 +3,6 @@ package com.ryderbelserion.crafty.paper.modules;
 import com.ryderbelserion.crafty.paper.Crafty;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
 public class EventRegistry {
 
     @NotNull
-    private final Crafty plugin = JavaPlugin.getPlugin(Crafty.class);
+    private final Crafty plugin = Crafty.get();
 
     @NotNull
     private final List<Listener> listeners = new ArrayList<>();

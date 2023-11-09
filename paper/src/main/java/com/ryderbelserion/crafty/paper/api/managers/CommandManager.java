@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 public class CommandManager {
 
     @NotNull
-    private final Crafty plugin = JavaPlugin.getPlugin(Crafty.class);
+    private final Crafty plugin = Crafty.get();
 
     @NotNull
     private final BukkitCommandManager<CommandSender> bukkitCommandManager = BukkitCommandManager.create(this.plugin);

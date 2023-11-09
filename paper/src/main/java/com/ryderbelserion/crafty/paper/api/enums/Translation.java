@@ -7,7 +7,6 @@ import com.ryderbelserion.crafty.common.config.PluginConfig;
 import com.ryderbelserion.crafty.common.managers.ConfigManager;
 import com.ryderbelserion.crafty.paper.Crafty;
 import net.kyori.adventure.text.Component;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +30,7 @@ public enum Translation {
     }
 
     @NotNull
-    private final Crafty plugin = JavaPlugin.getPlugin(Crafty.class);
+    private final Crafty plugin = Crafty.get();
 
     @NotNull
     private final ConfigManager configManager = this.plugin.getCrazyHandler().getConfigManager();

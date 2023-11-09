@@ -27,7 +27,7 @@ import java.util.HashMap;
 public class CraftyCommand extends BaseCommand {
 
     @NotNull
-    private final Crafty plugin = JavaPlugin.getPlugin(Crafty.class);
+    private final Crafty plugin = Crafty.get();
 
     @Default
     @Permission(value = "crafty.help", def = PermissionDefault.TRUE)

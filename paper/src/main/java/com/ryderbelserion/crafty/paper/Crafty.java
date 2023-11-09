@@ -13,6 +13,11 @@ import org.jetbrains.annotations.NotNull;
 
 public class Crafty extends JavaPlugin {
 
+    @NotNull
+    public static Crafty get() {
+        return JavaPlugin.getPlugin(Crafty.class);
+    }
+
     private CrazyHandler crazyHandler;
 
     private PaperPlugin paperPlugin;
