@@ -17,6 +17,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionDefault;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+import java.util.stream.Stream;
+
 @Command("crafty")
 public class CraftyCommand extends BaseCommand {
 
@@ -39,9 +42,18 @@ public class CraftyCommand extends BaseCommand {
         if (thyWorld == null) return;
 
         // Remove all entities.
-        thyWorld.getEntities().stream().filter(Item.class::isInstance).forEach(Entity::remove);
+        List<Entity> items = thyWorld.getEntities().stream().filter(Item.class::isInstance).toList();
 
-        sender.sendMessage(Translation.cleared_ground_items.toComponent());
+        if (items.isEmpty()) {
+            sender.sendMessage(Translation.no_ground_items.toComponent());
+            return;
+        }
+
+        int size = items.size();
+
+        items.forEach(Entity::remove);
+
+        sender.sendMessage(Translation.cleared_ground_items.getMessage("{amount}", String.valueOf(size)).toComponent());
     }
 
     @SubCommand("reload")
