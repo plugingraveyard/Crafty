@@ -19,7 +19,8 @@ public enum Translation {
     must_be_console(Messages.must_be_console),
     unknown_command(Messages.unknown_command),
     invalid_arguments(Messages.invalid_arguments),
-    internal_error(Messages.internal_error);
+    internal_error(Messages.internal_error),
+    cleared_ground_items(Messages.cleared_ground_items);
 
     private final Property<String> property;
 
