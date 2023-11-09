@@ -51,6 +51,6 @@ public class Messages implements SettingsHolder {
 
     public static final Property<String> cleared_ground_items = newProperty("clear.ground-items", "{prefix}<green>Successfully cleared {amount} ground items.");
 
-    public static final Property<String> no_ground_items = newProperty("clear.no-ground-items", "{prefix}<red>No ground items were found.");
+    public static final Property<String> no_ground_items = newProperty("clear.no-ground-items", "{prefix}<red>No ground items were found in {world}.");
 
 }

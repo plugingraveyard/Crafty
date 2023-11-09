@@ -45,7 +45,7 @@ public class CraftyCommand extends BaseCommand {
         List<Entity> items = thyWorld.getEntities().stream().filter(Item.class::isInstance).toList();
 
         if (items.isEmpty()) {
-            sender.sendMessage(Translation.no_ground_items.toSimpleComponent());
+            sender.sendMessage(Translation.no_ground_items.getMessage("{world}", world).toAdvancedComponent());
             return;
         }
 
