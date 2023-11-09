@@ -49,6 +49,8 @@ public class Messages implements SettingsHolder {
 
     public static final Property<String> internal_error = newProperty("errors.internal-error", "{prefix}<red>An internal error has occurred. Please check the console for the full error.");
 
-    public static final Property<String> cleared_ground_items = newProperty("clear.ground-items", "{prefix}<green>Successfully cleared ground items.");
+    public static final Property<String> cleared_ground_items = newProperty("clear.ground-items", "{prefix}<green>Successfully cleared {amount} ground items.");
+
+    public static final Property<String> no_ground_items = newProperty("clear.no-ground-items", "{prefix}<red>No ground items were found.");
 
 }
