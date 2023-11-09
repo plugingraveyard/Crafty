@@ -81,7 +81,12 @@ public enum Translation {
     }
 
     @NotNull
-    public Component toComponent() {
+    public Component toSimpleComponent() {
+        return this.plugin.getPaperPlugin().parse(getMessage().toMessage());
+    }
+
+    @NotNull
+    public Component toAdvancedComponent() {
         return this.plugin.getPaperPlugin().parse(toMessage());
     }
 }

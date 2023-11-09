@@ -45,7 +45,7 @@ public class CraftyCommand extends BaseCommand {
         List<Entity> items = thyWorld.getEntities().stream().filter(Item.class::isInstance).toList();
 
         if (items.isEmpty()) {
-            sender.sendMessage(Translation.no_ground_items.toComponent());
+            sender.sendMessage(Translation.no_ground_items.toSimpleComponent());
             return;
         }
 
@@ -53,7 +53,7 @@ public class CraftyCommand extends BaseCommand {
 
         items.forEach(Entity::remove);
 
-        sender.sendMessage(Translation.cleared_ground_items.getMessage("{amount}", String.valueOf(size)).toComponent());
+        sender.sendMessage(Translation.cleared_ground_items.getMessage("{amount}", String.valueOf(size)).toAdvancedComponent());
     }
 
     @SubCommand("reload")
@@ -65,6 +65,6 @@ public class CraftyCommand extends BaseCommand {
         this.plugin.getModuleLoader().getModules().forEach(ModuleHandler::reload);
 
         // Send the sender that the reload is complete.
-        sender.sendMessage(Translation.config_reload.toComponent());
+        sender.sendMessage(Translation.config_reload.toSimpleComponent());
     }
 }
