@@ -35,9 +35,9 @@ public class Messages implements SettingsHolder {
             " - {permission}",
             ""
     })
-    public static final Property<String> no_permission = newProperty("misc.no-permission", "{prefix}<red>Access denied! Lacking permission: <gold>{permission}");
+    public static final Property<String> no_permission = newProperty("misc.no-permission", "{prefix}<purple>Access denied! Lacking permission: <gold>{permission}");
 
-    public static final Property<String> config_reload = newProperty("misc.config-reload", "{prefix}<green>Successfully reloaded the config");
+    public static final Property<String> config_reload = newProperty("misc.config-reload", "{prefix}<white>Successfully <gold>reloaded <white>the <dark_aqua>plugin");
 
     public static final Property<String> must_be_player = newProperty("misc.must-be-player", "{prefix}<red>This command can only be used in-game");
 
@@ -49,8 +49,8 @@ public class Messages implements SettingsHolder {
 
     public static final Property<String> internal_error = newProperty("errors.internal-error", "{prefix}<red>An internal error has occurred. Please check the console for the full error.");
 
-    public static final Property<String> cleared_ground_items = newProperty("clear.ground-items", "{prefix}<green>Successfully cleared {amount} ground items.");
+    public static final Property<String> cleared_ground_items = newProperty("clear.ground-items", "{prefix}<white>Successfully cleared <dark_aqua>{amount} <white>ground items in <dark_aqua>{world}.");
 
-    public static final Property<String> no_ground_items = newProperty("clear.no-ground-items", "{prefix}<red>No ground items were found in {world}.");
+    public static final Property<String> no_ground_items = newProperty("clear.no-ground-items", "{prefix}<red>No ground items were found in <dark_aqua>{world}.");
 
 }
