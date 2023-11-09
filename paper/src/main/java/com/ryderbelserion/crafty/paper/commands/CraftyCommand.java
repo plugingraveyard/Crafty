@@ -46,29 +46,4 @@ public class CraftyCommand extends BaseCommand {
         // Send the sender that the reload is complete.
         sender.sendMessage(Translation.config_reload.toComponent());
     }
-
-    @SubCommand("gate")
-    public void gate(Player player) {
-        ItemStack item = ParentBuilder.of(Material.STONE_AXE).build();
-
-        NbtBuilder builder = new NbtBuilder(this.plugin, item);
-
-        builder.setString("gate_creator", player.getUniqueId().toString());
-
-        player.getInventory().addItem(builder.getItemStack());
-
-        player.sendMessage(this.plugin.getPaperPlugin().parse("<red>You have been given a gate maker</red>"));
-    }
-
-    private final HashMap<Location, Location> locations = new HashMap<>();
-
-    @SubCommand("gate save")
-    public void gateSave(Player player) {
-
-    }
-
-    @EventHandler
-    public void onInteract(PlayerInteractEvent event) {
-
-    }
 }
