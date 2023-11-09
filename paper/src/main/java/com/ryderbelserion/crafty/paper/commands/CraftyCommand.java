@@ -17,6 +17,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionDefault;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -53,7 +54,12 @@ public class CraftyCommand extends BaseCommand {
 
         items.forEach(Entity::remove);
 
-        sender.sendMessage(Translation.cleared_ground_items.getMessage("{amount}", String.valueOf(size)).toAdvancedComponent());
+        HashMap<String, String> placeholders = new HashMap<>();
+
+        placeholders.put("{world}", world);
+        placeholders.put("{amount}", String.valueOf(size));
+
+        sender.sendMessage(Translation.cleared_ground_items.getMessage(placeholders).toAdvancedComponent());
     }
 
     @SubCommand("reload")
