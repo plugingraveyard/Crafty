@@ -1,2 +1,2 @@
 # Crafty
-Lightweight plugin/mod containing essentials.
+A plugin/mod containing anything I want.
