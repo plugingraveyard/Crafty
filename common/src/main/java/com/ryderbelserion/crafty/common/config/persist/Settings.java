@@ -13,6 +13,9 @@ public sealed class Settings extends FileData permits SettingsHandler {
     }
 
     @Expose
+    protected static boolean maintenance_module = false;
+
+    @Expose
     protected static boolean hit_delay_module = false;
 
     @Expose

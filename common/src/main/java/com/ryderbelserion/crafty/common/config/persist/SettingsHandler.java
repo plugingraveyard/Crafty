@@ -22,6 +22,14 @@ public non-sealed class SettingsHandler extends Settings {
         this.storageManager = storageManager;
     }
 
+    public boolean isMaintenanceModeEnabled() {
+        return maintenance_module;
+    }
+
+    public void setMaintenanceMode(boolean value) {
+        maintenance_module = value;
+    }
+
     public boolean isHitDelayEnabled() {
         return hit_delay_module;
     }
