@@ -3,7 +3,6 @@ package com.ryderbelserion.crafty.common.config.persist;
 import com.ryderbelserion.cluster.api.config.StorageManager;
 import org.jetbrains.annotations.NotNull;
 import java.nio.file.Path;
-import java.util.Collections;
 import java.util.List;
 
 public non-sealed class SettingsHandler extends Settings {
@@ -11,15 +10,14 @@ public non-sealed class SettingsHandler extends Settings {
     @NotNull
     private final StorageManager storageManager;
 
-    @NotNull
-    private final Path path;
+    private final Settings settings;
 
     public SettingsHandler(@NotNull StorageManager storageManager, @NotNull Path path) {
         super(path);
 
-        this.path = path;
-
         this.storageManager = storageManager;
+
+        this.settings = new Settings(path);
     }
 
     public boolean isMaintenanceModeEnabled() {
@@ -39,14 +37,14 @@ public non-sealed class SettingsHandler extends Settings {
     }
 
     public List<String> getWorldList() {
-        return Collections.unmodifiableList(worlds);
+        return worlds;
     }
 
     public void load() {
-        this.storageManager.addFile(new Settings(this.path));
+        this.storageManager.addFile(this.settings);
     }
 
     public void save() {
-        this.storageManager.saveFile(new Settings(this.path));
+        this.storageManager.saveFile(this.settings);
     }
 }

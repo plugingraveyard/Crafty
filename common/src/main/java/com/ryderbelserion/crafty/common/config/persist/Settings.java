@@ -13,16 +13,16 @@ public sealed class Settings extends FileData permits SettingsHandler {
     }
 
     @Expose
-    protected static boolean maintenance_module = false;
+    public static boolean maintenance_module = false;
 
     @Expose
-    protected static boolean hit_delay_module = false;
+    public static boolean hit_delay_module = false;
 
     @Expose
-    protected static double hit_delay = 40.0;
+    public static double hit_delay = 40.0;
 
     @Expose
-    protected static List<String> worlds = List.of(
+    public static List<String> worlds = List.of(
             "world",
             "world_nether"
     );

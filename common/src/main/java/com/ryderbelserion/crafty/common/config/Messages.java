@@ -53,4 +53,10 @@ public class Messages implements SettingsHolder {
 
     public static final Property<String> no_ground_items = newProperty("clear.no-ground-items", "{prefix}<red>No ground items were found in <dark_aqua>{world}.");
 
+    public static final Property<String> maintenance_mode = newProperty("maintenance.message", "{prefix}<white>Maintenance mode has been {toggle}.");
+
+    public static final Property<String> maintenance_mode_enabled = newProperty("maintenance.enabled", "<green>enabled");
+
+    public static final Property<String> maintenance_mode_disabled = newProperty("maintenance.disabled", "<red>disabled");
+
 }

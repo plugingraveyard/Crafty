@@ -21,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 @Command("crafty")
 public class CraftyCommand extends BaseCommand {
@@ -43,6 +44,10 @@ public class CraftyCommand extends BaseCommand {
         this.settingsHandler.setMaintenanceMode(!this.settingsHandler.isMaintenanceModeEnabled());
 
         this.settingsHandler.save();
+
+        String value = this.settingsHandler.isMaintenanceModeEnabled() ? Translation.maintenance_mode_enabled.toStringMessage() : Translation.maintenance_mode_disabled.toStringMessage();
+
+        sender.sendMessage(Translation.maintenance_mode.getMessage("{toggle}", value).toAdvancedComponent());
     }
 
     @SubCommand("clear")

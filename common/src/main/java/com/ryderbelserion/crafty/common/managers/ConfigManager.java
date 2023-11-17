@@ -59,6 +59,8 @@ public class ConfigManager {
         this.pluginConfig.save();
 
         this.messages.save();
+
+        this.settingsHandler.save();
     }
 
     @NotNull

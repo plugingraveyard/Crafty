@@ -21,6 +21,9 @@ public enum Translation {
     invalid_arguments(Messages.invalid_arguments),
     internal_error(Messages.internal_error),
     cleared_ground_items(Messages.cleared_ground_items),
+    maintenance_mode(Messages.maintenance_mode),
+    maintenance_mode_enabled(Messages.maintenance_mode_enabled),
+    maintenance_mode_disabled(Messages.maintenance_mode_disabled),
     no_ground_items(Messages.no_ground_items);
 
     private final Property<String> property;
@@ -78,6 +81,11 @@ public enum Translation {
     @NotNull
     public String toMessage() {
         return this.message.replaceAll("\\{prefix}", this.plugin.getCrazyHandler().getConfigManager().getPluginConfig().getProperty(PluginConfig.command_prefix));
+    }
+
+    @NotNull
+    public String toStringMessage() {
+        return getMessage().message;
     }
 
     @NotNull
