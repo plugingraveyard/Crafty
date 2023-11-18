@@ -10,14 +10,10 @@ public non-sealed class SettingsHandler extends Settings {
     @NotNull
     private final StorageManager storageManager;
 
-    private final Settings settings;
-
     public SettingsHandler(@NotNull StorageManager storageManager, @NotNull Path path) {
         super(path);
 
         this.storageManager = storageManager;
-
-        this.settings = this;
     }
 
     public boolean isMaintenanceModeEnabled() {
@@ -40,7 +36,11 @@ public non-sealed class SettingsHandler extends Settings {
         return worlds;
     }
 
+    public void load() {
+        this.storageManager.addFile(this);
+    }
+
     public void save() {
-        this.storageManager.saveFile(this.settings);
+        this.storageManager.saveFile(this);
     }
 }

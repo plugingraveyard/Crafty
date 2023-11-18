@@ -51,6 +51,7 @@ public class ConfigManager {
 
         this.messages.reload();
 
+        this.settingsHandler.load();
         this.settingsHandler.save();
     }
 
