@@ -1,4 +1,6 @@
 plugins {
+    id("xyz.jpenilla.run-paper")
+
     id("paper-plugin")
 }
 
@@ -24,6 +26,12 @@ dependencies {
 }
 
 tasks {
+    runServer {
+        jvmArgs("-Dnet.kyori.ansi.colorLevel=truecolor")
+
+        minecraftVersion("1.20.2")
+    }
+
     processResources {
         val props = mapOf(
             "name" to rootProject.name,

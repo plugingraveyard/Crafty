@@ -9,10 +9,4 @@ pluginManagement {
 
 rootProject.name = "Crafty"
 
-listOf(
-    "paper",
-    "common",
-    "api"
-).forEach {
-    include(it)
-}
+include("common", "paper", "api")

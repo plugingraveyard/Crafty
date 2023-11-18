@@ -9,20 +9,20 @@ import java.util.List;
 public sealed class Settings extends FileData permits SettingsHandler {
 
     protected Settings(Path path) {
-        super(FileType.json, "settings.json", path.toString(), false);
+        super(FileType.json, "settings.json", path, false);
     }
 
     @Expose
-    public static boolean maintenance_module = false;
+    protected static boolean maintenance_module = false;
 
     @Expose
-    public static boolean hit_delay_module = false;
+    protected static boolean hit_delay_module = false;
 
     @Expose
-    public static double hit_delay = 40.0;
+    protected static double hit_delay = 40.0;
 
     @Expose
-    public static List<String> worlds = List.of(
+    protected static List<String> worlds = List.of(
             "world",
             "world_nether"
     );

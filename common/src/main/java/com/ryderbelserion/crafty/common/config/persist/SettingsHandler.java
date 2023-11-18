@@ -17,7 +17,7 @@ public non-sealed class SettingsHandler extends Settings {
 
         this.storageManager = storageManager;
 
-        this.settings = new Settings(path);
+        this.settings = this;
     }
 
     public boolean isMaintenanceModeEnabled() {
@@ -38,10 +38,6 @@ public non-sealed class SettingsHandler extends Settings {
 
     public List<String> getWorldList() {
         return worlds;
-    }
-
-    public void load() {
-        this.storageManager.addFile(this.settings);
     }
 
     public void save() {

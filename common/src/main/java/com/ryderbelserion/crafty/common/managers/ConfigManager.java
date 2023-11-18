@@ -44,7 +44,6 @@ public class ConfigManager {
                 .create();
 
         this.settingsHandler = new SettingsHandler(this.storageManager, this.dataFolder.toPath());
-        this.settingsHandler.load();
     }
 
     public void reload() {

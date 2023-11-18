@@ -10,12 +10,11 @@ repositories {
 
     maven("https://repo.triumphteam.dev/snapshots/")
 
-    //maven("https://repo.crazycrew.us/releases/")
+    maven("https://repo.crazycrew.us/releases/")
 
     maven("https://jitpack.io")
 
-    //mavenCentral()
-    mavenLocal()
+    mavenCentral()
 }
 
 java {
