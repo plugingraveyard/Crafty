@@ -50,6 +50,6 @@ public class ArgumentRelations extends MessageHandler {
 
     @Override
     public Component parse(@NotNull String message) {
-        return getPaperPlugin().parse(message);
+        return getPlugin().parse(message);
     }
 }

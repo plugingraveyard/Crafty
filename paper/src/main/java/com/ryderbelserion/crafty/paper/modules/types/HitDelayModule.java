@@ -21,7 +21,7 @@ public class HitDelayModule extends ModuleHandler {
     private final Crafty plugin = Crafty.get();
 
     @NotNull
-    private final SettingsHandler settingsHandler = this.plugin.getConfigManager().getSettingsHandler();
+    private final SettingsHandler settings = this.plugin.getConfigManager().getSettings();
 
     @Override
     public String getModuleName() {
@@ -30,7 +30,7 @@ public class HitDelayModule extends ModuleHandler {
 
     @Override
     public boolean isEnabled() {
-        return this.settingsHandler.isHitDelayEnabled();
+        return this.settings.isHitDelayEnabled();
     }
 
     @Override
@@ -74,7 +74,7 @@ public class HitDelayModule extends ModuleHandler {
 
         World world = player.getWorld();
 
-        double speed = this.settingsHandler.getWorldList().contains(world.getName()) ? this.settingsHandler.getHitDelay() : 4.0;
+        double speed = this.settings.getWorldList().contains(world.getName()) ? this.settings.getHitDelay() : 4.0;
 
         setAttackSpeed(player, speed);
     }

@@ -51,7 +51,6 @@ public class ConfigManager {
 
         this.messages.reload();
 
-        this.settingsHandler.load();
         this.settingsHandler.save();
     }
 
@@ -64,7 +63,7 @@ public class ConfigManager {
     }
 
     @NotNull
-    public SettingsHandler getSettingsHandler() {
+    public SettingsHandler getSettings() {
         return this.settingsHandler;
     }
 

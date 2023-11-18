@@ -20,14 +20,14 @@ public class Crafty extends JavaPlugin {
 
     private CrazyHandler crazyHandler;
 
-    private PaperPlugin paperPlugin;
+    private PaperPlugin plugin;
 
     @Override
     public void onEnable() {
-        this.paperPlugin = new PaperPlugin(this, true);
-        this.paperPlugin.enable();
+        this.plugin = new PaperPlugin(this, true);
+        this.plugin.enable();
 
-        this.crazyHandler = new CrazyHandler(this.paperPlugin.getStorageManager(), getDataFolder());
+        this.crazyHandler = new CrazyHandler(this.plugin.getStorageManager(), getDataFolder());
         this.crazyHandler.enable();
 
         // Enable modules.
@@ -40,8 +40,8 @@ public class Crafty extends JavaPlugin {
     }
 
     @NotNull
-    public PaperPlugin getPaperPlugin() {
-        return this.paperPlugin;
+    public PaperPlugin getPlugin() {
+        return this.plugin;
     }
 
     @NotNull

@@ -10,8 +10,12 @@ public non-sealed class SettingsHandler extends Settings {
     @NotNull
     private final StorageManager storageManager;
 
+    private final Settings settings;
+
     public SettingsHandler(@NotNull StorageManager storageManager, @NotNull Path path) {
         super(path);
+
+        this.settings = this;
 
         this.storageManager = storageManager;
     }
@@ -37,10 +41,10 @@ public non-sealed class SettingsHandler extends Settings {
     }
 
     public void load() {
-        this.storageManager.addFile(this);
+        this.storageManager.addFile(this.settings);
     }
 
     public void save() {
-        this.storageManager.saveFile(this);
+        this.storageManager.saveFile(this.settings);
     }
 }

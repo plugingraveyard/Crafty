@@ -9,7 +9,7 @@ import java.util.List;
 public sealed class Settings extends FileData permits SettingsHandler {
 
     public Settings(Path path) {
-        super(FileType.json, "settings.json", path, true);
+        super(FileType.json, "settings.json", path, false);
     }
 
     @Expose

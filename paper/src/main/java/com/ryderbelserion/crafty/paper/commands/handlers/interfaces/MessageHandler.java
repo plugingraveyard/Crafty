@@ -16,10 +16,10 @@ public abstract class MessageHandler {
     private final BukkitCommandManager<CommandSender> bukkitCommandManager = this.plugin.getCommandManager();
 
     @NotNull
-    private final PaperPlugin paperPlugin = this.plugin.getPaperPlugin();
+    private final PaperPlugin paperPlugin = this.plugin.getPlugin();
 
     @NotNull
-    public PaperPlugin getPaperPlugin() {
+    public PaperPlugin getPlugin() {
         return this.paperPlugin;
     }
 

@@ -1,6 +1,5 @@
 package com.ryderbelserion.crafty.paper.commands;
 
-import com.ryderbelserion.crafty.common.config.persist.Settings;
 import com.ryderbelserion.crafty.common.config.persist.SettingsHandler;
 import com.ryderbelserion.crafty.paper.Crafty;
 import com.ryderbelserion.crafty.paper.api.enums.Translation;
@@ -21,7 +20,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 @Command("crafty")
 public class CraftyCommand extends BaseCommand {
@@ -30,7 +28,7 @@ public class CraftyCommand extends BaseCommand {
     private final Crafty plugin = Crafty.get();
 
     @NotNull
-    private final SettingsHandler settingsHandler = this.plugin.getConfigManager().getSettingsHandler();
+    private final SettingsHandler settings = this.plugin.getConfigManager().getSettings();
 
     @Default
     @Permission(value = "crafty.help", def = PermissionDefault.TRUE)
@@ -41,11 +39,11 @@ public class CraftyCommand extends BaseCommand {
     @SubCommand("maintenance")
     @Permission(value = "crafty.maintenance", def = PermissionDefault.OP)
     public void maintenance(CommandSender sender) {
-        this.settingsHandler.setMaintenanceMode(!this.settingsHandler.isMaintenanceModeEnabled());
+        this.settings.setMaintenanceMode(!this.settings.isMaintenanceModeEnabled());
 
-        this.settingsHandler.save();
+        this.settings.save();
 
-        String value = this.settingsHandler.isMaintenanceModeEnabled() ? Translation.maintenance_mode_enabled.toStringMessage() : Translation.maintenance_mode_disabled.toStringMessage();
+        String value = this.settings.isMaintenanceModeEnabled() ? Translation.maintenance_mode_enabled.toStringMessage() : Translation.maintenance_mode_disabled.toStringMessage();
 
         sender.sendMessage(Translation.maintenance_mode.getMessage("{toggle}", value).toAdvancedComponent());
     }
