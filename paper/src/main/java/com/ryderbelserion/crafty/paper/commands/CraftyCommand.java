@@ -1,9 +1,8 @@
 package com.ryderbelserion.crafty.paper.commands;
 
-import com.ryderbelserion.crafty.common.config.persist.SettingsHandler;
+import com.ryderbelserion.cluster.paper.modules.ModuleHandler;
 import com.ryderbelserion.crafty.paper.Crafty;
 import com.ryderbelserion.crafty.paper.api.enums.Translation;
-import com.ryderbelserion.crafty.paper.api.interfaces.ModuleHandler;
 import dev.triumphteam.cmd.bukkit.annotation.Permission;
 import dev.triumphteam.cmd.core.BaseCommand;
 import dev.triumphteam.cmd.core.annotation.Command;
@@ -17,7 +16,6 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionDefault;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,9 +24,6 @@ public class CraftyCommand extends BaseCommand {
 
     @NotNull
     private final Crafty plugin = Crafty.get();
-
-    @NotNull
-    private final SettingsHandler settings = this.plugin.getConfigManager().getSettings();
 
     @Default
     @Permission(value = "crafty.help", def = PermissionDefault.TRUE)
@@ -39,13 +34,7 @@ public class CraftyCommand extends BaseCommand {
     @SubCommand("maintenance")
     @Permission(value = "crafty.maintenance", def = PermissionDefault.OP)
     public void maintenance(CommandSender sender) {
-        this.settings.setMaintenanceMode(!this.settings.isMaintenanceModeEnabled());
 
-        this.settings.save();
-
-        String value = this.settings.isMaintenanceModeEnabled() ? Translation.maintenance_mode_enabled.toStringMessage() : Translation.maintenance_mode_disabled.toStringMessage();
-
-        sender.sendMessage(Translation.maintenance_mode.getMessage("{toggle}", value).toAdvancedComponent());
     }
 
     @SubCommand("clear")

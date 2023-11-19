@@ -1,11 +1,11 @@
 package com.ryderbelserion.crafty.paper;
 
-import com.ryderbelserion.cluster.paper.PaperPlugin;
+import com.ryderbelserion.cluster.paper.ClusterFactory;
+import com.ryderbelserion.cluster.paper.modules.ModuleLoader;
 import com.ryderbelserion.crafty.common.config.PluginConfig;
 import com.ryderbelserion.crafty.common.managers.ConfigManager;
 import com.ryderbelserion.crafty.paper.api.CrazyHandler;
-import com.ryderbelserion.crafty.paper.modules.ModuleLoader;
-import com.ryderbelserion.crafty.paper.modules.types.HitDelayModule;
+import com.ryderbelserion.crafty.paper.modules.HitDelayModule;
 import dev.triumphteam.cmd.bukkit.BukkitCommandManager;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,15 +20,14 @@ public class Crafty extends JavaPlugin {
 
     private CrazyHandler crazyHandler;
 
-    private PaperPlugin plugin;
+    private ClusterFactory factory;
 
     @Override
     public void onEnable() {
-        this.plugin = new PaperPlugin(this, true);
-        this.plugin.enable();
-
-        this.crazyHandler = new CrazyHandler(this.plugin.getStorageManager(), getDataFolder());
+        this.crazyHandler = new CrazyHandler(getDataFolder());
         this.crazyHandler.enable();
+
+        this.factory = new ClusterFactory(this, isLogging());
 
         // Enable modules.
         this.crazyHandler.getModuleLoader().addModule(new HitDelayModule());
@@ -39,9 +38,8 @@ public class Crafty extends JavaPlugin {
         this.crazyHandler.disable();
     }
 
-    @NotNull
-    public PaperPlugin getPlugin() {
-        return this.plugin;
+    public ClusterFactory getFactory() {
+        return this.factory;
     }
 
     @NotNull

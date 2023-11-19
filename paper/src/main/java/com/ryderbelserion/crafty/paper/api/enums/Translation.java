@@ -90,11 +90,11 @@ public enum Translation {
 
     @NotNull
     public Component toSimpleComponent() {
-        return this.plugin.getPlugin().parse(getMessage().toMessage());
+        return this.plugin.getFactory().parse(getMessage().toMessage());
     }
 
     @NotNull
     public Component toAdvancedComponent() {
-        return this.plugin.getPlugin().parse(toMessage());
+        return this.plugin.getFactory().parse(toMessage());
     }
 }

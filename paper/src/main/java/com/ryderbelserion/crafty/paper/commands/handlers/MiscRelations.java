@@ -27,6 +27,6 @@ public class MiscRelations extends MessageHandler {
 
     @Override
     public Component parse(@NotNull String message) {
-        return getPlugin().parse(message);
+        return getFactory().parse(message);
     }
 }

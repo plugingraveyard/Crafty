@@ -1,8 +1,7 @@
-package com.ryderbelserion.crafty.paper.modules.types;
+package com.ryderbelserion.crafty.paper.modules;
 
-import com.ryderbelserion.crafty.common.config.persist.SettingsHandler;
+import com.ryderbelserion.cluster.paper.modules.ModuleHandler;
 import com.ryderbelserion.crafty.paper.Crafty;
-import com.ryderbelserion.crafty.paper.api.interfaces.ModuleHandler;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
@@ -20,9 +19,6 @@ public class HitDelayModule extends ModuleHandler {
     @NotNull
     private final Crafty plugin = Crafty.get();
 
-    @NotNull
-    private final SettingsHandler settings = this.plugin.getConfigManager().getSettings();
-
     @Override
     public String getModuleName() {
         return "Hit Delay Module";
@@ -30,7 +26,7 @@ public class HitDelayModule extends ModuleHandler {
 
     @Override
     public boolean isEnabled() {
-        return this.settings.isHitDelayEnabled();
+        return false;
     }
 
     @Override
@@ -74,9 +70,9 @@ public class HitDelayModule extends ModuleHandler {
 
         World world = player.getWorld();
 
-        double speed = this.settings.getWorldList().contains(world.getName()) ? this.settings.getHitDelay() : 4.0;
+        //double speed = this.settings.getWorldList().contains(world.getName()) ? this.settings.getHitDelay() : 4.0;
 
-        setAttackSpeed(player, speed);
+        //setAttackSpeed(player, speed);
     }
 
     private void setAttackSpeed(Player player, double speed) {

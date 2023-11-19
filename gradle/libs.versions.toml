@@ -5,7 +5,7 @@ shadow_version = "8.1.1"
 
 jetbrains_kotlin = "1.9.10"
 
-cluster_version = "2.7.1"
+cluster_version = "3.0"
 kyori_version = "4.14.0"
 
 [plugins]

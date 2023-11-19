@@ -1,4 +1,4 @@
-package com.ryderbelserion.crafty.paper.api.managers;
+package com.ryderbelserion.crafty.paper.commands;
 
 import com.ryderbelserion.crafty.paper.Crafty;
 import com.ryderbelserion.crafty.paper.commands.CraftyCommand;

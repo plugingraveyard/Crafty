@@ -1,6 +1,6 @@
 package com.ryderbelserion.crafty.paper.commands.handlers.interfaces;
 
-import com.ryderbelserion.cluster.paper.PaperPlugin;
+import com.ryderbelserion.cluster.paper.ClusterFactory;
 import com.ryderbelserion.crafty.paper.Crafty;
 import dev.triumphteam.cmd.bukkit.BukkitCommandManager;
 import net.kyori.adventure.text.Component;
@@ -16,11 +16,11 @@ public abstract class MessageHandler {
     private final BukkitCommandManager<CommandSender> bukkitCommandManager = this.plugin.getCommandManager();
 
     @NotNull
-    private final PaperPlugin paperPlugin = this.plugin.getPlugin();
+    private final ClusterFactory factory = this.plugin.getFactory();
 
     @NotNull
-    public PaperPlugin getPlugin() {
-        return this.paperPlugin;
+    public ClusterFactory getFactory() {
+        return this.factory;
     }
 
     @NotNull
