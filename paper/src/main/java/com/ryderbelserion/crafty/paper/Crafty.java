@@ -24,7 +24,7 @@ public class Crafty extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        this.crazyHandler = new CrazyHandler(getDataFolder());
+        this.crazyHandler = new CrazyHandler(this);
         this.crazyHandler.enable();
 
         this.factory = new ClusterFactory(this, isLogging());
