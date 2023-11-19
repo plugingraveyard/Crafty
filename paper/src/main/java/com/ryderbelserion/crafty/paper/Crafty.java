@@ -3,7 +3,7 @@ package com.ryderbelserion.crafty.paper;
 import com.ryderbelserion.cluster.paper.ClusterFactory;
 import com.ryderbelserion.cluster.paper.modules.ModuleLoader;
 import com.ryderbelserion.crafty.common.config.PluginConfig;
-import com.ryderbelserion.crafty.common.managers.ConfigManager;
+import com.ryderbelserion.crafty.common.managers.ConfigFactory;
 import com.ryderbelserion.crafty.paper.api.CrazyHandler;
 import com.ryderbelserion.crafty.paper.modules.HitDelayModule;
 import dev.triumphteam.cmd.bukkit.BukkitCommandManager;
@@ -53,8 +53,8 @@ public class Crafty extends JavaPlugin {
     }
 
     @NotNull
-    public ConfigManager getConfigManager() {
-        return this.crazyHandler.getConfigManager();
+    public ConfigFactory getConfigManager() {
+        return this.crazyHandler.getConfigFactory();
     }
 
     @NotNull
@@ -63,6 +63,6 @@ public class Crafty extends JavaPlugin {
     }
 
     public boolean isLogging() {
-        return this.crazyHandler.getConfigManager().getPluginConfig().getProperty(PluginConfig.verbose_logging);
+        return this.crazyHandler.getConfigFactory().getPluginConfig().getProperty(PluginConfig.verbose_logging);
     }
 }

@@ -8,11 +8,11 @@ import com.ryderbelserion.crafty.common.config.PluginConfig;
 import org.jetbrains.annotations.NotNull;
 import java.io.File;
 
-public class ConfigManager {
+public class ConfigFactory {
 
     private final File dataFolder;
 
-    public ConfigManager(File dataFolder) {
+    public ConfigFactory(File dataFolder) {
         this.dataFolder = dataFolder;
     }
 

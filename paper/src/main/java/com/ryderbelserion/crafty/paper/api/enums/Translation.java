@@ -4,7 +4,7 @@ import ch.jalu.configme.SettingsManager;
 import ch.jalu.configme.properties.Property;
 import com.ryderbelserion.crafty.common.config.Messages;
 import com.ryderbelserion.crafty.common.config.PluginConfig;
-import com.ryderbelserion.crafty.common.managers.ConfigManager;
+import com.ryderbelserion.crafty.common.managers.ConfigFactory;
 import com.ryderbelserion.crafty.paper.Crafty;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
@@ -38,10 +38,10 @@ public enum Translation {
     private final Crafty plugin = Crafty.get();
 
     @NotNull
-    private final ConfigManager configManager = this.plugin.getCrazyHandler().getConfigManager();
+    private final ConfigFactory configFactory = this.plugin.getCrazyHandler().getConfigFactory();
 
     @NotNull
-    private final SettingsManager messages = this.configManager.getMessages();
+    private final SettingsManager messages = this.configFactory.getMessages();
 
     @NotNull
     private String getProperty(@NotNull Property<String> property) {
@@ -80,7 +80,9 @@ public enum Translation {
 
     @NotNull
     public String toMessage() {
-        return this.message.replaceAll("\\{prefix}", this.plugin.getCrazyHandler().getConfigManager().getPluginConfig().getProperty(PluginConfig.command_prefix));
+        String prefix = this.plugin.getConfigManager().getPluginConfig().getProperty(PluginConfig.command_prefix);
+
+        return this.message.replaceAll("\\{prefix}", prefix);
     }
 
     @NotNull

@@ -2,7 +2,7 @@ package com.ryderbelserion.crafty.common;
 
 import com.ryderbelserion.crafty.api.CraftyService;
 import com.ryderbelserion.crafty.api.ICrafty;
-import com.ryderbelserion.crafty.common.managers.ConfigManager;
+import com.ryderbelserion.crafty.common.managers.ConfigFactory;
 import org.jetbrains.annotations.NotNull;
 import java.io.File;
 
@@ -14,25 +14,25 @@ public abstract class CraftyPlugin implements ICrafty {
         this.dataFolder = dataFolder;
     }
 
-    private ConfigManager configManager;
+    private ConfigFactory configFactory;
 
     @Override
     public void enable() {
         CraftyService.setService(this);
 
-        this.configManager = new ConfigManager(this.dataFolder);
-        this.configManager.load();
+        this.configFactory = new ConfigFactory(this.dataFolder);
+        this.configFactory.load();
     }
 
     @Override
     public void disable() {
         CraftyService.stopService();
 
-        this.configManager.save();
+        this.configFactory.save();
     }
 
     @NotNull
-    public ConfigManager getConfigManager() {
-        return this.configManager;
+    public ConfigFactory getConfigFactory() {
+        return this.configFactory;
     }
 }
