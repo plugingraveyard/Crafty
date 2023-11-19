@@ -13,7 +13,7 @@ public class CrazyHandler extends CraftyPlugin {
     private ModuleLoader moduleLoader;
 
     public CrazyHandler(Crafty plugin) {
-        super(plugin.getDataFolder(), plugin.getLogger());
+        super(plugin.getDataFolder());
     }
 
     public void enable() {

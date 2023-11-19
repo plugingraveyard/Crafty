@@ -5,17 +5,13 @@ import com.ryderbelserion.crafty.api.ICrafty;
 import com.ryderbelserion.crafty.common.managers.ConfigManager;
 import org.jetbrains.annotations.NotNull;
 import java.io.File;
-import java.util.logging.Logger;
 
 public abstract class CraftyPlugin implements ICrafty {
 
     private final File dataFolder;
-    private final Logger logger;
 
-    public CraftyPlugin(File dataFolder, Logger logger) {
+    public CraftyPlugin(File dataFolder) {
         this.dataFolder = dataFolder;
-
-        this.logger = logger;
     }
 
     private ConfigManager configManager;
@@ -38,10 +34,5 @@ public abstract class CraftyPlugin implements ICrafty {
     @NotNull
     public ConfigManager getConfigManager() {
         return this.configManager;
-    }
-
-    @Override
-    public Logger getLogger() {
-        return this.logger;
     }
 }

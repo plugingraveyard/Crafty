@@ -8,6 +8,4 @@ public interface ICrafty {
 
     void disable();
 
-    Logger getLogger();
-
 }
