@@ -39,7 +39,8 @@ tasks {
     shadowJar {
         listOf(
             "com.ryderbelserion.cluster",
-            "dev.triumphteam"
+            "dev.triumphteam",
+            "ch.jalu"
         ).forEach {
             relocate(it, "com.ryderbelserion.crafty.libraries")
         }

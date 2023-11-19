@@ -12,7 +12,7 @@ base {
 dependencies {
     api(project(":api"))
 
-    compileOnlyApi(libs.configme)
+    api(libs.configme)
 
     compileOnly(libs.cluster.api)
 
