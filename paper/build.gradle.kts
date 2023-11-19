@@ -7,6 +7,10 @@ plugins {
 project.group = "${rootProject.group}.paper"
 project.version = "${rootProject.version}"
 
+base {
+    archivesName.set("${rootProject.name}-${project.name}")
+}
+
 repositories {
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
 
@@ -18,11 +22,11 @@ repositories {
 dependencies {
     implementation(project(":common"))
 
+    implementation(libs.cluster.paper)
+
+    implementation(libs.triumphcmds)
+
     compileOnly(libs.placeholderapi)
-
-    compileOnly(libs.cluster.paper)
-
-    compileOnly(libs.triumphcmds)
 }
 
 tasks {
@@ -30,6 +34,15 @@ tasks {
         jvmArgs("-Dnet.kyori.ansi.colorLevel=truecolor")
 
         minecraftVersion("1.20.2")
+    }
+
+    shadowJar {
+        listOf(
+            "com.ryderbelserion.cluster",
+            "dev.triumphteam"
+        ).forEach {
+            relocate(it, "com.ryderbelserion.crafty.libraries")
+        }
     }
 
     processResources {

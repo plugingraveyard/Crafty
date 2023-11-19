@@ -5,9 +5,11 @@ plugins {
 project.group = "${rootProject.group}"
 project.version = rootProject.version
 
-dependencies {
-    //compileOnlyApi(libs.minimessage)
+base {
+    archivesName.set("${rootProject.name}-${project.name}")
+}
 
+dependencies {
     compileOnlyApi(libs.adventure)
 
     compileOnly(libs.annotations)

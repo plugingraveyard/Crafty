@@ -5,6 +5,10 @@ plugins {
 project.group = "${rootProject.group}.common"
 project.version = "${rootProject.version}"
 
+base {
+    archivesName.set("${rootProject.name}-${project.name}")
+}
+
 dependencies {
     api(project(":api"))
 
