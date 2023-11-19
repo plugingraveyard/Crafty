@@ -24,7 +24,7 @@ dependencies {
 
     implementation(libs.cluster.paper)
 
-    implementation(libs.triumphcmds)
+    implementation(libs.triumph.cmds)
 
     compileOnly(libs.placeholderapi)
 }

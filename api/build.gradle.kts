@@ -11,8 +11,6 @@ base {
 
 dependencies {
     compileOnlyApi(libs.adventure)
-
-    compileOnly(libs.annotations)
 }
 
 val component: SoftwareComponent = components["java"]

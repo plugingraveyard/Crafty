@@ -12,11 +12,9 @@ base {
 dependencies {
     api(project(":api"))
 
-    api(libs.configme)
+    api(libs.configurate.json)
+
+    api(libs.config.me)
 
     compileOnly(libs.cluster.api)
-
-    compileOnly(libs.annotations)
-
-    compileOnly(libs.gson)
 }
