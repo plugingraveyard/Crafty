@@ -1,6 +1,5 @@
 package com.ryderbelserion.crafty.common.storage;
 
-import java.util.Collections;
 import java.util.List;
 
 public enum StorageType {
@@ -21,6 +20,6 @@ public enum StorageType {
     }
 
     public List<String> getIdentifiers() {
-        return Collections.unmodifiableList(this.identifiers);
+        return this.identifiers;
     }
 }
