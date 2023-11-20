@@ -3,7 +3,7 @@ package com.ryderbelserion.crafty.paper.api.enums;
 import ch.jalu.configme.SettingsManager;
 import ch.jalu.configme.properties.Property;
 import com.ryderbelserion.crafty.common.config.Messages;
-import com.ryderbelserion.crafty.common.config.PluginConfig;
+import com.ryderbelserion.crafty.common.config.Config;
 import com.ryderbelserion.crafty.common.managers.ConfigFactory;
 import com.ryderbelserion.crafty.paper.Crafty;
 import net.kyori.adventure.text.Component;
@@ -80,7 +80,7 @@ public enum Translation {
 
     @NotNull
     public String toMessage() {
-        String prefix = this.plugin.getConfigManager().getPluginConfig().getProperty(PluginConfig.command_prefix);
+        String prefix = this.plugin.getConfigManager().getConfig().getProperty(Config.command_prefix);
 
         return this.message.replaceAll("\\{prefix}", prefix);
     }

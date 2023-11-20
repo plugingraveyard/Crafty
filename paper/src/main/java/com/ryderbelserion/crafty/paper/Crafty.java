@@ -2,7 +2,7 @@ package com.ryderbelserion.crafty.paper;
 
 import com.ryderbelserion.cluster.paper.ClusterFactory;
 import com.ryderbelserion.cluster.paper.modules.ModuleLoader;
-import com.ryderbelserion.crafty.common.config.PluginConfig;
+import com.ryderbelserion.crafty.common.config.Config;
 import com.ryderbelserion.crafty.common.managers.ConfigFactory;
 import com.ryderbelserion.crafty.paper.api.CrazyHandler;
 import com.ryderbelserion.crafty.paper.modules.HitDelayModule;
@@ -63,6 +63,6 @@ public class Crafty extends JavaPlugin {
     }
 
     public boolean isLogging() {
-        return this.crazyHandler.getConfigFactory().getPluginConfig().getProperty(PluginConfig.verbose_logging);
+        return this.crazyHandler.getConfigFactory().getConfig().getProperty(Config.verbose_logging);
     }
 }

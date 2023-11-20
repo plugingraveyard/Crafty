@@ -4,7 +4,7 @@ import ch.jalu.configme.SettingsManager;
 import ch.jalu.configme.SettingsManagerBuilder;
 import ch.jalu.configme.resource.YamlFileResourceOptions;
 import com.ryderbelserion.crafty.common.config.Messages;
-import com.ryderbelserion.crafty.common.config.PluginConfig;
+import com.ryderbelserion.crafty.common.config.Config;
 import org.jetbrains.annotations.NotNull;
 import java.io.File;
 
@@ -16,17 +16,17 @@ public class ConfigFactory {
         this.dataFolder = dataFolder;
     }
 
-    private SettingsManager pluginConfig;
+    private SettingsManager config;
 
     private SettingsManager messages;
 
     public void load() {
         YamlFileResourceOptions builder = YamlFileResourceOptions.builder().indentationSize(2).build();
 
-        this.pluginConfig = SettingsManagerBuilder
-                .withYamlFile(new File(this.dataFolder, "plugin-config.yml"), builder)
+        this.config = SettingsManagerBuilder
+                .withYamlFile(new File(this.dataFolder, "config.yml"), builder)
                 .useDefaultMigrationService()
-                .configurationData(PluginConfig.class)
+                .configurationData(Config.class)
                 .create();
 
         this.messages = SettingsManagerBuilder
@@ -37,20 +37,20 @@ public class ConfigFactory {
     }
 
     public void reload() {
-        this.pluginConfig.reload();
+        this.config.reload();
 
         this.messages.reload();
     }
 
     public void save() {
-        this.pluginConfig.save();
+        this.config.save();
 
         this.messages.save();
     }
 
     @NotNull
-    public SettingsManager getPluginConfig() {
-        return this.pluginConfig;
+    public SettingsManager getConfig() {
+        return this.config;
     }
 
     @NotNull
