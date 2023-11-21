@@ -1,6 +1,8 @@
 name: '${name}'
 main: '${group}.${name}'
 
+bootstrapper: '${group}.CraftyLoader'
+
 version: '${version}'
 api-version: '${apiVersion}'
 description: '${description}'

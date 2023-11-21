@@ -5,10 +5,10 @@ import org.jetbrains.annotations.NotNull;
 
 public class CraftyService {
 
-    private static ICrafty plugin = null;
+    private static CraftyImpl plugin = null;
 
-    public static @NotNull ICrafty get() {
-        ICrafty instance = CraftyService.plugin;
+    public static @NotNull CraftyImpl get() {
+        CraftyImpl instance = CraftyService.plugin;
 
         if (instance == null) {
             throw new RuntimeException("Crafty service method not set. Please call the method setService before you try to use it!");
@@ -23,7 +23,7 @@ public class CraftyService {
     }
 
     @ApiStatus.Internal
-    public static void setService(ICrafty plugin) {
+    public static void setService(CraftyImpl plugin) {
         if (CraftyService.plugin != null) return;
 
         CraftyService.plugin = plugin;
