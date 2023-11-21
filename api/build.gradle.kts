@@ -1,7 +1,3 @@
-plugins {
-    id("root-plugin")
-}
-
 project.group = "${rootProject.group}"
 project.version = rootProject.version
 

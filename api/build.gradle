@@ -1,0 +1,26 @@
+
+plugins {
+    id 'maven-publish'
+}
+
+project.group = "$rootProject.group"
+project.version = rootProject.version
+
+base {
+    archivesName = "${rootProject.name}-${project.name}"
+}
+
+dependencies {
+    compileOnlyApi(libs.adventure)
+}
+
+
+tasks {
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+
+            }
+        }
+    }
+}

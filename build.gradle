@@ -1,0 +1,40 @@
+plugins {
+    id 'java-library'
+}
+
+defaultTasks 'build'
+
+subprojects {
+    apply plugin: 'java-library'
+
+    repositories {
+        maven { url = 'https://repo.crazycrew.us/releases' }
+
+        maven { url = 'https://jitpack.io' }
+
+        mavenCentral()
+    }
+
+    if (name == "paper") {
+        repositories {
+            maven { url = 'https://repo.codemc.io/repository/maven-public/' }
+
+            maven { url = 'https://repo.triumphteam.dev/snapshots' }
+        }
+    }
+
+    compileJava {
+        options.encoding = 'UTF-8'
+        options.release.set(17)
+    }
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+
+    processResources {
+        filteringCharset = 'UTF-8'
+    }
+}
