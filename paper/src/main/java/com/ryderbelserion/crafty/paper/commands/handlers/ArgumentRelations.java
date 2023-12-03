@@ -18,13 +18,9 @@ public class ArgumentRelations extends MessageHandler {
 
         String correctUsage = null;
 
-        if (command.equalsIgnoreCase("crafty")) {
-            correctUsage = "/" + command;
-        } else {
-            switch (context.getSubCommand()) {
-                case "clear" -> correctUsage = order + "<world>";
-                case "maintenance" -> correctUsage = order + "<true/false>";
-            }
+        switch (context.getSubCommand()) {
+            case "clear" -> correctUsage = order + "<world>";
+            case "maintenance" -> correctUsage = order + "<true/false>";
         }
 
         if (correctUsage != null) {
