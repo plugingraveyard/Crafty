@@ -2,11 +2,13 @@ package com.ryderbelserion.crafty.paper;
 
 import com.ryderbelserion.cluster.paper.ClusterFactory;
 import com.ryderbelserion.cluster.paper.modules.ModuleLoader;
+import com.ryderbelserion.cluster.paper.utils.AdvUtils;
 import com.ryderbelserion.crafty.common.CraftyFactory;
 import com.ryderbelserion.crafty.common.config.ConfigKeys;
 import com.ryderbelserion.crafty.common.factory.ConfigFactory;
 import com.ryderbelserion.crafty.paper.commands.CommandManager;
 import com.ryderbelserion.crafty.paper.modules.HitDelayModule;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Crafty extends JavaPlugin {
@@ -47,6 +49,9 @@ public class Crafty extends JavaPlugin {
 
         // Load modules.
         this.moduleLoader.load();
+
+        // Check if modules are enabled.
+        modules();
     }
 
     @Override
@@ -72,5 +77,21 @@ public class Crafty extends JavaPlugin {
 
     public CommandManager getCommandManager() {
         return this.commandManager;
+    }
+
+    public void modules() {
+        String prefix = ConfigFactory.getConfig().getProperty(ConfigKeys.command_prefix);
+
+        ConsoleCommandSender sender = getServer().getConsoleSender();
+
+        this.moduleLoader.getModules().forEach(module -> {
+            String misc = prefix + "<bold><gold>" + module.getModuleName() + "</gold>";
+
+            if (module.isEnabled()) {
+                sender.sendMessage(AdvUtils.parse(misc + " <green>ENABLED</green>."));
+            } else {
+                sender.sendMessage(AdvUtils.parse(misc + " <red>NOT ENABLED.</red>"));
+            }
+        });
     }
 }

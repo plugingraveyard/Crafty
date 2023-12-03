@@ -28,7 +28,7 @@ public class HitDelayModule extends ModuleHandler {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return ConfigFactory.getConfig().getProperty(HitDelayKeys.toggle);
     }
 
     @Override

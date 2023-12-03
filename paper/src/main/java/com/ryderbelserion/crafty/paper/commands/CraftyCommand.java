@@ -69,10 +69,15 @@ public class CraftyCommand extends BaseCommand {
     @SubCommand("reload")
     @Permission(value = "crafty.reload", def = PermissionDefault.OP)
     public void reload(CommandSender sender) {
+        // Reload configurations.
         this.plugin.getConfigFactory().reload();
 
+        // Reload modules.
         this.plugin.getModuleLoader().load();
         this.plugin.getModuleLoader().getModules().forEach(ModuleHandler::reload);
+
+        // Check if modules are enabled.
+        this.plugin.modules();
 
         // Send the sender that the reload is complete.
         sender.sendMessage(Messages.config_reload.toSimpleComponent());

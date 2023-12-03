@@ -36,6 +36,6 @@ public final class ConfigKeys implements SettingsHolder {
     public static final Property<Boolean> verbose_logging = PropertyInitializer.newProperty("verbose_logging", true);
 
     @Comment("The command prefix you want shown in front of commands!")
-    public static final Property<String> command_prefix = PropertyInitializer.newProperty("command_prefix", " <light_purple>Crafty | <reset>");
+    public static final Property<String> command_prefix = PropertyInitializer.newProperty("command_prefix", "<light_purple>Crafty | <reset>");
 
 }
