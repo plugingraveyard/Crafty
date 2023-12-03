@@ -50,10 +50,9 @@ tasks {
 
         List.of(
             "com.ryderbelserion.cluster",
-            "dev.triumphteam",
-            "ch.jalu"
+            "dev.triumphteam"
         ).forEach {
-            relocate(it, "com.ryderbelserion.crafty.libraries.paper.$it")
+            relocate(it, "com.ryderbelserion.crafty.paper.libraries.$it")
         }
     }
 
