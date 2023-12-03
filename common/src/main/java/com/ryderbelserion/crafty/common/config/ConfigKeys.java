@@ -38,4 +38,7 @@ public final class ConfigKeys implements SettingsHolder {
     @Comment("The command prefix you want shown in front of commands!")
     public static final Property<String> command_prefix = PropertyInitializer.newProperty("command_prefix", "<light_purple>Crafty | <reset>");
 
+    @Comment("The command prefix you want shown in console!")
+    public static final Property<String> console_prefix = PropertyInitializer.newProperty("console_prefix", "<light_purple>[Crafty] <reset>");
+
 }
