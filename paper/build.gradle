@@ -1,0 +1,78 @@
+plugins {
+    alias(libs.plugins.paperweight)
+    alias(libs.plugins.shadowjar)
+
+    alias(libs.plugins.runpaper)
+}
+
+project.group = "${rootProject.group}.paper"
+project.version = "${rootProject.version}"
+
+base {
+    archivesName.set("${rootProject.name}-${project.name}")
+}
+
+repositories {
+    maven { url = "https://repo.extendedclip.com/content/repositories/placeholderapi/" }
+
+    maven { url = "https://repo.codemc.io/repository/maven-public/" }
+
+    maven { url = "https://repo.triumphteam.dev/snapshots/" }
+}
+
+dependencies {
+    implementation(project(":common"))
+
+    implementation(libs.cluster.paper)
+
+    implementation(libs.triumph.cmds)
+
+    compileOnly(libs.placeholderapi)
+
+    paperweightDevelopmentBundle("io.papermc.paper:dev-bundle:$minecraftVersion-R0.1-SNAPSHOT")
+}
+
+tasks {
+    runServer {
+        jvmArgs("-Dnet.kyori.ansi.colorLevel=truecolor")
+
+        minecraftVersion(minecraftVersion)
+    }
+
+    assemble {
+        dependsOn(reobfJar)
+    }
+
+    shadowJar {
+        mergeServiceFiles()
+
+        exclude("META-INF/**")
+
+        List.of(
+            "com.ryderbelserion.cluster",
+            "dev.triumphteam",
+            "ch.jalu"
+        ).forEach {
+            relocate(it, "com.ryderbelserion.crafty.libraries.paper.$it")
+        }
+    }
+
+    processResources {
+        Map<String, String> props = new HashMap<>()
+
+        props.put("name", rootProject.name)
+        props.put("version", "$rootProject.version")
+        props.put("group", "$project.group")
+        props.put("description", rootProject.description)
+
+        props.put("apiVersion", apiVersion)
+        props.put("authors", authors)
+        props.put("website", website)
+
+        inputs.properties(props)
+
+        filesMatching("paper-plugin.yml") {
+            expand(props)
+        }
+    }
+}

@@ -1,20 +1,16 @@
-plugins {
-    id("root-plugin")
-}
-
 project.group = "${rootProject.group}.common"
 project.version = "${rootProject.version}"
 
 base {
-    archivesName.set("${rootProject.name}-${project.name}")
+    archivesName = "${rootProject.name}-${project.name}"
 }
 
 dependencies {
     api(project(":api"))
 
-    api(libs.configurate.json)
-
-    api(libs.config.me)
+    api(libs.config.me) {
+        exclude group: 'org.yaml', module: 'snakeyaml'
+    }
 
     compileOnly(libs.cluster.api)
 }

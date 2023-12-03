@@ -1,3 +1,7 @@
+plugins {
+    `maven-publish`
+}
+
 project.group = "${rootProject.group}"
 project.version = rootProject.version
 

@@ -1,24 +1,76 @@
 package com.ryderbelserion.crafty.paper;
 
+import com.ryderbelserion.cluster.paper.ClusterFactory;
+import com.ryderbelserion.cluster.paper.modules.ModuleLoader;
 import com.ryderbelserion.crafty.common.CraftyFactory;
+import com.ryderbelserion.crafty.common.config.ConfigKeys;
+import com.ryderbelserion.crafty.common.factory.ConfigFactory;
+import com.ryderbelserion.crafty.paper.commands.CommandManager;
+import com.ryderbelserion.crafty.paper.modules.HitDelayModule;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Crafty extends JavaPlugin {
 
+    public static Crafty get() {
+        return JavaPlugin.getPlugin(Crafty.class);
+    }
+
     private final CraftyFactory factory;
+
+    private ModuleLoader moduleLoader;
+
+    private ClusterFactory cluster;
 
     public Crafty(CraftyFactory factory) {
         this.factory = factory;
     }
 
+    private CommandManager commandManager;
+
     @Override
     public void onEnable() {
+        // Enable cluster api
+        this.cluster = new ClusterFactory(this, ConfigFactory.getConfig().getProperty(ConfigKeys.verbose_logging));
+        this.cluster.enable();
 
+        // Create object.
+        this.commandManager = new CommandManager();
+
+        // Load commands.
+        this.commandManager.load();
+
+        // Create object.
+        this.moduleLoader = new ModuleLoader();
+
+        // Add hit delay module.
+        this.moduleLoader.addModule(new HitDelayModule());
+
+        // Load modules.
+        this.moduleLoader.load();
     }
 
     @Override
     public void onDisable() {
+        // Disable cluster api
+        if (this.cluster != null) this.cluster.disable();
+
         // Disable common factory
-        this.factory.disable();
+        if (this.factory != null) this.factory.disable();
+    }
+
+    public CraftyFactory getFactory() {
+        return this.factory;
+    }
+
+    public ModuleLoader getModuleLoader() {
+        return this.moduleLoader;
+    }
+
+    public ConfigFactory getConfigFactory() {
+        return this.factory.getConfigFactory();
+    }
+
+    public CommandManager getCommandManager() {
+        return this.commandManager;
     }
 }
