@@ -80,7 +80,7 @@ public class Crafty extends JavaPlugin {
     }
 
     public void modules() {
-        String prefix = ConfigFactory.getConfig().getProperty(ConfigKeys.command_prefix);
+        String prefix = ConfigFactory.getConfig().getProperty(ConfigKeys.console_prefix);
 
         ConsoleCommandSender sender = getServer().getConsoleSender();
 
