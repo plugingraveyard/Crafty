@@ -4,6 +4,35 @@ plugins {
 
 defaultTasks 'build'
 
+def combineJars = tasks.register("combineJars", org.gradle.jvm.tasks.Jar) {
+    mustRunAfter build
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    from(files(subprojects.findAll { it.name != 'webmap' }.collect {
+        it.layout.buildDirectory.file("libs/${rootProject.name}-${it.name}-${it.version}.jar").get()
+    }).filter { it.name != 'MANIFEST.MF' }.collect { if (it.isDirectory()) it else zipTree(it) })
+
+    doLast {
+        File dir = new File(rootDir, "jars")
+
+        if (dir.exists()) dir.delete()
+
+        dir.mkdirs()
+
+        copy {
+            from(layout.buildDirectory.file("libs/${rootProject.name}-${rootProject.version}.jar"))
+            into(dir)
+        }
+    }
+}
+
+assemble {
+    subprojects.forEach { project -> dependsOn ":${project.name}:build" }
+
+    finalizedBy combineJars
+}
+
 subprojects {
     apply plugin: 'java-library'
 
