@@ -6,7 +6,7 @@ import com.ryderbelserion.cluster.paper.utils.AdvUtils;
 import com.ryderbelserion.crafty.common.CraftyFactory;
 import com.ryderbelserion.crafty.common.config.ConfigKeys;
 import com.ryderbelserion.crafty.common.factory.ConfigFactory;
-import com.ryderbelserion.crafty.paper.commands.CommandManager;
+import com.ryderbelserion.crafty.paper.listeners.HeadDatabaseListener;
 import com.ryderbelserion.crafty.paper.modules.HitDelayModule;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,19 +27,14 @@ public class Crafty extends JavaPlugin {
         this.factory = factory;
     }
 
-    private CommandManager commandManager;
-
     @Override
     public void onEnable() {
         // Enable cluster api
         this.cluster = new ClusterFactory(this, ConfigFactory.getConfig().getProperty(ConfigKeys.verbose_logging));
         this.cluster.enable();
 
-        // Create object.
-        this.commandManager = new CommandManager();
-
-        // Load commands.
-        this.commandManager.load();
+        // Register headdatabase listener
+        getServer().getPluginManager().registerEvents(new HeadDatabaseListener(), this);
 
         // Create object.
         this.moduleLoader = new ModuleLoader();
@@ -75,10 +70,6 @@ public class Crafty extends JavaPlugin {
         return this.factory.getConfigFactory();
     }
 
-    public CommandManager getCommandManager() {
-        return this.commandManager;
-    }
-
     public void modules() {
         String prefix = ConfigFactory.getConfig().getProperty(ConfigKeys.console_prefix);
 
@@ -93,5 +84,9 @@ public class Crafty extends JavaPlugin {
                 sender.sendMessage(AdvUtils.parse(misc + " <red>NOT ENABLED.</red>"));
             }
         });
+    }
+
+    public ClusterFactory getCluster() {
+        return this.cluster;
     }
 }

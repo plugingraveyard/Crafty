@@ -25,9 +25,12 @@ dependencies {
 
     implementation(libs.cluster.paper)
 
-    implementation(libs.triumph.cmds)
+    implementation(libs.cloud.annotations)
+    implementation(libs.cloud.framework)
 
     compileOnly(libs.placeholderapi)
+
+    compileOnly(libs.headdatabase)
 
     paperweightDevelopmentBundle("io.papermc.paper:dev-bundle:$minecraftVersion-R0.1-SNAPSHOT")
 }
@@ -50,7 +53,7 @@ tasks {
 
         List.of(
             "com.ryderbelserion.cluster",
-            "dev.triumphteam"
+            "cloud.commandframework"
         ).forEach {
             relocate(it, "com.ryderbelserion.crafty.paper.libraries.$it")
         }

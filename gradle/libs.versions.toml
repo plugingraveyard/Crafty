@@ -1,7 +1,9 @@
 [versions]
 kyori_version = "4.14.0"
 
-cluster_version = "4.0"
+cloud_version = "1.8.4"
+
+cluster_version = "4.1.2"
 
 [plugins]
 hangar = { id = "io.papermc.hangar-publish-plugin", version = "0.1.0" }
@@ -18,6 +20,8 @@ minimessage = { module = "net.kyori:adventure-text-minimessage", version.ref = "
 cluster_paper = { module = "com.ryderbelserion.cluster.paper:cluster-paper", version.ref = "cluster_version" }
 cluster_api = { module = "com.ryderbelserion.cluster.api:cluster-api", version.ref = "cluster_version" }
 
+headdatabase = { module = "com.arcaniax:HeadDatabase-API", version = "1.3.1" }
+
 nbtapi = { module = "de.tr7zw:item-nbt-api", version = "2.12.1" }
 
 triumph_cmds = { module = "dev.triumphteam:triumph-cmd-bukkit", version = "2.0.0-SNAPSHOT" }
@@ -33,3 +37,6 @@ holographicdisplays = { module = "me.filoghost.holographicdisplays:holographicdi
 decentholograms = { module = "com.github.decentsoftware-eu:decentholograms", version = "2.8.4" }
 
 placeholderapi = { module = "me.clip:placeholderapi", version = "2.11.4" }
+
+cloud_framework = { module = "cloud.commandframework:cloud-paper", version.ref = "cloud_version" }
+cloud_annotations = { module = "cloud.commandframework:cloud-annotations", version.ref = "cloud_version" }

@@ -6,3 +6,10 @@ bootstrapper: '${group}.CraftyLoader'
 version: '${version}'
 api-version: '${apiVersion}'
 description: '${description}'
+
+dependencies:
+  server:
+    HeadDatabase:
+      load: BEFORE
+      required: false
+      join-classpath: true
