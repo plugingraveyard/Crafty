@@ -1,15 +1,15 @@
 package com.ryderbelserion.crafty.paper;
 
-import com.ryderbelserion.crafty.common.CraftyFactory;
+import com.ryderbelserion.crafty.common.CraftyPlugin;
 import io.papermc.paper.plugin.bootstrap.BootstrapContext;
 import io.papermc.paper.plugin.bootstrap.PluginBootstrap;
 import io.papermc.paper.plugin.bootstrap.PluginProviderContext;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
-public class CraftyLoader extends CraftyFactory implements PluginBootstrap {
+public class CraftyLoader extends CraftyPlugin implements PluginBootstrap {
 
-    private CraftyFactory factory;
+    private CraftyPlugin factory;
 
     @Override
     public void bootstrap(@NotNull BootstrapContext context) {

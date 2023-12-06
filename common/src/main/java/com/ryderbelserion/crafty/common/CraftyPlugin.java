@@ -6,7 +6,7 @@ import com.ryderbelserion.crafty.common.factory.ConfigFactory;
 import org.jetbrains.annotations.NotNull;
 import java.nio.file.Path;
 
-public abstract class CraftyFactory implements CraftyImpl {
+public abstract class CraftyPlugin implements CraftyImpl {
 
     private ConfigFactory configFactory;
 

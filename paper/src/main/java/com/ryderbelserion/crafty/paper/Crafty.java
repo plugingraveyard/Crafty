@@ -3,7 +3,7 @@ package com.ryderbelserion.crafty.paper;
 import com.ryderbelserion.cluster.paper.ClusterFactory;
 import com.ryderbelserion.cluster.paper.modules.ModuleLoader;
 import com.ryderbelserion.cluster.paper.utils.AdvUtils;
-import com.ryderbelserion.crafty.common.CraftyFactory;
+import com.ryderbelserion.crafty.common.CraftyPlugin;
 import com.ryderbelserion.crafty.common.config.ConfigKeys;
 import com.ryderbelserion.crafty.common.factory.ConfigFactory;
 import com.ryderbelserion.crafty.paper.listeners.HeadDatabaseListener;
@@ -17,13 +17,13 @@ public class Crafty extends JavaPlugin {
         return JavaPlugin.getPlugin(Crafty.class);
     }
 
-    private final CraftyFactory factory;
+    private final CraftyPlugin factory;
 
     private ModuleLoader moduleLoader;
 
     private ClusterFactory cluster;
 
-    public Crafty(CraftyFactory factory) {
+    public Crafty(CraftyPlugin factory) {
         this.factory = factory;
     }
 
@@ -58,7 +58,7 @@ public class Crafty extends JavaPlugin {
         if (this.factory != null) this.factory.disable();
     }
 
-    public CraftyFactory getFactory() {
+    public CraftyPlugin getFactory() {
         return this.factory;
     }
 

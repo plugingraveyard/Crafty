@@ -2,9 +2,6 @@ plugins {
     `maven-publish`
 }
 
-project.group = "${rootProject.group}"
-project.version = rootProject.version
-
 base {
     archivesName.set("${rootProject.name}-${project.name}")
 }

@@ -5,11 +5,8 @@ plugins {
     alias(libs.plugins.runpaper)
 }
 
-project.group = "${rootProject.group}.paper"
-project.version = "${rootProject.version}"
-
 base {
-    archivesName.set("${rootProject.name}-${project.name}")
+    archivesName.set("${rootProject.name}")
 }
 
 repositories {
@@ -24,9 +21,6 @@ dependencies {
     implementation(project(":common"))
 
     implementation(libs.cluster.paper)
-
-    implementation(libs.cloud.annotations)
-    implementation(libs.cloud.framework)
 
     compileOnly(libs.placeholderapi)
 
@@ -52,10 +46,9 @@ tasks {
         exclude("META-INF/**")
 
         List.of(
-            "com.ryderbelserion.cluster",
-            "cloud.commandframework"
+            "com.ryderbelserion.cluster"
         ).forEach {
-            relocate(it, "com.ryderbelserion.crafty.paper.libraries.$it")
+            relocate(it, "com.ryderbelserion.libs.$it")
         }
     }
 

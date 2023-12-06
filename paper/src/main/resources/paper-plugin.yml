@@ -2,6 +2,7 @@ name: '${name}'
 main: '${group}.${name}'
 
 bootstrapper: '${group}.CraftyLoader'
+loader: '${group}.api.CraftyLibs'
 
 version: '${version}'
 api-version: '${apiVersion}'
