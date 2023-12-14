@@ -7,7 +7,7 @@ base {
 }
 
 dependencies {
-    compileOnlyApi(libs.adventure)
+    compileOnlyApi(libs.bundles.adventure)
 }
 
 val component: SoftwareComponent = components["java"]

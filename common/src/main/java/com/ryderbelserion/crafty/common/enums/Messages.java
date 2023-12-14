@@ -1,12 +1,11 @@
-package com.ryderbelserion.crafty.paper.api.enums;
+package com.ryderbelserion.crafty.common.enums;
 
 import ch.jalu.configme.SettingsManager;
 import ch.jalu.configme.properties.Property;
-import com.ryderbelserion.cluster.paper.utils.AdvUtils;
+import com.ryderbelserion.cluster.utils.AdvUtils;
+import com.ryderbelserion.crafty.common.CraftyPlugin;
 import com.ryderbelserion.crafty.common.config.ConfigKeys;
 import com.ryderbelserion.crafty.common.config.MessageKeys;
-import com.ryderbelserion.crafty.common.factory.ConfigFactory;
-import com.ryderbelserion.crafty.paper.Crafty;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
@@ -35,16 +34,11 @@ public enum Messages {
         this.property = property;
     }
 
-    @NotNull
-    private final Crafty plugin = Crafty.get();
+
+    private final SettingsManager config = CraftyPlugin.getConfig();
 
     @NotNull
-    private final ConfigFactory configFactory = this.plugin.getFactory().getConfigFactory();
-
-    private final SettingsManager config = this.configFactory.getConfig();
-
-    @NotNull
-    private final SettingsManager messages = this.configFactory.getMessages();
+    private final SettingsManager messages = CraftyPlugin.getMessages();
 
     @NotNull
     private String getProperty(@NotNull Property<String> property) {

@@ -1,13 +1,12 @@
-package com.ryderbelserion.crafty.paper;
+package com.ryderbelserion.crafty;
 
-import com.ryderbelserion.cluster.paper.ClusterFactory;
-import com.ryderbelserion.cluster.paper.modules.ModuleLoader;
-import com.ryderbelserion.cluster.paper.utils.AdvUtils;
+import com.ryderbelserion.cluster.ClusterFactory;
+import com.ryderbelserion.cluster.utils.AdvUtils;
+import com.ryderbelserion.cluster.utils.modules.ModuleLoader;
 import com.ryderbelserion.crafty.common.CraftyPlugin;
 import com.ryderbelserion.crafty.common.config.ConfigKeys;
-import com.ryderbelserion.crafty.common.factory.ConfigFactory;
-import com.ryderbelserion.crafty.paper.listeners.HeadDatabaseListener;
-import com.ryderbelserion.crafty.paper.modules.HitDelayModule;
+import com.ryderbelserion.crafty.listeners.HeadDatabaseListener;
+import com.ryderbelserion.crafty.modules.HitDelayModule;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -30,7 +29,7 @@ public class Crafty extends JavaPlugin {
     @Override
     public void onEnable() {
         // Enable cluster api
-        this.cluster = new ClusterFactory(this, ConfigFactory.getConfig().getProperty(ConfigKeys.verbose_logging));
+        this.cluster = new ClusterFactory(this, CraftyPlugin.getConfig().getProperty(ConfigKeys.verbose_logging));
         this.cluster.enable();
 
         // Register headdatabase listener
@@ -66,12 +65,8 @@ public class Crafty extends JavaPlugin {
         return this.moduleLoader;
     }
 
-    public ConfigFactory getConfigFactory() {
-        return this.factory.getConfigFactory();
-    }
-
     public void modules() {
-        String prefix = ConfigFactory.getConfig().getProperty(ConfigKeys.console_prefix);
+        String prefix = CraftyPlugin.getConfig().getProperty(ConfigKeys.console_prefix);
 
         ConsoleCommandSender sender = getServer().getConsoleSender();
 

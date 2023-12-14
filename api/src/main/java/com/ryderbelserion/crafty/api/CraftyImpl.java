@@ -1,10 +1,12 @@
 package com.ryderbelserion.crafty.api;
 
-import java.nio.file.Path;
+import java.io.File;
 
 public interface CraftyImpl {
 
-    void enable(Path directory);
+    void load(File dataFolder);
+
+    void reload();
 
     void disable();
 

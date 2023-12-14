@@ -1,6 +1,7 @@
-package com.ryderbelserion.crafty.paper;
+package com.ryderbelserion.crafty.bootstrap;
 
 import com.ryderbelserion.crafty.common.CraftyPlugin;
+import com.ryderbelserion.crafty.Crafty;
 import io.papermc.paper.plugin.bootstrap.BootstrapContext;
 import io.papermc.paper.plugin.bootstrap.PluginBootstrap;
 import io.papermc.paper.plugin.bootstrap.PluginProviderContext;
@@ -13,7 +14,7 @@ public class CraftyLoader extends CraftyPlugin implements PluginBootstrap {
 
     @Override
     public void bootstrap(@NotNull BootstrapContext context) {
-        super.enable(context.getDataDirectory());
+        super.load(context.getDataDirectory().toFile());
 
         // Bind the factory variable.
         this.factory = this;

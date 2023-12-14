@@ -1,9 +1,9 @@
-package com.ryderbelserion.crafty.paper.modules;
+package com.ryderbelserion.crafty.modules;
 
-import com.ryderbelserion.cluster.paper.modules.ModuleHandler;
+import com.ryderbelserion.cluster.utils.modules.ModuleHandler;
+import com.ryderbelserion.crafty.common.CraftyPlugin;
 import com.ryderbelserion.crafty.common.config.modules.HitDelayKeys;
-import com.ryderbelserion.crafty.common.factory.ConfigFactory;
-import com.ryderbelserion.crafty.paper.Crafty;
+import com.ryderbelserion.crafty.Crafty;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
@@ -28,7 +28,7 @@ public class HitDelayModule extends ModuleHandler {
 
     @Override
     public boolean isEnabled() {
-        return ConfigFactory.getConfig().getProperty(HitDelayKeys.toggle);
+        return CraftyPlugin.getConfig().getProperty(HitDelayKeys.toggle);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class HitDelayModule extends ModuleHandler {
 
         World world = player.getWorld();
 
-        double speed = ConfigFactory.getConfig().getProperty(HitDelayKeys.worlds).contains(world.getName()) ? ConfigFactory.getConfig().getProperty(HitDelayKeys.speed) : 4.0;
+        double speed = CraftyPlugin.getConfig().getProperty(HitDelayKeys.worlds).contains(world.getName()) ? CraftyPlugin.getConfig().getProperty(HitDelayKeys.speed) : 4.0;
 
         setAttackSpeed(player, speed);
     }
