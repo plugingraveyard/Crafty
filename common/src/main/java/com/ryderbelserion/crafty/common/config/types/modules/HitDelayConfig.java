@@ -1,18 +1,17 @@
-package com.ryderbelserion.crafty.common.config.modules;
+package com.ryderbelserion.crafty.common.config.types.modules;
 
 import ch.jalu.configme.Comment;
 import ch.jalu.configme.SettingsHolder;
 import ch.jalu.configme.configurationdata.CommentsConfiguration;
 import ch.jalu.configme.properties.Property;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 import static ch.jalu.configme.properties.PropertyInitializer.newListProperty;
 import static ch.jalu.configme.properties.PropertyInitializer.newProperty;
 
-public class HitDelayKeys implements SettingsHolder {
+public class HitDelayConfig implements SettingsHolder {
 
-    private HitDelayKeys() {}
+    private HitDelayConfig() {}
 
     @Override
     public void registerComments(@NotNull CommentsConfiguration conf) {

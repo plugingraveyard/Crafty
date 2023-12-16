@@ -1,4 +1,4 @@
-package com.ryderbelserion.crafty.common.config;
+package com.ryderbelserion.crafty.common.config.types;
 
 import ch.jalu.configme.Comment;
 import ch.jalu.configme.SettingsHolder;
@@ -7,9 +7,9 @@ import ch.jalu.configme.properties.Property;
 import org.jetbrains.annotations.NotNull;
 import static ch.jalu.configme.properties.PropertyInitializer.newProperty;
 
-public class MessageKeys implements SettingsHolder {
+public class Locale implements SettingsHolder {
 
-    private MessageKeys() {}
+    private Locale() {}
 
     @Override
     public void registerComments(@NotNull CommentsConfiguration conf) {

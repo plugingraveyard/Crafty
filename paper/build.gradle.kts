@@ -20,8 +20,6 @@ dependencies {
 
     implementation(libs.cluster5)
 
-    implementation(libs.commandApi)
-
     compileOnly(libs.headdatabase)
 
     compileOnly(libs.vault)

@@ -1,4 +1,4 @@
-package com.ryderbelserion.crafty.common.config;
+package com.ryderbelserion.crafty.common.config.types;
 
 import ch.jalu.configme.Comment;
 import ch.jalu.configme.SettingsHolder;
@@ -7,9 +7,11 @@ import ch.jalu.configme.properties.Property;
 import ch.jalu.configme.properties.PropertyInitializer;
 import org.jetbrains.annotations.NotNull;
 
-public final class ConfigKeys implements SettingsHolder {
+import static ch.jalu.configme.properties.PropertyInitializer.newProperty;
 
-    private ConfigKeys() {}
+public final class Config implements SettingsHolder {
+
+    private Config() {}
 
     @Override
     public void registerComments(@NotNull CommentsConfiguration conf) {
@@ -32,13 +34,23 @@ public final class ConfigKeys implements SettingsHolder {
         conf.setComment("verbose_logging", header);
     }
 
+    @Comment({
+            "Sends anonymous statistics about how the plugin is used to bstats.org.",
+            "bstats is a service for plugin developers to find out how the plugin being used,",
+            "This information helps us figure out how to better improve the plugin."
+    })
+    public static final Property<Boolean> toggle_metrics = newProperty("root.toggle_metrics", true);
+
     @Comment("Whether you want Crafty to shut up or not, This option is ignored by errors.")
-    public static final Property<Boolean> verbose_logging = PropertyInitializer.newProperty("verbose_logging", true);
+    public static final Property<Boolean> verbose_logging = PropertyInitializer.newProperty("root.verbose_logging", true);
 
     @Comment("The command prefix you want shown in front of commands!")
-    public static final Property<String> command_prefix = PropertyInitializer.newProperty("command_prefix", "<light_purple>Crafty | <reset>");
+    public static final Property<String> command_prefix = PropertyInitializer.newProperty("root.command_prefix", "<light_purple>Crafty | <reset>");
 
     @Comment("The command prefix you want shown in console!")
-    public static final Property<String> console_prefix = PropertyInitializer.newProperty("console_prefix", "<light_purple>[Crafty] <reset>");
+    public static final Property<String> console_prefix = PropertyInitializer.newProperty("root.console_prefix", "<light_purple>[Crafty] <reset>");
+
+    @Comment("Pick which locale you want to use if your server is in another language. Changing this requires a server restart!")
+    public static final Property<String> locale_file = newProperty("root.locale", "en-US");
 
 }

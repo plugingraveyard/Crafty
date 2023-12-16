@@ -3,8 +3,9 @@ package com.ryderbelserion.crafty;
 import com.ryderbelserion.cluster.ClusterFactory;
 import com.ryderbelserion.cluster.utils.AdvUtils;
 import com.ryderbelserion.cluster.utils.modules.ModuleLoader;
-import com.ryderbelserion.crafty.common.CraftyPlugin;
-import com.ryderbelserion.crafty.common.config.ConfigKeys;
+import com.ryderbelserion.crafty.api.PaperAbstractPlugin;
+import com.ryderbelserion.crafty.common.api.CraftyPlugin;
+import com.ryderbelserion.crafty.common.config.types.Config;
 import com.ryderbelserion.crafty.listeners.HeadDatabaseListener;
 import com.ryderbelserion.crafty.modules.HitDelayModule;
 import org.bukkit.command.ConsoleCommandSender;
@@ -16,20 +17,20 @@ public class Crafty extends JavaPlugin {
         return JavaPlugin.getPlugin(Crafty.class);
     }
 
-    private final CraftyPlugin factory;
+    private PaperAbstractPlugin plugin;
 
     private ModuleLoader moduleLoader;
 
     private ClusterFactory cluster;
 
-    public Crafty(CraftyPlugin factory) {
-        this.factory = factory;
+    public Crafty(PaperAbstractPlugin plugin) {
+        this.plugin = plugin;
     }
 
     @Override
     public void onEnable() {
         // Enable cluster api
-        this.cluster = new ClusterFactory(this, CraftyPlugin.getConfig().getProperty(ConfigKeys.verbose_logging));
+        this.cluster = new ClusterFactory(this, this.plugin.getConfig().getProperty(Config.verbose_logging));
         this.cluster.enable();
 
         // Register headdatabase listener
@@ -54,7 +55,7 @@ public class Crafty extends JavaPlugin {
         if (this.cluster != null) this.cluster.disable();
 
         // Disable common factory
-        if (this.factory != null) this.factory.disable();
+        //if (this.factory != null) this.factory.disable();
     }
 
     public CraftyPlugin getFactory() {
@@ -66,9 +67,9 @@ public class Crafty extends JavaPlugin {
     }
 
     public void modules() {
-        String prefix = CraftyPlugin.getConfig().getProperty(ConfigKeys.console_prefix);
+        //String prefix = CraftyPlugin.getConfig().getProperty(Config.console_prefix);
 
-        ConsoleCommandSender sender = getServer().getConsoleSender();
+        /*ConsoleCommandSender sender = getServer().getConsoleSender();
 
         this.moduleLoader.getModules().forEach(module -> {
             String misc = prefix + "<bold><gold>" + module.getModuleName() + "</gold>";
@@ -78,7 +79,7 @@ public class Crafty extends JavaPlugin {
             } else {
                 sender.sendMessage(AdvUtils.parse(misc + " <red>NOT ENABLED.</red>"));
             }
-        });
+        });*/
     }
 
     public ClusterFactory getCluster() {

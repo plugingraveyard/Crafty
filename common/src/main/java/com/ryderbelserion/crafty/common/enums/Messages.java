@@ -1,32 +1,39 @@
 package com.ryderbelserion.crafty.common.enums;
 
-import ch.jalu.configme.SettingsManager;
 import ch.jalu.configme.properties.Property;
 import com.ryderbelserion.cluster.utils.AdvUtils;
-import com.ryderbelserion.crafty.common.CraftyPlugin;
-import com.ryderbelserion.crafty.common.config.ConfigKeys;
-import com.ryderbelserion.crafty.common.config.MessageKeys;
+import com.ryderbelserion.cluster.utils.StringUtils;
+import com.ryderbelserion.crafty.common.api.CraftyPlugin;
+import com.ryderbelserion.crafty.common.api.interfaces.AbstractPlugin;
+import com.ryderbelserion.crafty.common.config.types.Config;
+import com.ryderbelserion.crafty.common.config.types.Locale;
+import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public enum Messages {
 
-    no_permission(MessageKeys.no_permission),
-    config_reload(MessageKeys.config_reload),
-    must_be_player(MessageKeys.must_be_player),
-    must_be_console(MessageKeys.must_be_console),
-    unknown_command(MessageKeys.unknown_command),
-    invalid_arguments(MessageKeys.invalid_arguments),
-    internal_error(MessageKeys.internal_error),
-    cleared_ground_items(MessageKeys.cleared_ground_items),
-    maintenance_mode(MessageKeys.maintenance_mode),
-    maintenance_mode_enabled(MessageKeys.maintenance_mode_enabled),
-    maintenance_mode_disabled(MessageKeys.maintenance_mode_disabled),
-    no_ground_items(MessageKeys.no_ground_items);
+    no_permission(Locale.no_permission),
+    config_reload(Locale.config_reload),
+    must_be_player(Locale.must_be_player),
+    must_be_console(Locale.must_be_console),
+    unknown_command(Locale.unknown_command),
+    invalid_arguments(Locale.invalid_arguments),
+    internal_error(Locale.internal_error),
+    cleared_ground_items(Locale.cleared_ground_items),
+    maintenance_mode(Locale.maintenance_mode),
+    maintenance_mode_enabled(Locale.maintenance_mode_enabled),
+    maintenance_mode_disabled(Locale.maintenance_mode_disabled),
+    no_ground_items(Locale.no_ground_items);
 
-    private final Property<String> property;
+    private Property<String> property;
+
+    private Property<List<String>> listProperty;
+
+    private boolean isList = false;
 
     private String message;
 
@@ -34,15 +41,33 @@ public enum Messages {
         this.property = property;
     }
 
+    /**
+     * Used for string lists
+     *
+     * @param listProperty the list property
+     * @param isList Defines if it's a list or not.
+     */
+    Messages(Property<List<String>> listProperty, boolean isList) {
+        this.listProperty = listProperty;
 
-    private final SettingsManager config = CraftyPlugin.getConfig();
+        this.isList = isList;
+    }
 
     @NotNull
-    private final SettingsManager messages = CraftyPlugin.getMessages();
+    private final AbstractPlugin plugin = CraftyPlugin.get();
+
+    private boolean isList() {
+        return this.isList;
+    }
 
     @NotNull
-    private String getProperty(@NotNull Property<String> property) {
-        return this.messages.getProperty(property);
+    private List<String> getPropertyList(Property<List<String>> properties) {
+        return this.plugin.getLocale().getProperty(properties);
+    }
+
+    @NotNull
+    private String getProperty(Property<String> property) {
+        return this.plugin.getLocale().getProperty(property);
     }
 
     @NotNull
@@ -59,14 +84,19 @@ public enum Messages {
     }
 
     @NotNull
-    public Messages getMessage(@NotNull HashMap<String, String> placeholder) {
+    public Messages getMessage(Map<String, String> placeholders) {
+        // Get the string first.
         String message;
 
-        message = getProperty(this.property);
+        if (isList()) {
+            message = StringUtils.convertList(getPropertyList(this.listProperty));
+        } else {
+            message = getProperty(this.property);
+        }
 
-        if (!placeholder.isEmpty()) {
-            for (Map.Entry<String, String> value : placeholder.entrySet()) {
-                message = message.replace(value.getKey(), value.getValue()).replace(value.getKey().toLowerCase(), value.getValue());
+        if (!placeholders.isEmpty()) {
+            for (Map.Entry<String, String> placeholder : placeholders.entrySet()) {
+                message = message.replace(placeholder.getKey(), placeholder.getValue()).replace(placeholder.getKey().toLowerCase(), placeholder.getValue());
             }
         }
 
@@ -77,23 +107,22 @@ public enum Messages {
 
     @NotNull
     public String toMessage() {
-        String prefix = this.config.getProperty(ConfigKeys.command_prefix);
-
-        return this.message.replaceAll("\\{prefix}", prefix);
+        return this.message.replaceAll("\\{prefix}", this.plugin.getConfig().getProperty(Config.command_prefix));
     }
 
-    @NotNull
-    public String toStringMessage() {
-        return getMessage().message;
+    public String asString() {
+        return this.message;
     }
 
-    @NotNull
-    public Component toSimpleComponent() {
-        return AdvUtils.parse(getMessage().toMessage());
+    public Component asComponent() {
+        return AdvUtils.parse(this.message.replaceAll("\\{prefix}", this.plugin.getConfig().getProperty(Config.command_prefix)));
     }
 
-    @NotNull
-    public Component toAdvancedComponent() {
-        return AdvUtils.parse(toMessage());
+    public void sendMessage(Audience audience) {
+        sendMessage(audience, new HashMap<>());
+    }
+
+    public void sendMessage(Audience audience, Map<String, String> placeholders) {
+        audience.sendMessage(getMessage(placeholders).asComponent());
     }
 }
