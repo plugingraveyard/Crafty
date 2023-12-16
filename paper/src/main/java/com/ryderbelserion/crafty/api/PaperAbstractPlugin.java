@@ -3,7 +3,6 @@ package com.ryderbelserion.crafty.api;
 import ch.jalu.configme.SettingsManager;
 import com.ryderbelserion.crafty.common.api.interfaces.AbstractPlugin;
 import com.ryderbelserion.crafty.common.config.ConfigFactory;
-
 import java.io.File;
 
 public class PaperAbstractPlugin extends AbstractPlugin {
