@@ -1,8 +1,9 @@
 package com.ryderbelserion.crafty.modules;
 
 import com.ryderbelserion.cluster.utils.modules.ModuleHandler;
-import com.ryderbelserion.crafty.common.config.types.modules.HitDelayConfig;
 import com.ryderbelserion.crafty.Crafty;
+import com.ryderbelserion.crafty.common.api.CraftyPlugin;
+import com.ryderbelserion.crafty.common.config.types.modules.HitDelayConfig;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
@@ -13,12 +14,14 @@ import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
-import org.jetbrains.annotations.NotNull;
 
 public class HitDelayModule extends ModuleHandler {
 
-    @NotNull
-    private final Crafty plugin = Crafty.get();
+    private final Crafty plugin;
+
+    public HitDelayModule(Crafty plugin) {
+        this.plugin = plugin;
+    }
 
     @Override
     public String getModuleName() {
@@ -27,7 +30,7 @@ public class HitDelayModule extends ModuleHandler {
 
     @Override
     public boolean isEnabled() {
-        return CraftyPlugin.getConfig().getProperty(HitDelayConfig.toggle);
+        return CraftyPlugin.get().getConfig().getProperty(HitDelayConfig.toggle);
     }
 
     @Override
@@ -71,7 +74,7 @@ public class HitDelayModule extends ModuleHandler {
 
         World world = player.getWorld();
 
-        double speed = CraftyPlugin.getConfig().getProperty(HitDelayConfig.worlds).contains(world.getName()) ? CraftyPlugin.getConfig().getProperty(HitDelayConfig.speed) : 4.0;
+        double speed = CraftyPlugin.get().getConfig().getProperty(HitDelayConfig.worlds).contains(world.getName()) ? CraftyPlugin.get().getConfig().getProperty(HitDelayConfig.speed) : 4.0;
 
         setAttackSpeed(player, speed);
     }

@@ -1,6 +1,9 @@
 plugins {
-    `maven-publish`
+    id("root-plugin")
 }
+
+project.group = "us.crazycrew.crazycrates"
+project.version = "0.1"
 
 base {
     archivesName.set("${rootProject.name}-${project.name}")
@@ -8,6 +11,11 @@ base {
 
 dependencies {
     compileOnlyApi(libs.bundles.adventure)
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
 }
 
 val component: SoftwareComponent = components["java"]

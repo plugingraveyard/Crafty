@@ -6,15 +6,14 @@ import me.arcaniax.hdb.api.DatabaseLoadEvent;
 import me.arcaniax.hdb.api.HeadDatabaseAPI;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.jetbrains.annotations.NotNull;
 
 public class HeadDatabaseListener implements Listener {
 
-    @NotNull
-    private final Crafty plugin = Crafty.get();
+    private final ClusterFactory factory;
 
-    @NotNull
-    private final ClusterFactory factory = this.plugin.getCluster();
+    public HeadDatabaseListener(Crafty plugin) {
+        this.factory = plugin.getCluster();
+    }
 
     @EventHandler
     public void onDatabaseLoad(DatabaseLoadEvent event) {
