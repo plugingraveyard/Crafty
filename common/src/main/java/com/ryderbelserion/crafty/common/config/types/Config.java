@@ -5,8 +5,10 @@ import ch.jalu.configme.SettingsHolder;
 import ch.jalu.configme.configurationdata.CommentsConfiguration;
 import ch.jalu.configme.properties.Property;
 import ch.jalu.configme.properties.PropertyInitializer;
+import com.ryderbelserion.crafty.common.enums.storage.StorageType;
 import org.jetbrains.annotations.NotNull;
 
+import static ch.jalu.configme.properties.PropertyInitializer.newBeanProperty;
 import static ch.jalu.configme.properties.PropertyInitializer.newProperty;
 
 public final class Config implements SettingsHolder {
@@ -53,4 +55,20 @@ public final class Config implements SettingsHolder {
     @Comment("Pick which locale you want to use if your server is in another language. Changing this requires a server restart!")
     public static final Property<String> locale_file = newProperty("root.locale", "en-US");
 
+    @Comment({
+            "How the plugin should store data",
+            "",
+            "- Your Options",
+            "| Remote Database Types - You need to supply connection information.",
+            " |» MySQL *NOT IMPLEMENTED*",
+            " |» MariaDB *NOT IMPLEMENTED*",
+            "",
+            "| Local Database Types",
+            " |» H2 *NOT IMPLEMENTED*",
+            " |» SQLITE *DEFAULT",
+            "",
+            "| Text File Based Storage",
+            " |» JSON (.json files) *NOT IMPLEMENTED*"
+    })
+    public static final Property<StorageType> storage_type = newBeanProperty(StorageType.class, "root.database.storage-method", StorageType.H2);
 }
