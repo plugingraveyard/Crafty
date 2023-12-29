@@ -9,6 +9,8 @@ dependencies {
 
     implementation(libs.cluster.paper)
 
+    implementation(libs.cloud.paper)
+
     compileOnly(libs.headdatabase)
 
     compileOnly(libs.vault)
