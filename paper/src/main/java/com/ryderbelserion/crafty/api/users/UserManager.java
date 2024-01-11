@@ -1,6 +1,6 @@
 package com.ryderbelserion.crafty.api.users;
 
-import us.crazycrew.crazyauctions.api.interfaces.UserFactory;
+import com.ryderbelserion.crafty.api.interfaces.UserFactory;
 
 public class UserManager implements UserFactory {
 
