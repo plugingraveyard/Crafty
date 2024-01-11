@@ -26,7 +26,7 @@ public class HitDelayConfig implements SettingsHolder {
     }
 
     @Comment("Register or unregister the hit-delay module.")
-    public static final Property<Boolean> toggle = newProperty("module.hit-delay.toggle", true);
+    public static final Property<Boolean> toggle = newProperty("module.hit-delay.toggle", false);
 
     @Comment("Defines how fast you want player's attack speed: The higher the number, the faster they attack.")
     public static final Property<Double> speed = newProperty("module.hit-delay.speed", 4.0);
