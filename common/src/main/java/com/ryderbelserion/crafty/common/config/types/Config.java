@@ -64,8 +64,8 @@ public final class Config implements SettingsHolder {
             " |» MariaDB *NOT IMPLEMENTED*",
             "",
             "| Local Database Types",
-            " |» H2 *NOT IMPLEMENTED*",
-            " |» SQLITE *DEFAULT",
+            " |» H2 *DEFAULT*",
+            " |» SQLITE *NOT IMPLEMENTED*",
             "",
             "| Text File Based Storage",
             " |» JSON (.json files) *NOT IMPLEMENTED*"
