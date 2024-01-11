@@ -2,7 +2,7 @@ plugins {
     id("root-plugin")
 }
 
-project.group = "us.crazycrew.crazycrates"
+project.group = "com.ryderbelserion.crafty"
 project.version = "0.1"
 
 base {
