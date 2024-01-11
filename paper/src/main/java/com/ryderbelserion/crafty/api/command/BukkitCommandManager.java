@@ -43,9 +43,14 @@ public class BukkitCommandManager extends CommandHandler {
         return null;
     }
 
-    @NotNull
     @Override
     public @NotNull Command.Builder<Audience> getRoot() {
         return null;
     }
+
+    /*@NotNull
+    @Override
+    public @NotNull Command.Builder<Audience> getRoot() {
+        return null;
+    }*/
 }
