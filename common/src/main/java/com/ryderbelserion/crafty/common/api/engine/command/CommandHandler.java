@@ -33,6 +33,8 @@ public abstract class CommandHandler {
                     );
 
                     help.setMessage("help", "Crafty Help");
+
+                    help.setMaxResultsPerPage(config.getProperty(Config.help_max_results_per_page));
                     help.queryCommands(context.getOrDefault("query", ""), context.getSender());
 
                    //TODO() Add some type of wrapper to open gui's
