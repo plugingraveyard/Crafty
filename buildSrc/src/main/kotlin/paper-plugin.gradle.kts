@@ -45,7 +45,7 @@ tasks {
     }
 
     runServer {
-        jvmArgs("-Dnet.kyori.ansi.colorLevel=truecolor")
+        jvmArgs("-Dnet.kyori.ansi.colorLevel=truecolor", "-Dfile.encoding=UTF8")
 
         minecraftVersion(mcVersion)
     }
