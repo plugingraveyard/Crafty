@@ -6,6 +6,7 @@ import com.ryderbelserion.crafty.common.api.CraftyPlugin;
 import com.ryderbelserion.crafty.common.api.interfaces.AbstractPlugin;
 import com.ryderbelserion.crafty.common.config.types.Config;
 import com.ryderbelserion.crafty.common.config.types.Locale;
+import com.ryderbelserion.crafty.common.config.types.modules.HitDelayConfig;
 import org.jetbrains.annotations.NotNull;
 import java.io.File;
 
@@ -21,7 +22,7 @@ public class ConfigFactory {
         this.config = SettingsManagerBuilder
                 .withYamlFile(new File(this.plugin.getDataFolder(), "config.yml"), this.plugin.indent())
                 .useDefaultMigrationService()
-                .configurationData(Config.class)
+                .configurationData(Config.class, HitDelayConfig.class)
                 .create();
 
         File directory = new File(this.plugin.getDataFolder(), "locale");
