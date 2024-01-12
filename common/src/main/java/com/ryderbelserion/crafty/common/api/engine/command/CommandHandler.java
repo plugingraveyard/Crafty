@@ -6,7 +6,9 @@ import cloud.commandframework.CommandManager;
 import cloud.commandframework.context.CommandContext;
 import cloud.commandframework.meta.CommandMeta;
 import cloud.commandframework.minecraft.extras.AudienceProvider;
+import cloud.commandframework.minecraft.extras.MinecraftExceptionHandler;
 import cloud.commandframework.minecraft.extras.MinecraftHelp;
+import com.ryderbelserion.cluster.utils.AdvUtils;
 import com.ryderbelserion.crafty.common.api.CraftyPlugin;
 import com.ryderbelserion.crafty.common.api.engine.command.types.Sender;
 import com.ryderbelserion.crafty.common.api.interfaces.AbstractPlugin;
@@ -15,9 +17,10 @@ import com.ryderbelserion.crafty.common.commands.subs.HelpCommand;
 import com.ryderbelserion.crafty.common.commands.subs.ReloadCommand;
 import com.ryderbelserion.crafty.common.config.types.Config;
 import com.ryderbelserion.crafty.common.utils.ColorUtils;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.ClickEvent;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 import java.util.function.UnaryOperator;
 
@@ -29,7 +32,6 @@ public abstract class CommandHandler {
     @NotNull
     public abstract Command.Builder<@NotNull Sender> getRoot();
 
-    //TODO() Add exception handler.
     //TODO() Add register command method
     //TODO() Add a method to get the root command.
 
@@ -38,6 +40,18 @@ public abstract class CommandHandler {
                 .permission("crafty.access")
                 .meta(CommandMeta.DESCRIPTION, "The base command for Crafty.")
                 .handler(this::generateHelp);
+    }
+
+    public void exceptions() {
+        new MinecraftExceptionHandler<Sender>()
+                .withDefaultHandlers()
+                .withDecorator(component -> Component.text()
+                        .append(AdvUtils.parse(CraftyPlugin.get().getConfig().getProperty(Config.command_prefix)))
+                        .hoverEvent(AdvUtils.parse("Click for help"))
+                        .clickEvent(ClickEvent.runCommand("/crafty help"))
+                        .append(component)
+                        .build())
+                .apply(getManager(), AudienceProvider.nativeAudience());
     }
 
     public void generateHelp(@NonNull CommandContext<@NotNull Sender> context) {

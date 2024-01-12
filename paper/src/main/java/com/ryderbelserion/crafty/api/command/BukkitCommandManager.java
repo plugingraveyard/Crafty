@@ -32,6 +32,8 @@ public class BukkitCommandManager extends CommandHandler {
             getManager().registerAsynchronousCompletions();
         }
 
+        exceptions();
+
         this.root = root();
 
         // Register root command.
