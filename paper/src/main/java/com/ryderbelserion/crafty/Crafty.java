@@ -4,7 +4,7 @@ import com.ryderbelserion.cluster.ClusterFactory;
 import com.ryderbelserion.cluster.utils.AdvUtils;
 import com.ryderbelserion.cluster.utils.modules.ModuleLoader;
 import com.ryderbelserion.crafty.api.PaperAbstractPlugin;
-import com.ryderbelserion.crafty.api.command.BukkitCommandManager;
+import com.ryderbelserion.crafty.api.command.PaperCommandManager;
 import com.ryderbelserion.crafty.commands.subs.TestCommand;
 import com.ryderbelserion.crafty.common.config.types.Config;
 import com.ryderbelserion.crafty.modules.HitDelayModule;
@@ -34,10 +34,10 @@ public class Crafty extends JavaPlugin {
 
         this.moduleLoader.load();
 
-        BukkitCommandManager manager;
+        PaperCommandManager manager;
 
         try {
-            manager = new BukkitCommandManager(this);
+            manager = new PaperCommandManager(this);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
