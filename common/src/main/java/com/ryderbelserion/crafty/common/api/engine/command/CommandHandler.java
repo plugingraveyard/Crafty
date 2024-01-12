@@ -32,6 +32,7 @@ public abstract class CommandHandler {
                             getManager()
                     );
 
+                    help.setMessage("help", "Crafty Help");
                     help.queryCommands(context.getOrDefault("query", ""), context.getSender());
 
                    //TODO() Add some type of wrapper to open gui's
