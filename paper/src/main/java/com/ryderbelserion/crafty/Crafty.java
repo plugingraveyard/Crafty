@@ -4,6 +4,7 @@ import com.ryderbelserion.cluster.ClusterFactory;
 import com.ryderbelserion.cluster.utils.AdvUtils;
 import com.ryderbelserion.cluster.utils.modules.ModuleLoader;
 import com.ryderbelserion.crafty.api.PaperAbstractPlugin;
+import com.ryderbelserion.crafty.api.command.BukkitCommandManager;
 import com.ryderbelserion.crafty.common.config.types.Config;
 import com.ryderbelserion.crafty.modules.HitDelayModule;
 import org.bukkit.command.ConsoleCommandSender;
@@ -11,18 +12,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Crafty extends JavaPlugin {
 
-    private final PaperAbstractPlugin plugin;
-
-    public Crafty(PaperAbstractPlugin plugin) {
-        this.plugin = plugin;
-    }
-
-    private ClusterFactory cluster;
+    private PaperAbstractPlugin plugin;
 
     private ModuleLoader moduleLoader;
 
+    private ClusterFactory cluster;
+
     @Override
     public void onEnable() {
+        this.plugin = new PaperAbstractPlugin(getDataFolder(), this);
+        this.plugin.init();
+
         // Enable cluster factory.
         this.cluster = new ClusterFactory(this, this.plugin.getConfig().getProperty(Config.verbose_logging));
         this.cluster.enable();
@@ -33,7 +33,13 @@ public class Crafty extends JavaPlugin {
 
         this.moduleLoader.load();
 
-        handleModules();
+        try {
+            new BukkitCommandManager(this);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        printModules();
     }
 
     @Override
@@ -42,7 +48,7 @@ public class Crafty extends JavaPlugin {
         if (this.cluster != null) this.cluster.disable();
     }
 
-    public void handleModules() {
+    public void printModules() {
         String prefix = this.plugin.getConfig().getProperty(Config.console_prefix);
 
         ConsoleCommandSender sender = getServer().getConsoleSender();
