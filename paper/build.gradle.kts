@@ -5,11 +5,13 @@ plugins {
 dependencies {
     api(project(":common"))
 
-    implementation(libs.bstats)
+    implementation(libs.platformBukkit4)
 
     implementation(libs.cluster.paper)
 
     implementation(libs.cloud.paper)
+
+    implementation(libs.bstats)
 
     compileOnly(libs.headdatabase)
 

@@ -1,5 +1,6 @@
 [versions]
 kyori_version = "4.14.0"
+kyori_bukkit = "4.3.2"
 
 cluster_version = "6.3"
 
@@ -23,6 +24,8 @@ shadowjar = { id = "com.github.johnrengelman.shadow", version = "8.1.1" }
 [libraries]
 adventure4 = { module = "net.kyori:adventure-api", version.ref = "kyori_version" }
 minimessage4 = { module = "net.kyori:adventure-text-minimessage", version.ref = "kyori_version" }
+platformBukkit4 = { module = "net.kyori:adventure-platform-bukkit", version.ref = "kyori_bukkit" }
+platformApi4 = { module = "net.kyori:adventure-platform-api", version.ref = "kyori_bukkit" }
 
 cluster_paper = { module = "com.ryderbelserion.cluster:paper", version.ref = "cluster_version" }
 cluster_api = { module = "com.ryderbelserion.cluster:api", version.ref = "cluster_version" }
@@ -51,4 +54,4 @@ hangar = { module = "io.papermc:hangar-publish-plugin", version.ref = "hangar_ve
 modrinth = { module = "com.modrinth.minotaur:Minotaur", version.ref = "modrinth_version" }
 
 [bundles]
-adventure = ["adventure4", "minimessage4"]
+adventure = ["adventure4", "minimessage4", "platformApi4"]

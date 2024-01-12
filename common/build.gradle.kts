@@ -7,6 +7,8 @@ dependencies {
 
     compileOnly(libs.cluster.api)
 
+    implementation(libs.cloud.extras)
+
     implementation(libs.cloud.core)
 
     api(libs.configme) {
