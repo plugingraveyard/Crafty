@@ -1,4 +1,4 @@
-package com.ryderbelserion.crafty.listeners;
+package com.ryderbelserion.crafty.listeners.support;
 
 import com.ryderbelserion.cluster.ClusterFactory;
 import com.ryderbelserion.crafty.Crafty;

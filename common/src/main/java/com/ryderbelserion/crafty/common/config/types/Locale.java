@@ -48,15 +48,4 @@ public class Locale implements SettingsHolder {
     public static final Property<String> invalid_arguments = newProperty("misc.invalid-args", "{prefix}<red>Invalid arguments! Correct Usage: <gold>{usage}");
 
     public static final Property<String> internal_error = newProperty("errors.internal-error", "{prefix}<red>An internal error has occurred. Please check the console for the full error.");
-
-    public static final Property<String> cleared_ground_items = newProperty("clear.ground-items", "{prefix}<white>Successfully cleared <dark_aqua>{amount} <white>ground items in <dark_aqua>{world}.");
-
-    public static final Property<String> no_ground_items = newProperty("clear.no-ground-items", "{prefix}<red>No ground items were found in <dark_aqua>{world}.");
-
-    public static final Property<String> maintenance_mode = newProperty("maintenance.message", "{prefix}<white>Maintenance mode has been {toggle}.");
-
-    public static final Property<String> maintenance_mode_enabled = newProperty("maintenance.enabled", "<green>enabled");
-
-    public static final Property<String> maintenance_mode_disabled = newProperty("maintenance.disabled", "<red>disabled");
-
 }

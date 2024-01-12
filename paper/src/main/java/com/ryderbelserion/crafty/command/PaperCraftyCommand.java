@@ -1,7 +1,7 @@
-package com.ryderbelserion.crafty.commands;
+package com.ryderbelserion.crafty.command;
 
 import com.ryderbelserion.crafty.common.api.engine.command.CommandHandler;
-import com.ryderbelserion.crafty.common.commands.CraftyCommand;
+import com.ryderbelserion.crafty.common.command.CraftyCommand;
 
 public abstract class PaperCraftyCommand extends CraftyCommand {
 

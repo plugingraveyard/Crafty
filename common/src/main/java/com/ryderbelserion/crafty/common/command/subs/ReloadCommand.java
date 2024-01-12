@@ -1,4 +1,4 @@
-package com.ryderbelserion.crafty.common.commands.subs;
+package com.ryderbelserion.crafty.common.command.subs;
 
 import cloud.commandframework.context.CommandContext;
 import cloud.commandframework.minecraft.extras.MinecraftExtrasMetaKeys;
@@ -6,7 +6,7 @@ import com.ryderbelserion.cluster.utils.AdvUtils;
 import com.ryderbelserion.crafty.common.api.CraftyPlugin;
 import com.ryderbelserion.crafty.common.api.engine.command.CommandHandler;
 import com.ryderbelserion.crafty.common.api.engine.command.types.Sender;
-import com.ryderbelserion.crafty.common.commands.CraftyCommand;
+import com.ryderbelserion.crafty.common.command.CraftyCommand;
 import com.ryderbelserion.crafty.common.enums.Messages;
 import org.jetbrains.annotations.NotNull;
 

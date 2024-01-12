@@ -5,10 +5,7 @@ import ch.jalu.configme.SettingsHolder;
 import ch.jalu.configme.configurationdata.CommentsConfiguration;
 import ch.jalu.configme.properties.Property;
 import ch.jalu.configme.properties.PropertyInitializer;
-import com.ryderbelserion.crafty.common.enums.storage.StorageType;
 import org.jetbrains.annotations.NotNull;
-
-import static ch.jalu.configme.properties.PropertyInitializer.newBeanProperty;
 import static ch.jalu.configme.properties.PropertyInitializer.newProperty;
 
 public final class Config implements SettingsHolder {
@@ -55,10 +52,7 @@ public final class Config implements SettingsHolder {
     public static final Property<Boolean> verbose_logging = PropertyInitializer.newProperty("root.verbose_logging", true);
 
     @Comment("The command prefix you want shown in front of commands!")
-    public static final Property<String> command_prefix = PropertyInitializer.newProperty("root.command_prefix", "<light_purple>Crafty | <reset>");
-
-    @Comment("The command prefix you want shown in console!")
-    public static final Property<String> console_prefix = PropertyInitializer.newProperty("root.console_prefix", "<light_purple>[Crafty] <reset>");
+    public static final Property<String> command_prefix = PropertyInitializer.newProperty("root.command_prefix", "<light_purple>[Crafty] | <reset>");
 
     public static final Property<Integer> help_max_results_per_page = PropertyInitializer.newProperty("root.help.max-results-per-page", 10);
 
@@ -74,21 +68,4 @@ public final class Config implements SettingsHolder {
 
     @Comment("Pick which locale you want to use if your server is in another language. Changing this requires a server restart!")
     public static final Property<String> locale_file = newProperty("root.locale", "en-US");
-
-    @Comment({
-            "How the plugin should store data",
-            "",
-            "- Your Options",
-            "| Remote Database Types - You need to supply connection information.",
-            " |» MySQL *NOT IMPLEMENTED*",
-            " |» MariaDB *NOT IMPLEMENTED*",
-            "",
-            "| Local Database Types",
-            " |» H2 *DEFAULT*",
-            " |» SQLITE *NOT IMPLEMENTED*",
-            "",
-            "| Text File Based Storage",
-            " |» JSON (.json files) *NOT IMPLEMENTED*"
-    })
-    public static final Property<StorageType> storage_type = newBeanProperty(StorageType.class, "root.database.storage-method", StorageType.H2);
 }

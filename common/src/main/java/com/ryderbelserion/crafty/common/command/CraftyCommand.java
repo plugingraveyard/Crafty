@@ -1,4 +1,4 @@
-package com.ryderbelserion.crafty.common.commands;
+package com.ryderbelserion.crafty.common.command;
 
 import com.ryderbelserion.crafty.common.api.engine.command.CommandHandler;
 
