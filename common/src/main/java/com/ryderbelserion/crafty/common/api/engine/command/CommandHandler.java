@@ -76,4 +76,8 @@ public abstract class CommandHandler {
                 new HelpCommand(this)
         ).forEach(CraftyCommand::register);
     }
+
+    public CommandHandler getHandler() {
+        return this;
+    }
 }

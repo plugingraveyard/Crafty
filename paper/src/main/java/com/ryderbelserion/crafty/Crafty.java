@@ -5,6 +5,7 @@ import com.ryderbelserion.cluster.utils.AdvUtils;
 import com.ryderbelserion.cluster.utils.modules.ModuleLoader;
 import com.ryderbelserion.crafty.api.PaperAbstractPlugin;
 import com.ryderbelserion.crafty.api.command.BukkitCommandManager;
+import com.ryderbelserion.crafty.commands.subs.TestCommand;
 import com.ryderbelserion.crafty.common.config.types.Config;
 import com.ryderbelserion.crafty.modules.HitDelayModule;
 import org.bukkit.command.ConsoleCommandSender;
@@ -33,17 +34,24 @@ public class Crafty extends JavaPlugin {
 
         this.moduleLoader.load();
 
+        BukkitCommandManager manager;
+
         try {
-            new BukkitCommandManager(this);
+            manager = new BukkitCommandManager(this);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        // Let's see if this works.
+        new TestCommand(manager.getHandler()).register();
 
         printModules();
     }
 
     @Override
     public void onDisable() {
+        this.plugin.disable();
+
         // Shut down cluster factory.
         if (this.cluster != null) this.cluster.disable();
     }
