@@ -106,15 +106,15 @@ public enum Messages {
     }
 
     @NotNull
-    public String toMessage() {
+    public String build() {
         return this.message.replaceAll("\\{prefix}", this.plugin.getConfig().getProperty(Config.command_prefix));
     }
 
-    public String asString() {
+    public String raw() {
         return this.message;
     }
 
-    public Component asComponent() {
+    public Component component() {
         return AdvUtils.parse(this.message.replaceAll("\\{prefix}", this.plugin.getConfig().getProperty(Config.command_prefix)));
     }
 
@@ -123,6 +123,6 @@ public enum Messages {
     }
 
     public void sendMessage(Audience audience, Map<String, String> placeholders) {
-        audience.sendMessage(getMessage(placeholders).asComponent());
+        audience.sendMessage(getMessage(placeholders).component());
     }
 }

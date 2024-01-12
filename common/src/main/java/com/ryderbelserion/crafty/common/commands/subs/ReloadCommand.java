@@ -27,6 +27,6 @@ public class ReloadCommand extends CraftyCommand {
     private void execute(CommandContext<@NotNull Sender> context) {
         CraftyPlugin.get().reload();
 
-        context.getSender().sendMessage(AdvUtils.parse(Messages.config_reload.getMessage().toMessage()));
+        context.getSender().sendMessage(AdvUtils.parse(Messages.config_reload.getMessage().build()));
     }
 }
