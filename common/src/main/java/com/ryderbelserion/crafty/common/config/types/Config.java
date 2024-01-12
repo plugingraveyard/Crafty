@@ -33,7 +33,15 @@ public final class Config implements SettingsHolder {
                 ""
         };
 
+        String[] colors = {
+                "The colors used for /crafty help which follow the rgb format",
+                "",
+                "You must not have any spaces i.e it must be 5,5,5 not 5, 5, 5 or 5,5, 5"
+        };
+
         conf.setComment("verbose_logging", header);
+
+        conf.setComment("root.help.colors", colors);
     }
 
     @Comment({
@@ -51,6 +59,18 @@ public final class Config implements SettingsHolder {
 
     @Comment("The command prefix you want shown in console!")
     public static final Property<String> console_prefix = PropertyInitializer.newProperty("root.console_prefix", "<light_purple>[Crafty] <reset>");
+
+    public static final Property<Integer> help_max_results_per_page = PropertyInitializer.newProperty("root.help.max-results-per-page", 10);
+
+    public static final Property<String> help_primary_color = PropertyInitializer.newProperty("root.help.colors.primary", "168,31,30");
+
+    public static final Property<String> help_highlight_color = PropertyInitializer.newProperty("root.help.colors.highlight", "50,168,129");
+
+    public static final Property<String> help_alternate_highlight_color = PropertyInitializer.newProperty("root.help.colors.alternate-highlight", "168,50,94");
+
+    public static final Property<String> help_text_color = PropertyInitializer.newProperty("root.help.colors.text", "222,150,62");
+
+    public static final Property<String> help_accent_color = PropertyInitializer.newProperty("root.help.colors.accent", "230,80,50");
 
     @Comment("Pick which locale you want to use if your server is in another language. Changing this requires a server restart!")
     public static final Property<String> locale_file = newProperty("root.locale", "en-US");
