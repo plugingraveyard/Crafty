@@ -1,4 +1,4 @@
-package com.ryderbelserion.crafty.common.utils;
+package me.corecraft.crafty.common.utils;
 
 import net.kyori.adventure.text.format.TextColor;
 

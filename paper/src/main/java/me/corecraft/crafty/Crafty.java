@@ -1,8 +1,7 @@
-package com.ryderbelserion.crafty;
+package me.corecraft.crafty;
 
 import com.ryderbelserion.cluster.ClusterFactory;
-import com.ryderbelserion.crafty.api.PaperAbstractPlugin;
-import com.ryderbelserion.crafty.api.command.PaperCommandManager;
+import me.corecraft.crafty.api.PaperAbstractPlugin;
 import com.ryderbelserion.crafty.common.config.types.Config;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,15 +19,6 @@ public class Crafty extends JavaPlugin {
         // Enable cluster factory.
         this.cluster = new ClusterFactory(this, this.plugin.getConfig().getProperty(Config.verbose_logging));
         this.cluster.enable();
-
-        try {
-            new PaperCommandManager(this);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-        // Let's see if this works.
-        // new ItemCommand(manager.getHandler()).register();
     }
 
     @Override

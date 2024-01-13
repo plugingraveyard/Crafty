@@ -1,12 +1,12 @@
-package com.ryderbelserion.crafty.common.enums;
+package me.corecraft.crafty.common.enums;
 
 import ch.jalu.configme.properties.Property;
 import com.ryderbelserion.cluster.utils.AdvUtils;
 import com.ryderbelserion.cluster.utils.StringUtils;
-import com.ryderbelserion.crafty.common.api.CraftyPlugin;
+import me.corecraft.crafty.common.api.CraftyImpl;
 import com.ryderbelserion.crafty.common.api.interfaces.AbstractPlugin;
-import com.ryderbelserion.crafty.common.config.types.Config;
-import com.ryderbelserion.crafty.common.config.types.Locale;
+import me.corecraft.crafty.common.config.types.Config;
+import me.corecraft.crafty.common.config.types.Locale;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
@@ -54,7 +54,7 @@ public enum Messages {
     }
 
     @NotNull
-    private final AbstractPlugin plugin = CraftyPlugin.get();
+    private final AbstractPlugin plugin = CraftyImpl.get();
 
     private boolean isList() {
         return this.isList;

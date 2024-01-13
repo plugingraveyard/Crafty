@@ -1,4 +1,4 @@
-package com.ryderbelserion.crafty.common.config.types;
+package me.corecraft.crafty.common.config.types;
 
 import ch.jalu.configme.Comment;
 import ch.jalu.configme.SettingsHolder;

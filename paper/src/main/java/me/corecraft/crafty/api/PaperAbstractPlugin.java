@@ -1,4 +1,4 @@
-package com.ryderbelserion.crafty.api;
+package me.corecraft.crafty.api;
 
 import ch.jalu.configme.SettingsManager;
 import com.ryderbelserion.crafty.common.api.interfaces.AbstractPlugin;

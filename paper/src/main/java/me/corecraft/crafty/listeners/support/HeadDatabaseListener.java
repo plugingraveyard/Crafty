@@ -1,7 +1,7 @@
-package com.ryderbelserion.crafty.listeners.support;
+package me.corecraft.crafty.listeners.support;
 
 import com.ryderbelserion.cluster.ClusterFactory;
-import com.ryderbelserion.crafty.Crafty;
+import me.corecraft.crafty.Crafty;
 import me.arcaniax.hdb.api.DatabaseLoadEvent;
 import me.arcaniax.hdb.api.HeadDatabaseAPI;
 import org.bukkit.event.EventHandler;

@@ -1,11 +1,11 @@
-package com.ryderbelserion.crafty.common.config;
+package me.corecraft.crafty.common.config;
 
 import ch.jalu.configme.SettingsManager;
 import ch.jalu.configme.SettingsManagerBuilder;
-import com.ryderbelserion.crafty.common.api.CraftyPlugin;
+import me.corecraft.crafty.common.api.CraftyImpl;
 import com.ryderbelserion.crafty.common.api.interfaces.AbstractPlugin;
-import com.ryderbelserion.crafty.common.config.types.Config;
-import com.ryderbelserion.crafty.common.config.types.Locale;
+import me.corecraft.crafty.common.config.types.Config;
+import me.corecraft.crafty.common.config.types.Locale;
 import com.ryderbelserion.crafty.common.config.types.modules.HitDelayConfig;
 import org.jetbrains.annotations.NotNull;
 import java.io.File;
@@ -13,7 +13,7 @@ import java.io.File;
 public class ConfigFactory {
 
     @NotNull
-    private final AbstractPlugin plugin = CraftyPlugin.get();
+    private final AbstractPlugin plugin = CraftyImpl.get();
 
     private SettingsManager config;
     private SettingsManager messages;
