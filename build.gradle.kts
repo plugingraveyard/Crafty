@@ -1,4 +1,5 @@
 import org.gradle.kotlin.dsl.support.uppercaseFirstChar
+import java.io.ByteArrayOutputStream
 
 plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
@@ -29,7 +30,7 @@ subprojects {
         archivesName.set("${rootProject.name}-${project.name.uppercaseFirstChar()}")
     }
 
-    project.version = if (System.getenv("BUILD_NUMBER") != null) "${project.version}-${System.getenv("BUILD_NUMBER")}" else project.version
+    version = "${rootProject.property("version")}.${commitsSinceLastTag()}"
 
     tasks {
         compileJava {
@@ -51,8 +52,6 @@ subprojects {
             exclude("META-INF/**")
         }
 
-        val directory = File("$rootDir/jars")
-
         modrinth {
             autoAddDependsOn.set(false)
 
@@ -66,7 +65,7 @@ subprojects {
 
             versionType.set("alpha")
 
-            uploadFile.set("$directory/${rootProject.name}-${project.name.uppercaseFirstChar()}-${project.version}.jar")
+            uploadFile.set(file("${project.layout.buildDirectory}/${rootProject.name}-${project.version}.jar"))
 
             gameVersions.addAll(
                 "1.20.4"
@@ -110,4 +109,16 @@ tasks {
             }
         }
     }
+}
+
+fun commitsSinceLastTag(): String {
+    val tagDescription = ByteArrayOutputStream()
+    exec {
+        commandLine("git", "describe", "--tags")
+        standardOutput = tagDescription
+    }
+    if (tagDescription.toString().indexOf('-') < 0) {
+        return "0"
+    }
+    return tagDescription.toString().split('-')[1]
 }
