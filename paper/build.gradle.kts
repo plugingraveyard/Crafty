@@ -1,4 +1,9 @@
+import io.papermc.hangarpublishplugin.model.Platforms
+import org.gradle.kotlin.dsl.support.uppercaseFirstChar
+
 plugins {
+    id("io.papermc.hangar-publish-plugin") version "0.1.1"
+
     id("io.papermc.paperweight.userdev") version "1.5.11"
 
     id("xyz.jpenilla.run-paper") version "2.2.2"
@@ -37,30 +42,27 @@ tasks {
         dependsOn(reobfJar)
     }
 
-    /*
-    // Publish to hangar.papermc.io.
-hangarPublish {
-    publications.register("plugin") {
-        version.set("${project.version}")
+    hangarPublish {
+        publications.register("plugin") {
+            version.set("${project.version}")
 
-        id.set(rootProject.name)
+            id.set(rootProject.name)
 
-        channel.set(type)
+            channel.set("Beta")
 
-        changelog.set(rootProject.file("CHANGELOG.md").readText())
+            changelog.set(rootProject.file("CHANGELOG.md").readText())
 
-        apiKey.set(System.getenv("hangar_key"))
+            apiKey.set(System.getenv("hangar_key"))
 
-        platforms {
-            register(Platforms.PAPER) {
-                jar.set(file("$directory/${rootProject.name}-${project.name.uppercaseFirstChar()}-${project.version}.jar"))
+            platforms {
+                register(Platforms.PAPER) {
+                    jar.set(file("${project.layout.buildDirectory}/${rootProject.name}-${project.version}.jar"))
 
-                platformVersions.set(listOf(mcVersion))
+                    platformVersions.set(listOf("1.20.4"))
+                }
             }
         }
     }
-}
-*/
 
     shadowJar {
         listOf(
@@ -81,18 +83,14 @@ hangarPublish {
     }
 
     processResources {
-        /*val properties = hashMapOf(
-            "name" to rootProject.name,
-            "version" to project.version,
-            "group" to rootProject.group,
-            "description" to rootProject.description
-            //"apiVersion" to rootProject.properties["apiVersion"],
-            //"authors" to rootProject.properties["authors"],
-            //"website" to rootProject.properties["website"]
-        )
-
         filesMatching("paper-plugin.yml") {
-            expand(properties)
-        }*/
+            hashMapOf(
+                "name" to rootProject.name,
+                "version" to project.version,
+                "group" to rootProject.group,
+                "description" to rootProject.description,
+                "apiVersion" to rootProject.properties["apiVersion"]
+            )
+        }
     }
 }
