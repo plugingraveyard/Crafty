@@ -1,17 +1,7 @@
-plugins {
-    id("root-plugin")
-}
-
 dependencies {
-    api(project(":api"))
+    compileOnly("com.ryderbelserion.cluster:api:6.3")
 
-    compileOnly(libs.cluster.api)
-
-    implementation(libs.cloud.extras)
-
-    implementation(libs.cloud.core)
-
-    api(libs.configme) {
+    api("ch.jalu:configme:1.4.1") {
         exclude(group = "org.yaml", module = "snakeyaml")
     }
 }
